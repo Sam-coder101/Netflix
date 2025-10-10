@@ -1,181 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Astyle.css">
-    <title>Netflix Clone</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Netflix Clone - Stream movies and TV shows instantly (demo)." />
+  <meta name="keywords" content="Netflix Clone, Streaming, Movies, TV Shows, Demo" />
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" />
+  <title>Netflix Clone | Watch Movies & TV Shows</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="Astyle.css" />
 </head>
-
 <body>
-    <header>
-        <div class="logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">TV Shows</a></li>
-                <li><a href="#">Movies</a></li>
-                <li><a href="#">My List</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="banner">
-            <h1>Unlimited movies,</h1>
-            <h1>TV Shows and more</h1>
-            <h3>Starts at ₹149. Cancel at any time.</h3>
-            <button>Watch Now</button>
-            <p>Ready to watch? Enter your email to create or restart your membership.</p>
-            <div class="email-input">
-                <input type="text" placeholder="Enter your email" required>
-                <button class="get-started">Get Started</button>
-            </div>
-        </section>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="logo" href="#" aria-label="Home">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix logo" />
+      </a>
 
-        <section class="content">
-            <h2>Trending Now</h2>
-            <div class="dropdown-container">
-                <div class="dropdown">
-                    <select name="countries" id="countries">
-                        <option value="India">India</option>
-                        <option value="Global">Global</option>
-                    </select>
-                </div>
-                <div class="dropdown">
-                    <select name="type" id="type">
-                        <option value="TV Shows">TV Shows</option>
-                        <option value="Web Series">Web Series</option>
-                    </select>
-                </div>
-            </div>
-            <div class="movie-container">
-                <div class="movies">
-                    <div class="movie"><img
-                            src="https://m.media-amazon.com/images/M/MV5BZjkxZWJiNTUtYjQwYS00MTBlLTgwODQtM2FkNWMyMjMwOGZiXkEyXkFqcGc@._V1_.jpg"
-                            alt="Movie 1"></div>
-                    <div class="movie"><img
-                            src="https://m.media-amazon.com/images/M/MV5BMjE2N2MyMzEtNmU5NS00OTI0LTlkNTMtMWM1YWYyNmU4NmY0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                            alt="Movie 2"></div>
-                    <div class="movie"><img
-                            src="https://resizing.flixster.com/PYMILH2RwjmJ3uCZyBAEDihOIG4=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvUlRUVjI3OTYxMS53ZWJw"
-                            alt="Movie 3"></div>
-                    <div class="movie"><img
-                            src="https://m.media-amazon.com/images/M/MV5BNjUyNzQ2MTg3Ml5BMl5BanBnXkFtZTgwNzE4NDM3MTI@._V1_FMjpg_UX1000_.jpg"
-                            alt="Movie 4"></div>
-                    <div class="movie"><img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Fast_X_poster.jpg"
-                            alt="Movie 5"></div>
-                </div>
-                <button class="scroll-btn right">&gt;</button>
-            </div>
-        </section>
-        <div class="header">
-            <h1>More Reasons To Join</h1>
-        </div>
-        <div class="container">
-            <div class="item item-1">
-                <h2>Download your
-                    shows to watch
-                    offline</h2>
-                <p> Save your favourites easily
-                    and always have something to
-                    watch.</p>
+      <nav class="primary-nav" role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">TV Shows</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">My List</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-            </div>
-            <div class="item item-2">
-                <h2>Watch everywhere</h2>
-                <p>Stream unlimited movies and
-                    TV shows on your phone,
-                    tablet, laptop and TV.</p>
-            </div>
-            <div class="item item-3">
-                <h2>Enjoy on your TV
-                </h2>
-                <p>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.
-                </p>
-            </div>
-            <div class="item item-4">
-                <h2>Create profiles for
-                    kids</h2>
-                <p>Send kids on adventures with
-                    their favourite characters in a
-                    space made just for them —
-                    free with your membership.</p>
-            </div>
-        </div>
-        <div class="faq-container">
-            <div class="faq">
-                <h2>Frequently Asked Questions</h2>
-            </div>
-            <div class="fag1">What is Netflix? </div>
-            <div class="fag1">How much does Netflix cost?</div>
-            <div class="fag1">Where can i watch ?</div>
-            <div class="fag1">How do i cancel?</div>
-            <div class="fag1">What can i watch on Netflix?</div>
-            <div class="fag1">Is Netflix good for kids?</div>
-        </div>
-    </main>
+  <!-- Main -->
+  <main id="main" role="main">
+    <!-- Banner -->
+    <section class="banner" aria-label="Hero section">
+      <div class="banner-inner">
+        <h1>Unlimited movies, TV shows and more</h1>
+        <p class="sub">Starts at ₹149. Cancel anytime.</p>
 
-    <footer class="end">
-        <div class="email">
-            <p>Ready to watch? Enter your email to create or restart your membership.</p>
-            <div class="input-button-container">
-                <input type="text" placeholder="Enter your Email">
-                <button>Get Started</button>
-            </div>
-        </div>
-        <div class="end1">
-            Questions?Call 000-800-919-1694
-        </div>
-        <div class="endcont">
-            <div class="end-item">
-                <a href="#">FAQ</a>
-            </div>
-            <div class="end-item">
-                <a href="#">Help Centre</a>
-            </div>
-            <div class="end-item">
-                <a href="#">Account</a>
-            </div>
-            <div class="end-item">
-                <a href="#">Media Centre</a>
-            </div>
-        </div>
-        <br>
-        <div class="endcont">
-            <div class="end-item"><a href="#">Relations</a></div>
-            <div class="end-item"><a href="#">Jobs</a></div>
-            <div class="end-item"><a href="#">Ways to watch</a></div>
-            <div class="end-item"><a href="#">Terms to use</a></div>
-        </div>
-        <br>
-        <div class="endcont">
-            <div class="end-item"><a href="#">Privacy</a></div>
-            <div class="end-item"><a href="#">Cookies</a></div>
-            <div class="end-item"><a href="#">Corporate</a></div>
-            <div class="end-item"><a href="#">Contact</a></div>
-        </div>
-        <br>
-        <div class="endcont">
-            <div class="end-item"><a href="#">Speed Test</a></div>
-            <div class="end-item"><a href="#">Legal Notices</a></div>
-            <div class="end-item"><a href="#">Only on Netflix</a></div>
-        </div>
-        <div class="end-drop">
-            <select name="Language">
-                <option value="English">💬 English</option>
-                <option value="Hindi">💬 Hindi</option>
+        <form id="emailForm" class="email-cta" novalidate>
+          <label for="cta-email" class="visually-hidden">Email address</label>
+          <input id="cta-email" name="email" type="email" placeholder="Enter your email" required aria-required="true" />
+          <button type="submit" class="btn primary">Get Started</button>
+        </form>
+
+        <button id="watchNowBtn" class="btn outline">Watch Now</button>
+      </div>
+    </section>
+
+    <!-- Trending / Controls -->
+    <section class="content" aria-label="Trending content">
+      <div class="content-top">
+        <h2>Trending Now</h2>
+
+        <div class="controls">
+          <div class="dropdown">
+            <label for="region" class="visually-hidden">Region</label>
+            <select id="region" name="region" aria-label="Region">
+              <option value="India">India</option>
+              <option value="Global">Global</option>
             </select>
+          </div>
+
+          <div class="dropdown">
+            <label for="type" class="visually-hidden">Type</label>
+            <select id="type" name="type" aria-label="Type">
+              <option value="tv">TV Shows</option>
+              <option value="web">Web Series</option>
+              <option value="movies">Movies</option>
+            </select>
+          </div>
         </div>
-    </footer>
-    <div class="foot">
-        <p>Netflix India &copy; 2024 Netflix Clone. All rights reserved.</p>
+      </div>
+
+      <!-- Movie Carousel -->
+      <div class="movie-container" aria-roledescription="carousel">
+        <button class="scroll-btn left" aria-label="Scroll left">&lt;</button>
+
+        <div class="movies" id="movies" tabindex="0">
+          <!-- Each .movie uses lazy-loaded images -->
+          <div class="movie" role="group" aria-label="Movie 1">
+            <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BZjkxZWJiNTUtYjQwYS00MTBlLTgwODQtM2FkNWMyMjMwOGZiXkEyXkFqcGc@._V1_.jpg" alt="Movie 1 poster" />
+          </div>
+          <div class="movie" role="group" aria-label="Movie 2">
+            <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BMjE2N2MyMzEtNmU5NS00OTI0LTlkNTMtMWM1YWYyNmU4NmY0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Movie 2 poster" />
+          </div>
+          <div class="movie" role="group" aria-label="Movie 3">
+            <img loading="lazy" src="https://resizing.flixster.com/PYMILH2RwjmJ3uCZyBAEDihOIG4=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvUlRUVjI3OTYxMS53ZWJw" alt="Movie 3 poster" />
+          </div>
+          <div class="movie" role="group" aria-label="Movie 4">
+            <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BNjUyNzQ2MTg3Ml5BMl5BanBnXkFtZTgwNzE4NDM3MTI@._V1_FMjpg_UX1000_.jpg" alt="Movie 4 poster" />
+          </div>
+          <div class="movie" role="group" aria-label="Movie 5">
+            <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/f/f2/Fast_X_poster.jpg" alt="Movie 5 poster" />
+          </div>
+          <!-- Add more .movie items as needed -->
+        </div>
+
+        <button class="scroll-btn right" aria-label="Scroll right">&gt;</button>
+      </div>
+    </section>
+
+    <!-- Benefits cards -->
+    <section class="reasons" aria-label="More reasons to join">
+      <h2 class="section-title">More Reasons To Join</h2>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">📥</div>
+          <h3>Download to watch offline</h3>
+          <p>Save your favourites and watch on the go.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🌍</div>
+          <h3>Watch everywhere</h3>
+          <p>Stream on phone, tablet, laptop and TV.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📺</div>
+          <h3>Enjoy on your TV</h3>
+          <p>Smart TVs, PlayStation, Chromecast, Apple TV and more.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">👶</div>
+          <h3>Create profiles for kids</h3>
+          <p>Individual spaces tailored for kids — free with membership.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ accordion -->
+    <section class="faq-section" aria-label="Frequently asked questions">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is Netflix? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden>Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How much does Netflix cost? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden>Plans vary by region and may change. The demo here shows a sample starting price.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Where can I watch? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden>You can watch on any device with the Netflix app or modern browser and an internet connection.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How do I cancel? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden>Cancellations are typically handled from your account page; the demo doesn't process subscriptions.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-top">
+      <p>Ready to watch? Enter your email to create or restart your membership.</p>
+
+      <form id="footerEmail" class="email-form" novalidate>
+        <label for="footer-email" class="visually-hidden">Footer email</label>
+        <input id="footer-email" name="email" type="email" placeholder="Enter your email" required />
+        <button type="submit" class="btn primary small">Get Started</button>
+      </form>
     </div>
 
-    <script src="script.js"></script>
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="#">FAQ</a>
+      <a href="#">Help Centre</a>
+      <a href="#">Account</a>
+      <a href="#">Media Centre</a>
+      <a href="#">Jobs</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <div class="lang">
+        <label for="lang" class="visually-hidden">Language</label>
+        <select id="lang">
+          <option>💬 English</option>
+          <option>💬 Hindi</option>
+        </select>
+      </div>
+      <small>Netflix India &copy; <span id="year"></span> — Netflix Clone (demo)</small>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button id="scrollTopBtn" aria-label="Scroll to top">⬆</button>
+
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
-
-
 </html>
