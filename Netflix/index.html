@@ -7,7 +7,7 @@
   <meta name="keywords" content="Netflix Clone, Streaming, Movies, TV Shows, Demo" />
   <meta name="author" content="Sujay Dey" />
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" />
-  <title>Netflix Clone | Watch Movies & TV Shows</title>
+  <title data-key="page_title">Netflix Clone | Watch Movies & TV Shows</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="Astyle.css" />
@@ -21,12 +21,13 @@
       </a>
 
       <nav class="primary-nav" role="navigation" aria-label="Main navigation">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">TV Shows</a></li>
-          <li><a href="#">Movies</a></li>
-          <li><a href="#">My List</a></li>
-        </ul>
+        <ul class="nav-links">
+        <li><a href="#" data-key="nav_home">Home</a></li>
+        <li><a href="#" data-key="nav_series">Series</a></li>
+        <li><a href="#" data-key="nav_movies">Movies</a></li>
+        <li><a href="#" data-key="nav_new">New & Popular</a></li>
+        <li><a href="#" data-key="nav_mylist">My List</a></li>
+      </ul>
       </nav>
     </div>
   </header>
@@ -36,39 +37,39 @@
     <!-- Banner -->
     <section class="banner" aria-label="Hero section">
       <div class="banner-inner">
-        <h1>Unlimited movies, TV shows and more</h1>
-        <p class="sub">Starts at ₹149. Cancel anytime.</p>
+        <h1 data-key="hero_title">Unlimited movies, TV shows and more</h1>
+        <p class="sub" data-key="hero_subtitle">Starts at ₹149. Cancel anytime.</p>
 
         <form id="emailForm" class="email-cta" novalidate>
-          <label for="cta-email" class="visually-hidden">Email address</label>
-          <input id="cta-email" name="email" type="email" placeholder="Enter your email" required aria-required="true" />
-          <button type="submit" class="btn primary">Get Started</button>
+          <label for="cta-email" class="visually-hidden" data-key="email_label">Email address</label>
+          <input id="cta-email" name="email" type="email" placeholder="Enter your email" data-key-placeholder="email_placeholder" required aria-required="true" />
+          <button type="submit" class="btn primary" data-key="get_started_btn">Get Started</button>
         </form>
 
-        <button id="watchNowBtn" class="btn outline">Watch Now</button>
+        <button id="watchNowBtn" class="btn outline" data-key="watch_now_btn">Watch Now</button>
       </div>
     </section>
 
     <!-- Trending / Controls -->
     <section class="content" aria-label="Trending content">
       <div class="content-top">
-        <h2>Trending Now</h2>
+        <h2 data-key="trending_now">Trending Now</h2>
 
         <div class="controls">
           <div class="dropdown">
-            <label for="region" class="visually-hidden">Region</label>
+            <label for="region" class="visually-hidden" data-key="region_label">Region</label>
             <select id="region" name="region" aria-label="Region">
-              <option value="India">India</option>
-              <option value="Global">Global</option>
+              <option value="India" data-key="region_india">India</option>
+              <option value="Global" data-key="region_global">Global</option>
             </select>
           </div>
 
           <div class="dropdown">
-            <label for="type" class="visually-hidden">Type</label>
+            <label for="type" class="visually-hidden" data-key="type_label">Type</label>
             <select id="type" name="type" aria-label="Type">
-              <option value="tv">TV Shows</option>
-              <option value="web">Web Series</option>
-              <option value="movies">Movies</option>
+              <option value="tv" data-key="type_tv">TV Shows</option>
+              <option value="web" data-key="type_web">Web Series</option>
+              <option value="movies" data-key="type_movies">Movies</option>
             </select>
           </div>
         </div>
@@ -104,58 +105,57 @@
 
     <!-- Benefits cards -->
     <section class="reasons" aria-label="More reasons to join">
-      <h2 class="section-title">More Reasons To Join</h2>
+      <h2 class="section-title" data-key="more_reasons">More Reasons To Join</h2>
 
       <div class="cards">
         <article class="card">
           <div class="card-icon">📥</div>
-          <h3>Download to watch offline</h3>
-          <p>Save your favourites and watch on the go.</p>
+          <h3 data-key="download_offline">Download to watch offline</h3>
+          <p data-key="offline_desc">Save your favourites and watch on the go.</p>
         </article>
-
         <article class="card">
           <div class="card-icon">🌍</div>
-          <h3>Watch everywhere</h3>
-          <p>Stream on phone, tablet, laptop and TV.</p>
+          <h3 data-key="watch_everywhere">Watch everywhere</h3>
+          <p data-key="everywhere_desc">Stream on phone, tablet, laptop and TV.</p>
         </article>
 
         <article class="card">
           <div class="card-icon">📺</div>
-          <h3>Enjoy on your TV</h3>
-          <p>Smart TVs, PlayStation, Chromecast, Apple TV and more.</p>
+          <h3 data-key="enjoy_tv">Enjoy on your TV</h3>
+          <p data-key="tv_desc">Smart TVs, PlayStation, Chromecast, Apple TV and more.</p>
         </article>
 
         <article class="card">
           <div class="card-icon">👶</div>
-          <h3>Create profiles for kids</h3>
-          <p>Individual spaces tailored for kids — free with membership.</p>
+          <h3 data-key="kids_profiles">Create profiles for kids</h3>
+          <p data-key="kids_desc">Individual spaces tailored for kids — free with membership.</p>
         </article>
       </div>
     </section>
 
     <!-- FAQ accordion -->
     <section class="faq-section" aria-label="Frequently asked questions">
-      <h2>Frequently Asked Questions</h2>
+      <h2 data-key="faq_title">Frequently Asked Questions</h2>
 
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">What is Netflix? <span class="arrow">+</span></button>
-          <div class="faq-answer" hidden>Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more.</div>
+          <button class="faq-question" aria-expanded="false" data-key="faq_q1">What is Netflix? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden data-key="faq_a1">Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more.</div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">How much does Netflix cost? <span class="arrow">+</span></button>
-          <div class="faq-answer" hidden>Plans vary by region and may change. The demo here shows a sample starting price.</div>
+          <button class="faq-question" aria-expanded="false" data-key="faq_q2">How much does Netflix cost? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden data-key="faq_a2">Plans vary by region and may change. The demo here shows a sample starting price.</div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Where can I watch? <span class="arrow">+</span></button>
-          <div class="faq-answer" hidden>You can watch on any device with the Netflix app or modern browser and an internet connection.</div>
+          <button class="faq-question" aria-expanded="false" data-key="faq_q3">Where can I watch? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden data-key="faq_a3">You can watch on any device with the Netflix app or modern browser and an internet connection.</div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">How do I cancel? <span class="arrow">+</span></button>
-          <div class="faq-answer" hidden>Cancellations are typically handled from your account page; the demo doesn't process subscriptions.</div>
+          <button class="faq-question" aria-expanded="false" data-key="faq_q4">How do I cancel? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden data-key="faq_a4">Cancellations are typically handled from your account page; the demo doesn't process subscriptions.</div>
         </div>
       </div>
     </section>
@@ -164,31 +164,32 @@
   <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="footer-top">
-      <p>Ready to watch? Enter your email to create or restart your membership.</p>
+      <p data-key="footer_cta">Ready to watch? Enter your email to create or restart your membership.</p>
 
       <form id="footerEmail" class="email-form" novalidate>
-        <label for="footer-email" class="visually-hidden">Footer email</label>
-        <input id="footer-email" name="email" type="email" placeholder="Enter your email" required />
-        <button type="submit" class="btn primary small">Get Started</button>
+        <label for="footer-email" class="visually-hidden" data-key="footer_email_label">Footer email</label>
+        <input id="footer-email" name="email" type="email" placeholder="Enter your email" data-key-placeholder="footer_email_placeholder" required />
+        <button type="submit" class="btn primary small" data-key="footer_get_started">Get Started</button>
       </form>
     </div>
 
     <nav class="footer-links" aria-label="Footer links">
-      <a href="#">FAQ</a>
-      <a href="#">Help Centre</a>
-      <a href="#">Account</a>
-      <a href="#">Media Centre</a>
-      <a href="#">Jobs</a>
-      <a href="#">Privacy</a>
-      <a href="#">Contact</a>
-    </nav>
+    <a href="#" data-key="footer_faq">FAQ</a>
+    <a href="#" data-key="footer_help">Help Centre</a>
+    <a href="#" data-key="footer_account">Account</a>
+    <a href="#" data-key="footer_media">Media Centre</a>
+    <a href="#" data-key="footer_jobs">Jobs</a>
+    <a href="#" data-key="footer_privacy">Privacy</a>
+    <a href="#" data-key="footer_contact">Contact</a>
+  </nav>
 
     <div class="footer-bottom">
       <div class="lang">
-        <label for="lang" class="visually-hidden">Language</label>
+        <label for="lang" class="visually-hidden" data-key="lang_label">Language</label>
         <select id="lang">
-          <option>💬 English</option>
-          <option>💬 Hindi</option>
+          <option value="en">💬 English</option>
+          <option value="hi">💬 Hindi</option>
+          <option value="bn">💬 Bengali</option>
         </select>
       </div>
       <small>Netflix India &copy; <span id="year"></span> — Netflix Clone (demo)</small>
