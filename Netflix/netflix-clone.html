@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Netflix Clone</title>
+  <meta name="description" content="Netflix landing page.">
+
+  <style>
+    /* Reset & base */
+    :root{
+      --bg:#0b0b0b; --card:#111; --muted:#9ca3af; --accent:#e50914; --glass: rgba(255,255,255,0.04);
+      --transition: 250ms cubic-bezier(.2,.9,.3,1);
+      --max-width:1200px;
+      --radius:12px;
+      color-scheme: dark;
+    }
+    [data-theme="light"]{ --bg:#f6f7fb; --card:#fff; --muted:#4b5563; --accent:#e50914; --glass: rgba(0,0,0,0.04); color-scheme: light }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,var(--bg), #050505); color: #fff; -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 18px}
+
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg, rgba(0,0,0,0.6), transparent);backdrop-filter: blur(6px);}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo img{height:34px}
+
+    .primary-nav .nav-links{display:flex;gap:12px;list-style:none;padding:0;margin:0}
+    .primary-nav a{color:inherit;text-decoration:none;font-weight:600;opacity:.92}
+
+    /* Right controls */
+    .header-controls{display:flex;gap:10px;align-items:center}
+    .search-wrap{position:relative}
+    .search-input{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;min-width:220px}
+    .btn{cursor:pointer;border:0;padding:10px 14px;border-radius:8px;font-weight:700}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.outline{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+
+    /* Hamburger */
+    .hamburger{display:none;background:transparent;border:0;font-size:20px}
+
+    /* Banner */
+    .banner{padding:70px 0;background-image:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6));}
+    .banner-inner{max-width:800px;margin:0 auto;text-align:center;padding:60px 18px;border-radius:16px}
+    .banner h1{font-size:2.1rem;margin:0 0 12px}
+    .banner .sub{margin:0 0 18px;color:var(--muted)}
+    .email-cta{display:flex;gap:10px;justify-content:center;margin-top:14px}
+    .email-cta input{padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);min-width:320px}
+
+    /* Content */
+    .content{padding:28px 0}
+    .content-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+    .controls{display:flex;gap:10px;align-items:center}
+    select{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+
+    /* Movie carousel */
+    .movie-container{position:relative;display:flex;align-items:center;gap:12px}
+    .scroll-btn{background:var(--card);border-radius:999px;padding:10px 12px;border:1px solid rgba(255,255,255,0.04)}
+    .movies{display:flex;gap:12px;overflow:hidden;padding:12px;border-radius:12px}
+    .movie{min-width:180px;height:270px;border-radius:8px;flex:0 0 auto;position:relative;overflow:hidden;background:linear-gradient(180deg,#222,#111);transition:transform var(--transition);cursor:pointer}
+    .movie img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform 420ms cubic-bezier(.2,.9,.3,1);filter:brightness(.95)}
+    .movie:hover img{transform:scale(1.06)}
+
+    /* Hover overlay */
+    .movie .overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;background:linear-gradient(180deg, transparent, rgba(0,0,0,0.65));opacity:0;transform:translateY(8px);transition:all 220ms ease}
+    .movie:hover .overlay{opacity:1;transform:translateY(0)}
+    .overlay .title{font-weight:700;margin-bottom:6px}
+    .overlay .meta{font-size:13px;color:var(--muted)}
+
+    /* Fade-in lazy */\    
+    .fade-in{opacity:0;transform:translateY(10px);transition:opacity 640ms ease, transform 640ms ease}
+    .fade-in.visible{opacity:1;transform:none}
+
+    /* Cards */
+    .reasons{padding:18px 0}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .card{background:var(--card);padding:16px;border-radius:12px}
+    .card-icon{font-size:28px}
+
+    /* FAQ */
+    .faq-section{padding:18px 0}
+    .faq-item{margin-bottom:10px}
+    .faq-question{width:100%;text-align:left;padding:12px;border-radius:10px;background:var(--card);border:1px solid rgba(255,255,255,0.03);font-weight:700}
+    .faq-answer{padding:12px;border-radius:10px;margin-top:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+
+    /* Footer */
+    .site-footer{padding:24px 0;border-top:1px solid rgba(255,255,255,0.03);margin-top:22px}
+    .footer-top{display:flex;gap:12px;align-items:center;justify-content:space-between}
+    .footer-links{display:flex;flex-wrap:wrap;gap:10px;padding:12px 0}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+    /* Scroll top */
+    #scrollTopBtn{position:fixed;right:18px;bottom:18px;padding:12px;border-radius:10px;border:0;background:var(--card);display:none}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .primary-nav .nav-links{display:none}
+      .hamburger{display:inline-flex}
+      .banner h1{font-size:1.4rem}
+      .email-cta input{min-width:160px}
+      .movie{min-width:140px;height:210px}
+      .header-inner{gap:8px}
+    }
+
+    /* Light small tweaks */
+    .toast{position:fixed;left:50%;transform:translateX(-50%);top:18px;background:var(--card);padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04)}
+
+    /* Mobile nav slide */
+    .mobile-nav{position:fixed;top:0;right:-320px;width:280px;height:100vh;background:var(--card);box-shadow:-30px 0 80px rgba(0,0,0,0.6);transition:right 320ms ease;padding:18px;z-index:120}
+    .mobile-nav.open{right:0}
+
+    /* small helper */
+    .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#" aria-label="Home"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Logo"></a>
+
+      <nav class="primary-nav" role="navigation" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#series">Series</a></li>
+          <li><a href="#movies">Movies</a></li>
+          <li><a href="#new">New & Popular</a></li>
+          <li><a href="#mylist">My List</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <div class="search-wrap">
+          <input id="search" class="search-input" type="search" placeholder="Search movies, shows..." aria-label="Search movies">
+        </div>
+
+        <button id="themeToggle" class="btn outline" aria-pressed="false" title="Toggle theme">🌓</button>
+        <button id="hamburger" class="hamburger" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+      <button id="closeMobile" class="btn outline" style="margin-bottom:12px">Close ✕</button>
+      <nav>
+        <a href="#" style="display:block;padding:8px 0">Home</a>
+        <a href="#series" style="display:block;padding:8px 0">Series</a>
+        <a href="#movies" style="display:block;padding:8px 0">Movies</a>
+        <a href="#new" style="display:block;padding:8px 0">New & Popular</a>
+        <a href="#mylist" style="display:block;padding:8px 0">My List</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="banner" aria-label="Hero section">
+      <div class="container banner-inner">
+        <h1 id="heroTitle">Unlimited movies, TV shows and more</h1>
+        <p class="sub">Starts at ₹149. Cancel anytime.</p>
+
+        <form id="emailForm" class="email-cta" novalidate>
+          <label for="cta-email" class="visually-hidden">Email address</label>
+          <input id="cta-email" name="email" type="email" placeholder="Enter your email" required aria-required="true">
+          <button type="submit" class="btn primary">Get Started</button>
+        </form>
+
+        <button id="watchNowBtn" class="btn outline" style="margin-top:12px">Watch Now</button>
+      </div>
+    </section>
+
+    <section class="container content" aria-label="Trending content">
+      <div class="content-top">
+        <h2 id="trendingTitle">Trending Now</h2>
+
+        <div class="controls">
+          <select id="region" aria-label="Region">
+            <option value="India">India</option>
+            <option value="Global">Global</option>
+          </select>
+
+          <select id="type" aria-label="Type">
+            <option value="tv">TV Shows</option>
+            <option value="web">Web Series</option>
+            <option value="movies">Movies</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="movie-container" aria-roledescription="carousel">
+        <button class="scroll-btn left" id="scrollLeft" aria-label="Scroll left">‹</button>
+
+        <div class="movies" id="movies" tabindex="0">
+
+          <!-- movie tiles with data-title for search -->
+          <div class="movie fade-in" data-title="The Dark Knight">
+            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/51K8ouYrHeL._AC_.jpg" alt="The Dark Knight poster">
+            <div class="overlay">
+              <div class="title">The Dark Knight</div>
+              <div class="meta">2008 • Action • 2h 32m</div>
+            </div>
+          </div>
+
+          <div class="movie fade-in" data-title="Inception">
+            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/51s+6KxZ1jL._AC_.jpg" alt="Inception poster">
+            <div class="overlay">
+              <div class="title">Inception</div>
+              <div class="meta">2010 • Sci‑Fi • 2h 28m</div>
+            </div>
+          </div>
+
+          <div class="movie fade-in" data-title="Interstellar">
+            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/71n58ZxT6uL._AC_SL1024_.jpg" alt="Interstellar poster">
+            <div class="overlay">
+              <div class="title">Interstellar</div>
+              <div class="meta">2014 • Sci‑Fi • 2h 49m</div>
+            </div>
+          </div>
+
+          <div class="movie fade-in" data-title="Fast X">
+            <img loading="lazy" data-src="https://upload.wikimedia.org/wikipedia/en/f/f2/Fast_X_poster.jpg" alt="Fast X poster">
+            <div class="overlay">
+              <div class="title">Fast X</div>
+              <div class="meta">2023 • Action • 2h 23m</div>
+            </div>
+          </div>
+
+          <div class="movie fade-in" data-title="Parasite">
+            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/91X6K6rQ2PL._AC_SL1500_.jpg" alt="Parasite poster">
+            <div class="overlay">
+              <div class="title">Parasite</div>
+              <div class="meta">2019 • Drama • 2h 12m</div>
+            </div>
+          </div>
+
+          <div class="movie fade-in" data-title="The Godfather">
+            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/41+eK8zBwQL._AC_.jpg" alt="The Godfather poster">
+            <div class="overlay">
+              <div class="title">The Godfather</div>
+              <div class="meta">1972 • Crime • 2h 55m</div>
+            </div>
+          </div>
+
+          <div class="movie fade-in" data-title="Pulp Fiction">
+            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/51c2bFau2lL._AC_.jpg" alt="Pulp Fiction poster">
+            <div class="overlay">
+              <div class="title">Pulp Fiction</div>
+              <div class="meta">1994 • Crime • 2h 34m</div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="scroll-btn right" id="scrollRight" aria-label="Scroll right">›</button>
+      </div>
+
+    </section>
+
+    <section class="container reasons">
+      <h2 class="section-title">More Reasons To Join</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">📥</div>
+          <h3>Download to watch offline</h3>
+          <p>Save your favourites and watch on the go.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🌍</div>
+          <h3>Watch everywhere</h3>
+          <p>Stream on phone, tablet, laptop and TV.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📺</div>
+          <h3>Enjoy on your TV</h3>
+          <p>Smart TVs, PlayStation, Chromecast, Apple TV and more.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">👶</div>
+          <h3>Create profiles for kids</h3>
+          <p>Individual spaces tailored for kids — free with membership.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is Netflix? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden>Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How much does Netflix cost? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden>Plans vary by region and may change. The demo here shows a sample starting price.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Where can I watch? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden>You can watch on any device with the Netflix app or modern browser and an internet connection.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How do I cancel? <span class="arrow">+</span></button>
+          <div class="faq-answer" hidden>Cancellations are typically handled from your account page; the demo doesn't process subscriptions.</div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer container" role="contentinfo">
+    <div class="footer-top">
+      <p>Ready to watch? Enter your email to create or restart your membership.</p>
+      <form id="footerEmail" class="email-form" novalidate>
+        <label for="footer-email" class="visually-hidden">Footer email</label>
+        <input id="footer-email" name="email" type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn primary small">Get Started</button>
+      </form>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="#">FAQ</a>
+      <a href="#">Help Centre</a>
+      <a href="#">Account</a>
+      <a href="#">Media Centre</a>
+      <a href="#">Jobs</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <div class="lang">
+        <label for="lang" class="visually-hidden">Language</label>
+        <select id="lang">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="bn">বাংলা</option>
+        </select>
+      </div>
+      <small>Netflix India &copy; <span id="year"></span> — Netflix Clone</small>
+    </div>
+  </footer>
+
+  <button id="scrollTopBtn" aria-label="Scroll to top">⬆</button>
+  <div id="toast" class="toast" style="display:none"></div>
+
+  <script>
+    /*********************
+     * Utilities & State
+     *********************/
+    const el = (id)=>document.getElementById(id);
+    const qs = (s,root=document)=>root.querySelector(s);
+    const qsa = (s,root=document)=>Array.from(root.querySelectorAll(s));
+
+    // Theme - respect saved preference
+    const themeToggle = el('themeToggle');
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme')||'dark';
+    if(savedTheme==='light') root.setAttribute('data-theme','light');
+
+    themeToggle.addEventListener('click',()=>{
+      const isLight = root.getAttribute('data-theme')==='light';
+      root.setAttribute('data-theme', isLight? 'dark':'light');
+      themeToggle.setAttribute('aria-pressed', String(!isLight));
+      localStorage.setItem('theme', isLight? 'dark':'light');
+    });
+
+    // Mobile nav
+    const mobileNav = el('mobileNav');
+    const hamburger = el('hamburger');
+    const closeMobile = el('closeMobile');
+    hamburger.addEventListener('click',()=>{mobileNav.classList.add('open'); mobileNav.setAttribute('aria-hidden','false')});
+    closeMobile.addEventListener('click',()=>{mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden','true')});
+
+    // Footer year
+    el('year').textContent = new Date().getFullYear();
+
+    // Toast helper
+    const toast = el('toast');
+    function showToast(msg, timeout=2200){toast.textContent=msg; toast.style.display='block'; setTimeout(()=>{toast.style.display='none'}, timeout)}
+
+    /*********************
+     * Email forms validation
+     *********************/
+    function validateEmailForm(formId){
+      const form = document.getElementById(formId);
+      form.addEventListener('submit', e=>{
+        e.preventDefault();
+        const input = form.querySelector('input[type=email]');
+        const val = input.value.trim();
+        const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+        if(!ok){ showToast('Please enter a valid email'); input.focus(); return }
+        showToast('Thanks! Check your email');
+        form.reset();
+      })
+    }
+    validateEmailForm('emailForm');
+    validateEmailForm('footerEmail');
+
+    /*********************
+     * Carousel (scroll + auto)
+     *********************/
+    const moviesEl = el('movies');
+    const scrollLeftBtn = el('scrollLeft');
+    const scrollRightBtn = el('scrollRight');
+
+    // Basic scroll distance
+    const scrollAmount = 380;
+    scrollLeftBtn.addEventListener('click', ()=>moviesEl.scrollBy({left:-scrollAmount,behavior:'smooth'}));
+    scrollRightBtn.addEventListener('click', ()=>moviesEl.scrollBy({left:scrollAmount,behavior:'smooth'}));
+
+    // Auto-scroll
+    let autoScroll = true;
+    let autoTimer = null;
+    function startAutoScroll(){ if(autoTimer) clearInterval(autoTimer); autoTimer = setInterval(()=>{ if(!autoScroll) return; moviesEl.scrollBy({left:1,behavior:'smooth'}) }, 30) }
+    function stopAutoScroll(){ if(autoTimer){ clearInterval(autoTimer); autoTimer=null }}
+
+    moviesEl.addEventListener('mouseenter', ()=>{ autoScroll=false });
+    moviesEl.addEventListener('mouseleave', ()=>{ autoScroll=true });
+    startAutoScroll();
+
+    /*********************
+     * Lazy load & fade-in
+     *********************/
+    const lazyImgs = qsa('img[data-src]');
+    const io = new IntersectionObserver((entries,obs)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const img = entry.target; img.src = img.dataset.src; img.removeAttribute('data-src');
+          img.closest('.fade-in').classList.add('visible');
+          obs.unobserve(img);
+        }
+      })
+    },{rootMargin:'200px'});
+    lazyImgs.forEach(i=>io.observe(i));
+
+    /*********************
+     * Search
+     *********************/
+    const searchInput = el('search');
+    searchInput.addEventListener('input', e=>{
+      const q = e.target.value.trim().toLowerCase();
+      const tiles = qsa('.movie');
+      tiles.forEach(t=>{
+        const title = (t.dataset.title||'').toLowerCase();
+        if(!q || title.includes(q)) t.style.display='block'; else t.style.display='none';
+      })
+    });
+
+    /*********************
+     * FAQ 
+     *********************/
+    qsa('.faq-question').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const open = btn.getAttribute('aria-expanded')==='true';
+        btn.setAttribute('aria-expanded', String(!open));
+        const answer = btn.nextElementSibling;
+        if(open){ answer.hidden = true } else { answer.hidden = false }
+      })
+    });
+
+    /*********************
+     * Scroll to top
+     *********************/
+    const scrollTopBtn = el('scrollTopBtn');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY>400) scrollTopBtn.style.display='block'; else scrollTopBtn.style.display='none';
+    });
+    scrollTopBtn.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+    /*********************
+     * Simple (en/hi/bn)
+     *********************/
+    const strings = {
+      en: {
+        hero_title: 'Unlimited movies, TV shows and more',
+        hero_sub: 'Starts at ₹149. Cancel anytime.',
+        trending: 'Trending Now',
+        more_reasons: 'More Reasons To Join',
+        faq_title: 'Frequently Asked Questions',
+        footer_cta: 'Ready to watch? Enter your email to create or restart your membership.'
+      },
+      hi: {
+        hero_title: 'अनलिमिटेड फिल्में, टीवी शो और भी बहुत कुछ',
+        hero_sub: '₹149 से शुरू. कभी भी रद्द करें।',
+        trending: 'इस समय ट्रेंडिंग',
+        more_reasons: 'जोड़ने के और कारण',
+        faq_title: 'अक्सर पूछे जाने वाले प्रश्न',
+        footer_cta: 'देखना शुरू करने के लिए अपना ईमेल दर्ज करें।'
+      },
+      bn: {
+        hero_title: 'অসীম সিনেমা, টিভি শো ও আরও',
+        hero_sub: '₹149 থেকে শুরু। যেকোনো সময় বাতিল করুন।',
+        trending: 'এখন ট্রেন্ডিং',
+        more_reasons: 'যোগ করার আরও কারণ',
+        faq_title: 'প্রায় জিজ্ঞাস্য প্রশ্নাবলি',
+        footer_cta: 'দেখা শুরু করতে আপনার ইমেইল লিখুন।'
+      }
+    };
+
+    const langSelect = el('lang');
+    function applyLang(l){
+      const s = strings[l]||strings.en;
+      el('heroTitle').textContent = s.hero_title;
+      document.querySelector('.banner .sub').textContent = s.hero_sub;
+      el('trendingTitle').textContent = s.trending;
+      document.querySelector('.section-title')?.textContent = s.more_reasons;
+      document.querySelector('.faq-section h2').textContent = s.faq_title;
+      document.querySelector('.footer-top p').textContent = s.footer_cta;
+      localStorage.setItem('lang', l);
+    }
+    langSelect.addEventListener('change', (e)=>applyLang(e.target.value));
+    const savedLang = localStorage.getItem('lang')||'en'; langSelect.value = savedLang; applyLang(savedLang);
+
+    /*********************
+     * Accessibility: keyboard scroll for carousel
+     *********************/
+    moviesEl.addEventListener('keydown', e=>{
+      if(e.key === 'ArrowRight') moviesEl.scrollBy({left:220,behavior:'smooth'});
+      if(e.key === 'ArrowLeft') moviesEl.scrollBy({left:-220,behavior:'smooth'});
+    });
+
+    /*********************
+     * Small polish: clicking a movie shows a toast 
+     *********************/
+    qsa('.movie').forEach(m=>m.addEventListener('click', ()=>{
+      const title = m.dataset.title||'Item';
+      showToast(title + ' — preview (demo)');
+    }));
+
+    // subtle auto-snap behavior: if left idle, align to nearest tile
+    let snapTimer; moviesEl.addEventListener('scroll', ()=>{ clearTimeout(snapTimer); snapTimer = setTimeout(()=>{
+      // compute nearest child
+      const children = qsa('.movie', moviesEl).filter(n=>n.style.display!=='none');
+      if(!children.length) return;
+      const first = children[0];
+      // no-op: placeholder for future snap logic
+    }, 200) });
+
+  </script>
+</body>
+</html>
