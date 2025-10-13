@@ -81,19 +81,39 @@
 
         <div class="movies" id="movies" tabindex="0">
           <!-- Each .movie uses lazy-loaded images -->
-          <div class="movie" role="group" aria-label="Movie 1">
+          <div class="movie" role="group" aria-label="Movie 1"
+          data-title="Money Heist"
+          data-description="A criminal mastermind plans the biggest heist in Spanish history."
+          data-extra="Release: 2017 | Rating: ⭐⭐⭐⭐⭐"
+          >
             <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BZjkxZWJiNTUtYjQwYS00MTBlLTgwODQtM2FkNWMyMjMwOGZiXkEyXkFqcGc@._V1_.jpg" alt="Movie 1 poster" />
           </div>
-          <div class="movie" role="group" aria-label="Movie 2">
+          <div class="movie" role="group" aria-label="Movie 2"
+          data-title="Stranger Things 4"
+          data-description="The Upside Down threatens Hawkins once again as friends face unimaginable horrors."
+          data-extra="Release: 2022 | Rating: ⭐⭐⭐⭐"
+          >
             <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BMjE2N2MyMzEtNmU5NS00OTI0LTlkNTMtMWM1YWYyNmU4NmY0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Movie 2 poster" />
           </div>
-          <div class="movie" role="group" aria-label="Movie 3">
+          <div class="movie" role="group" aria-label="Movie 3"
+          data-title="Lucifer"
+          data-description="Lucifer Morningstar helps solve crimes in Los Angeles while dealing with his own celestial problems."
+          data-extra="Release: 2016 | Rating: ⭐⭐⭐⭐"
+          >
             <img loading="lazy" src="https://resizing.flixster.com/PYMILH2RwjmJ3uCZyBAEDihOIG4=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvUlRUVjI3OTYxMS53ZWJw" alt="Movie 3 poster" />
           </div>
-          <div class="movie" role="group" aria-label="Movie 4">
+          <div class="movie" role="group" aria-label="Movie 4"
+          data-title="Despicable Me 3"
+          data-description="Gru faces his long-lost twin brother while dealing with new villain threats."
+          data-extra="Release: 2017 | Rating: ⭐⭐⭐"
+          >
             <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BNjUyNzQ2MTg3Ml5BMl5BanBnXkFtZTgwNzE4NDM3MTI@._V1_FMjpg_UX1000_.jpg" alt="Movie 4 poster" />
           </div>
-          <div class="movie" role="group" aria-label="Movie 5">
+          <div class="movie" role="group" aria-label="Movie 5" 
+          data-title="Fast X"
+          data-description="Dominic Toretto and his family face their toughest challenge yet."
+          data-extra="Release: 2023 | Rating: ⭐⭐⭐⭐"
+          >
             <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/f/f2/Fast_X_poster.jpg" alt="Movie 5 poster" />
           </div>
           <!-- Add more .movie items as needed -->
@@ -159,6 +179,63 @@
         </div>
       </div>
     </section>
+
+<!-- Movie Modal -->
+<div class="movie-modal" id="movieModal">
+  <div class="modal-content">
+    <button class="close-modal">&times;</button>
+
+    <div class="modal-body">
+      <!-- Hero / Poster -->
+      <div class="modal-hero">
+        <img id="modalPoster" src="" alt="Movie Poster">
+        <div class="modal-hero-content">
+          <h1 class="modal-title" id="modalTitle">Movie Title</h1>
+          <div class="modal-buttons">
+            <button class="modal-btn play">Play</button>
+            <button class="modal-btn icon-only">i</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Section -->
+      <div class="modal-info-section">
+        <div class="modal-info-grid">
+          <!-- Left Column: Description -->
+          <div class="modal-main-info">
+            <div class="modal-meta">
+              <span class="match-score" id="modalRating">⭐⭐⭐⭐</span>
+              <span class="modal-year" id="modalYear">2023</span>
+              <span class="modal-duration" id="modalDuration">2h 15m</span>
+              <span class="quality-badge" id="modalQuality">HD</span>
+            </div>
+            <p class="modal-description" id="modalDescription">
+              Movie description goes here...
+            </p>
+            <div class="genre-tags" id="modalGenres">
+              <span class="genre-tag">Action</span>
+              <span class="genre-tag">Thriller</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Details -->
+          <div class="modal-details" id="modalDetails">
+            <div class="detail-row">
+              <span class="detail-label">Cast:</span>
+              <span class="detail-value" id="modalCast">Actor 1, Actor 2</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Director:</span>
+              <span class="detail-value" id="modalDirector">Director Name</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
   </main>
 
   <!-- Footer -->
