@@ -27,6 +27,9 @@
         <li><a href="#" data-key="nav_movies">Movies</a></li>
         <li><a href="#" data-key="nav_new">New & Popular</a></li>
         <li><a href="#" data-key="nav_mylist">My List</a></li>
+        <li><a href="#" data-key="nav_browse">Browse by Languages</a></li>
+        <li><a href="#" data-key="nav_kids">Kids</a></li>
+        <li><button id="themeToggle" aria-label="Toggle light/dark mode">🌓</button></li>
       </ul>
       </nav>
     </div>
@@ -39,6 +42,7 @@
       <div class="banner-inner">
         <h1 data-key="hero_title">Unlimited movies, TV shows and more</h1>
         <p class="sub" data-key="hero_subtitle">Starts at ₹149. Cancel anytime.</p>
+        <p class="cta" data-key="hero_cta">Ready to watch? Enter your email to create or restart your membership.</p>
 
         <form id="emailForm" class="email-cta" novalidate>
           <label for="cta-email" class="visually-hidden" data-key="email_label">Email address</label>
@@ -60,6 +64,10 @@
             <label for="region" class="visually-hidden" data-key="region_label">Region</label>
             <select id="region" name="region" aria-label="Region">
               <option value="India" data-key="region_india">India</option>
+              <option value="USA" data-key="region_usa">USA</option>
+              <option value="UK" data-key="region_uk">UK</option>
+              <option value="Canada" data-key="region_canada">Canada</option>
+              <option value="Australia" data-key="region_australia">Australia</option>
               <option value="Global" data-key="region_global">Global</option>
             </select>
           </div>
@@ -76,7 +84,7 @@
       </div>
 
       <!-- Movie Carousel -->
-      <div class="movie-container" aria-roledescription="carousel">
+      <div class="movie-container"  role = "region" aria-roledescription="carousel">
         <button class="scroll-btn left" aria-label="Scroll left">&lt;</button>
 
         <div class="movies" id="movies" tabindex="0">
@@ -267,14 +275,11 @@
     // Load saved theme
     if (localStorage.getItem('theme') === 'light') {
       body.classList.add('light-mode');
-    } else {
-      body.classList.add('dark-mode');
     }
 
     // Toggle theme
     toggle.addEventListener('click', () => {
       body.classList.toggle('light-mode');
-      body.classList.toggle('dark-mode');
 
       if (body.classList.contains('light-mode')) {
         localStorage.setItem('theme', 'light');
