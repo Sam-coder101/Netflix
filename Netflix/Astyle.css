@@ -30,6 +30,38 @@ body{
 
 
 
+/* === TOGGLE BUTTON === */
+.theme-toggle {
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff0000, #111);
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  cursor: pointer;
+  transition: background 0.4s ease;
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 2000;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+.toggle-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.4s ease, background 0.4s ease;
+}
+body.light-mode .theme-toggle {
+  background: linear-gradient(45deg, #fff, #ddd);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+body.light-mode .toggle-circle {
+  transform: translateX(30px);
+  background: #000;
+}
 
 
 
