@@ -258,5 +258,30 @@
 
   <!-- JS -->
   <script src="script.js"></script>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+    } else {
+      body.classList.add('dark-mode');
+    }
+
+    // Toggle theme
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      body.classList.toggle('dark-mode');
+
+      if (body.classList.contains('light-mode')) {
+        localStorage.setItem('theme', 'light');
+      } else {
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  </script>
 </body>
 </html>
