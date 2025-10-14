@@ -159,6 +159,63 @@
         </div>
       </div>
     </section>
+
+<!-- Movie Modal -->
+<div class="movie-modal" id="movieModal">
+  <div class="modal-content">
+    <button class="close-modal">&times;</button>
+
+    <div class="modal-body">
+      <!-- Hero / Poster -->
+      <div class="modal-hero">
+        <img id="modalPoster" src="" alt="Movie Poster">
+        <div class="modal-hero-content">
+          <h1 class="modal-title" id="modalTitle">Movie Title</h1>
+          <div class="modal-buttons">
+            <button class="modal-btn play">Play</button>
+            <button class="modal-btn icon-only">i</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Section -->
+      <div class="modal-info-section">
+        <div class="modal-info-grid">
+          <!-- Left Column: Description -->
+          <div class="modal-main-info">
+            <div class="modal-meta">
+              <span class="match-score" id="modalRating">⭐⭐⭐⭐</span>
+              <span class="modal-year" id="modalYear">2023</span>
+              <span class="modal-duration" id="modalDuration">2h 15m</span>
+              <span class="quality-badge" id="modalQuality">HD</span>
+            </div>
+            <p class="modal-description" id="modalDescription">
+              Movie description goes here...
+            </p>
+            <div class="genre-tags" id="modalGenres">
+              <span class="genre-tag">Action</span>
+              <span class="genre-tag">Thriller</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Details -->
+          <div class="modal-details" id="modalDetails">
+            <div class="detail-row">
+              <span class="detail-label">Cast:</span>
+              <span class="detail-value" id="modalCast">Actor 1, Actor 2</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Director:</span>
+              <span class="detail-value" id="modalDirector">Director Name</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
   </main>
 
   <!-- Footer -->
@@ -201,5 +258,30 @@
 
   <!-- JS -->
   <script src="script.js"></script>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+    } else {
+      body.classList.add('dark-mode');
+    }
+
+    // Toggle theme
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      body.classList.toggle('dark-mode');
+
+      if (body.classList.contains('light-mode')) {
+        localStorage.setItem('theme', 'light');
+      } else {
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  </script>
 </body>
 </html>
