@@ -136,7 +136,6 @@ if (moviesContainer){
 }
 
 // script.js
-// 1. Translations object
 const translations = {
   en: {
     // Page meta + title
@@ -337,10 +336,9 @@ const translations = {
 }
 };
 
-// Language dropdown
+
 const langSelect = document.getElementById("lang");
 
-// Apply translations
 function applyTranslations(lang) {
   const elements = document.querySelectorAll("[data-key]");
   elements.forEach((el) => {
@@ -350,7 +348,7 @@ function applyTranslations(lang) {
     }
   });
 
-  // Handle placeholders
+
   const placeholders = document.querySelectorAll("[data-key-placeholder]");
   placeholders.forEach((el) => {
     const key = el.getAttribute("data-key-placeholder");
@@ -360,7 +358,6 @@ function applyTranslations(lang) {
   });
 }
 
-// Event listener for language change
 if (langSelect) {
   langSelect.addEventListener("change", (e) => {
     const selectedLang = e.target.value;
@@ -369,11 +366,116 @@ if (langSelect) {
   });
 }
 
-// Load saved language on page load
+
 window.addEventListener("load", () => {
   const savedLang = localStorage.getItem("lang") || "en";
   if (langSelect) langSelect.value = savedLang;
   applyTranslations(savedLang);
 });
+
+
+const movies = [
+  {
+    title: "Money Heist",
+    description: "A criminal mastermind plans the biggest heist in history.",
+    poster: "https://m.media-amazon.com/images/M/MV5BZjkxZWJiNTUtYjQwYS00MTBlLTgwODQtM2FkNWMyMjMwOGZiXkEyXkFqcGc@._V1_.jpg",
+    year: "2017",
+    rating: "⭐⭐⭐⭐⭐",
+    duration: "3h 10m",
+    quality: "HD",
+    genres: ["Action", "Crime", "Thriller"],
+    cast: "Úrsula Corberó, Álvaro Morte",
+    director: "Álex Pina"
+  },
+  {
+    title: "Stranger Things 4",
+    description: "The gang faces terrifying new threats in Hawkins.",
+    poster: "https://m.media-amazon.com/images/M/MV5BMjE2N2MyMzEtNmU5NS00OTI0LTlkNTMtMWM1YWYyNmU4NmY0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    year: "2022",
+    rating: "⭐⭐⭐⭐",
+    duration: "1h 20m",
+    quality: "HD",
+    genres: ["Drama", "Horror", "Mystery"],
+    cast: "Millie Bobby Brown, Finn Wolfhard",
+    director: "The Duffer Brothers"
+  },
+  {
+    title: "Lucifer",
+    description: "The devil becomes a consultant for the LAPD.",
+    poster: "https://resizing.flixster.com/PYMILH2RwjmJ3uCZyBAEDihOIG4=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvUlRUVjI3OTYxMS53ZWJw",
+    year: "2016",
+    rating: "⭐⭐⭐⭐",
+    duration: "42m per episode",
+    quality: "HD",
+    genres: ["Crime", "Drama", "Fantasy"],
+    cast: "Tom Ellis, Lauren German",
+    director: "Tom Kapinos"
+  },
+  {
+    title: "Despicable Me 3",
+    description: "Gru meets his long-lost twin brother Dru.",
+    poster: "https://m.media-amazon.com/images/M/MV5BNjUyNzQ2MTg3Ml5BMl5BanBnXkFtZTgwNzE4NDM3MTI@._V1_FMjpg_UX1000_.jpg",
+    year: "2017",
+    rating: "⭐⭐⭐",
+    duration: "1h 30m",
+    quality: "HD",
+    genres: ["Animation", "Comedy", "Family"],
+    cast: "Steve Carell, Kristen Wiig",
+    director: "Pierre Coffin"
+  },
+  {
+    title: "Fast X",
+    description: "Dominic Toretto and his family face their toughest challenge yet.",
+    poster: "https://upload.wikimedia.org/wikipedia/en/f/f2/Fast_X_poster.jpg",
+    year: "2023",
+    rating: "⭐⭐⭐⭐",
+    duration: "2h 45m",
+    quality: "HD",
+    genres: ["Action", "Adventure", "Thriller"],
+    cast: "Vin Diesel, Michelle Rodriguez",
+    director: "Louis Leterrier"
+  }
+];
+
+const modal = document.getElementById("movieModal");
+const closeModal = document.querySelector(".close-modal");
+
+function openModal(movieIndex) {
+  const movie = movies[movieIndex];
+
+  document.getElementById("modalTitle").textContent = movie.title;
+  document.getElementById("modalDescription").textContent = movie.description;
+  document.getElementById("modalPoster").src = movie.poster;
+  document.getElementById("modalYear").textContent = movie.year;
+  document.getElementById("modalRating").textContent = movie.rating;
+  document.getElementById("modalDuration").textContent = movie.duration;
+  document.getElementById("modalQuality").textContent = movie.quality;
+  document.getElementById("modalCast").textContent = movie.cast;
+  document.getElementById("modalDirector").textContent = movie.director;
+
+  const genresContainer = document.getElementById("modalGenres");
+  genresContainer.innerHTML = "";
+  movie.genres.forEach((g, i) => {
+    const span = document.createElement("span");
+    span.className = "genre-tag";
+    span.textContent = g;
+    if (i !== movie.genres.length - 1) span.style.marginRight = "6px";
+    genresContainer.appendChild(span);
+  });
+
+  modal.classList.add("active");
+}
+
+closeModal.addEventListener("click", () => modal.classList.remove("active"));
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) modal.classList.remove("active");
+});
+
+const movieElements = document.querySelectorAll("#movies .movie");
+movieElements.forEach((el, index) => {
+  el.addEventListener("click", () => openModal(index));
+});
+
+
 
 // End of script
