@@ -19,8 +19,13 @@
       <a class="logo" href="#" aria-label="Home">
         <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix logo" />
       </a>
-
-      <nav class="primary-nav" role="navigation" aria-label="Main navigation">
+      <header class="site-header" role="banner">
+  <div class="header-inner">
+    <a class="logo" href="#" aria-label="Home">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix logo" />
+    </a>
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">🌙</button>
+       <nav class="primary-nav" role="navigation" aria-label="Main navigation">
         <ul class="nav-links">
         <li><a href="#" data-key="nav_home">Home</a></li>
         <li><a href="#" data-key="nav_series">Series</a></li>
@@ -284,27 +289,8 @@
     localStorage.setItem('theme', currentTheme);
   });
 </script>
-
-
-    // Load saved theme
-    if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light-mode');
-    } else {
-      body.classList.add('dark-mode');
-    }
-
-    // Toggle theme
-    toggle.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
-      body.classList.toggle('dark-mode');
-
-      if (body.classList.contains('light-mode')) {
-        localStorage.setItem('theme', 'light');
-      } else {
-        localStorage.setItem('theme', 'dark');
-      }
-    });
-  </script>
+      
 </body>
 </html>
+
 
