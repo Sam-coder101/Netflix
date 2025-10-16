@@ -21,6 +21,10 @@
       </a>
 
       <nav class="primary-nav" role="navigation" aria-label="Main navigation">
+        <div class="profile-menu">
+  <button id="profileBtn" class="btn small">👤 Profile</button>
+</div>
+
         <ul class="nav-links">
         <li><a href="#" data-key="nav_home">Home</a></li>
         <li><a href="#" data-key="nav_series">Series</a></li>
@@ -222,6 +226,24 @@
     </div>
   </div>
 </div>
+<!-- Profile Modal -->
+<div class="profile-modal" id="profileModal" hidden>
+  <div class="profile-content">
+    <button class="close-profile">&times;</button>
+    <h2>Set Up Your Profile</h2>
+    <form id="profileForm">
+      <input type="text" id="username" placeholder="Enter your name" required>
+      <label for="avatarSelect">Choose Avatar:</label>
+      <select id="avatarSelect">
+        <option value="👩‍💻">👩‍💻</option>
+        <option value="👨‍🎨">👨‍🎨</option>
+        <option value="🧑‍🚀">🧑‍🚀</option>
+        <option value="🧙‍♂️">🧙‍♂️</option>
+      </select>
+      <button type="submit" class="btn primary">Save Profile</button>
+    </form>
+  </div>
+</div>
 
     
   </main>
@@ -290,3 +312,4 @@
   </script>
 </body>
 </html>
+
