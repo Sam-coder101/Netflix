@@ -261,8 +261,30 @@
 
   <!-- Theme Toggle Script -->
   <script>
-    const toggle = document.getElementById('themeToggle');
-    const body = document.body;
+  // ---------- THEME TOGGLE SYSTEM ----------
+  const toggle = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // Apply saved theme preference
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+    toggle.textContent = '🌞';
+  } else {
+    body.classList.add('dark-mode');
+    toggle.textContent = '🌙';
+  }
+
+  // Toggle theme and save preference
+  toggle.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    body.classList.toggle('dark-mode');
+    const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+    toggle.textContent = currentTheme === 'light' ? '🌞' : '🌙';
+    localStorage.setItem('theme', currentTheme);
+  });
+</script>
+
 
     // Load saved theme
     if (localStorage.getItem('theme') === 'light') {
@@ -285,3 +307,4 @@
   </script>
 </body>
 </html>
+
