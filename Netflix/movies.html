@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Netflix Clone - Browse Movies" />
+  <title>Movies | Netflix Clone</title>
+  <link rel="stylesheet" href="movies.css">
+  <link rel="icon" href="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456"/>
+
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix logo" />
+      </a>
+      <nav class="primary-nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="series.html">Series</a></li>
+          <li><a href="movies.html" class="active">Movies</a></li>
+          <li><a href="#">New & Popular</a></li>
+          <li><a href="#">My List</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="movies-hero">
+    <div class="hero-content">
+      <h1>Inception</h1>
+      <div class="hero-meta">
+        <span class="match-badge">97% Match</span>
+        <span>2023</span>
+        <span>2h 28m</span>
+        <span class="quality-badge">4K</span>
+        <span>🔞 13+</span>
+      </div>
+      <div class="hero-genres">
+        <span class="genre-pill">Action</span>
+        <span class="genre-pill">Sci-Fi</span>
+        <span class="genre-pill">Thriller</span>
+      </div>
+      <p class="hero-description">
+        A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn primary">▶ Play</button>
+        <button class="btn secondary">ⓘ More Info</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trending Movies -->
+  <section class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">Trending Now</h2>
+    </div>
+    <div class="carousel-container">
+      <button class="scroll-btn left" onclick="scrollCarousel('trending', -1)">‹</button>
+      <div class="carousel" id="trending">
+        <div class="carousel-item" onclick="openModal('Inception')">
+          <img src="https://imgs.search.brave.com/kdVIUid-HUsmlJrkgkwEsCCmr_uwQ0qXWshK0Y-5uVE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMwLmNicmltYWdl/cy5jb20vd29yZHBy/ZXNzL3dwLWNvbnRl/bnQvdXBsb2Fkcy9z/aGFyZWRpbWFnZXMv/MjAyNS8wOS9uZW8t/c3RvcHMtYnVsbGV0/cy1pbi10aGUtbWF0/cml4LXJlbG9hZGVk/LmpwZz9xPTQ5JmZp/dD1jcm9wJnc9NDUw/Jmg9MjI1JmRwcj0y" alt="Movie">
+          <div class="carousel-info">
+            <h4>The Matrix</h4>
+            <p>Sci-Fi • Action</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Inception')">
+          <img src="https://imgs.search.brave.com/eWOtEKRzvzEKbMnGm4gt_XYhv-g6WPgBi0wLN3XNy3U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzU1L2I2/LzE1LzU1YjYxNTAx/NzlmY2I2OTM1MjRk/MjhmM2NhMTQ4NWEy/LmpwZw" alt="Movie">
+          <div class="carousel-info">
+            <h4>Interstellar</h4>
+            <p>Sci-Fi • Drama</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Inception')">
+          <img src="https://imgs.search.brave.com/3HvPJ4Fy-QnYmC7xArbm5JD2zvwwq9YV7ZuG_O_K0sQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL1Mv/cHYtdGFyZ2V0LWlt/YWdlcy9mZDJhNjJl/YmY4NTM0YTEwNDY1/ZGZjNjNlYTExNjM1/YmQ0MmVkMTY5MmFk/M2FmMTFkNWU4M2Fi/NTUzZTNkMGFlLmpw/Zw" alt="Movie">
+          <div class="carousel-info">
+            <h4>The Dark Knight</h4>
+            <p>Action • Crime</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Inception')">
+          <img src="https://imgs.search.brave.com/Q3ePeDhZ8IKXNPvNGw7Ju-jz_3xXZleWUkWGLu9Zhic/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMyLmFscGhhY29k/ZXJzLmNvbS8xMDUv/dGh1bWJiaWctMTA1/NzY5My53ZWJw" alt="Movie">
+          <div class="carousel-info">
+            <h4>Tenet</h4>
+            <p>Sci-Fi • Thriller</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Inception')">
+          <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Fast_X_poster.jpg" alt="Movie">
+          <div class="carousel-info">
+            <h4>Fast X</h4>
+            <p>Action • Adventure</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Inception')">
+          <img src="https://cinema.cornell.edu/sites/default/files/styles/pano/public/dune-2021.jpg?itok=B-jMj77h" alt="Movie">
+          <div class="carousel-info">
+            <h4>Dune</h4>
+            <p>Sci-Fi • Adventure</p>
+          </div>
+        </div>
+      </div>
+      <button class="scroll-btn right" onclick="scrollCarousel('trending', 1)">›</button>
+    </div>
+  </section>
+
+  <!-- Popular Movies -->
+  <section class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">Popular on Netflix</h2>
+      <div class="filter-group">
+        <button class="filter-btn active" data-genre="all">All</button>
+        <button class="filter-btn" data-genre="action">Action</button>
+        <button class="filter-btn" data-genre="comedy">Comedy</button>
+        <button class="filter-btn" data-genre="drama">Drama</button>
+        <button class="filter-btn" data-genre="thriller">Thriller</button>
+        <button class="filter-btn" data-genre="scifi">Sci-Fi</button>
+      </div>
+    </div>
+    <div class="movies-grid" id="moviesGrid">
+      <div class="movie-card" data-genre="action" onclick="openModal('Extraction')">
+        <img src="https://imgs.search.brave.com/1mIIyXgS70ShyJBS68_h0Nbftmlu4XyphZ5HrZMqH80/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9kZWFk/bGluZS5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjUvMDgv/U2NhcmxldHQtSm9o/YW5zc29uLUFkYW0t/RHJpdmVyLU1hcnJp/YWdlLVN0b3J5LnBu/Zz93PTY4MSZoPTM4/MyZjcm9wPTE" alt="Movie">
+        <div class="movie-overlay">
+          <h3>Marriage Story</h3>
+          <div class="movie-meta">
+            <span class="movie-rating">★ 94%</span>
+            <span>2019</span>
+            <span>2h 16m</span>
+          </div>
+          <div class="movie-genres">Drama, Romance</div>
+        </div>
+      </div>
+      <div class="movie-card" data-genre="comedy" onclick="openModal('Glass Onion')">
+        <img src="https://imgs.search.brave.com/fzzBILaddpdTSlbLFnHLozIJZz77DFy6C47psdCYFc0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDExNzE2/OTQ3LmpwZw" alt="Movie">
+        <div class="movie-overlay">
+          <h3>Glass Onion</h3>
+          <div class="movie-meta">
+            <span class="movie-rating">★ 91%</span>
+            <span>2022</span>
+            <span>2h 19m</span>
+          </div>
+          <div class="movie-genres">Comedy, Mystery</div>
+        </div>
+      </div>
+      <div class="movie-card" data-genre="scifi" onclick="openModal('Interstellar')">
+        <img src="https://wallpapercat.com/w/middle-retina/5/a/0/306069-3840x2160-desktop-4k-interstellar-wallpaper.jpg" alt="Movie">
+        <div class="movie-overlay">
+          <h3>Interstellar</h3>
+          <div class="movie-meta">
+            <span class="movie-rating">★ 96%</span>
+            <span>2014</span>
+            <span>2h 49m</span>
+          </div>
+          <div class="movie-genres">Sci-Fi, Drama</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Action Movies -->
+  <section class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">Action & Adventure</h2>
+    </div>
+    <div class="carousel-container">
+      <button class="scroll-btn left" onclick="scrollCarousel('action', -1)">‹</button>
+      <div class="carousel" id="action">
+        <div class="carousel-item" onclick="openModal('John Wick')">
+          <img src="https://wallpapercave.com/wp/wp6159859.jpg " alt="Movie">
+          <div class="carousel-info">
+            <h4>John Wick</h4>
+            <p>Action • Crime</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Mad Max')">
+          <img src="https://wallpapercave.com/wp/wp1811153.jpg" alt="Movie">
+          <div class="carousel-info">
+            <h4>Mad Max</h4>
+            <p>Action • Adventure</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Extraction')">
+          <img src="https://www.rogerebert.com/wp-content/uploads/2024/07/Extraction.jpg" alt="Movie">
+          <div class="carousel-info">
+            <h4>Extraction</h4>
+            <p>Action • Thriller</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Mission Impossible')">
+          <img src="https://wallpaperaccess.com/full/10082310.jpg" alt="Movie">
+          <div class="carousel-info">
+            <h4>Mission: Impossible</h4>
+            <p>Action • Spy</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('The Raid')">
+          <img src="https://wallpaperaccess.com/full/7293192.jpg" alt="Movie">
+          <div class="carousel-info">
+            <h4>The Raid</h4>
+            <p>Action • Martial Arts</p>
+          </div>
+        </div>
+      </div>
+      <button class="scroll-btn right" onclick="scrollCarousel('action', 1)">›</button>
+    </div>
+  </section>
+
+  <!-- Movie Modal -->
+  <div class="movie-modal" id="movieModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">×</button>
+      <div class="modal-hero">
+        <img id="modalHeroImg" src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="Movie">
+        <div class="modal-hero-content">
+          <h1 class="modal-title" id="modalTitle">Inception</h1>
+          <div class="hero-buttons">
+            <button class="btn primary">▶ Play</button>
+            <button class="btn secondary">+ My List</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info-grid">
+          <div class="modal-main-info">
+            <h3>Story</h3>
+            <p class="modal-description" id="modalDescription">
+              A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O. Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state.
+            </p>
+            <div class="modal-genres">
+              <span class="modal-genre-tag">Action</span>
+              <span class="modal-genre-tag">Sci-Fi</span>
+              <span class="modal-genre-tag">Thriller</span>
+            </div>
+          </div>
+          <div class="modal-meta-info">
+            <div class="meta-row">
+              <span class="meta-label">Cast:</span>
+              <span class="meta-value">Leonardo DiCaprio, Tom Hardy, Ellen Page</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Director:</span>
+              <span class="meta-value">Christopher Nolan</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Writer:</span>
+              <span class="meta-value">Christopher Nolan</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Rating:</span>
+              <span class="meta-value">⭐ 97% Match</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Duration:</span>
+              <span class="meta-value">2h 28m</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Year:</span>
+              <span class="meta-value">2010</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="similar-section">
+          <h3>More Like This</h3>
+          <div class="similar-grid">
+            <div class="similar-item" onclick="closeModal(); setTimeout(() => openModal('The Matrix'), 300)">
+              <img src="https://m.media-amazon.com/images/M/MV5BMjE2N2MyMzEtNmU5NS00OTI0LTlkNTMtMWM1YWYyNmU4NmY0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Similar Movie">
+              <div class="similar-info">
+                <h4>The Matrix</h4>
+                <p>Sci-Fi • Action</p>
+              </div>
+            </div>
+            <div class="similar-item" onclick="closeModal(); setTimeout(() => openModal('Interstellar'), 300)">
+              <img src="https://resizing.flixster.com/PYMILH2RwjmJ3uCZyBAEDihOIG4=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvUlRUVjI3OTYxMS53ZWJw" alt="Similar Movie">
+              <div class="similar-info">
+                <h4>Interstellar</h4>
+                <p>Sci-Fi • Drama</p>
+              </div>
+            </div>
+            <div class="similar-item" onclick="closeModal(); setTimeout(() => openModal('Tenet'), 300)">
+              <img src="https://m.media-amazon.com/images/M/MV5BNjUyNzQ2MTg3Ml5BMl5BanBnXkFtZTgwNzE4NDM3MTI@._V1_FMjpg_UX1000_.jpg" alt="Similar Movie">
+              <div class="similar-info">
+                <h4>Tenet</h4>
+                <p>Sci-Fi • Thriller</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Carousel scroll functionality
+    function scrollCarousel(id, direction) {
+      const carousel = document.getElementById(id);
+      const scrollAmount = 340;
+      carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+
+    // Modal functions
+    function openModal(movieTitle) {
+      const modal = document.getElementById('movieModal');
+      const title = document.getElementById('modalTitle');
+      const description = document.getElementById('modalDescription');
+      
+      // Update modal content based on movie title
+      title.textContent = movieTitle || 'Inception';
+      
+      // Different descriptions for different movies
+      const descriptions = {
+        'Inception': 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O. Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction.',
+        'Extraction': 'Tyler Rake, a fearless black market mercenary, embarks on the most deadly extraction of his career when he\'s enlisted to rescue the kidnapped son of an imprisoned international crime lord.',
+        'The Irishman': 'An aging hitman recalls his time with the mob and the intersecting events with his friend, Jimmy Hoffa, through the 1950-70s.',
+        'Shutter Island': 'In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane.',
+        'Fast X': 'Dom Toretto and his family are targeted by the vengeful son of drug kingpin Hernan Reyes.',
+        'Marriage Story': 'Noah Baumbach\'s incisive and compassionate look at a marriage breaking up and a family staying together.',
+        'Glass Onion': 'Tech billionaire Miles Bron invites his friends for a getaway on his private Greek island. When someone turns up dead, Detective Benoit Blanc is put on the case.',
+        'Interstellar': 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.'
+      };
+      
+      description.textContent = descriptions[movieTitle] || descriptions['Inception'];
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('movieModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const movieCards = document.querySelectorAll('.movie-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterButtons.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const selectedGenre = this.getAttribute('data-genre');
+        
+        // Filter movies
+        movieCards.forEach(card => {
+          const cardGenre = card.getAttribute('data-genre');
+          
+          if (selectedGenre === 'all' || cardGenre === selectedGenre) {
+            card.style.display = 'block';
+            // Add fade-in animation
+            card.style.animation = 'fadeIn 0.4s ease-in';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Add fade-in animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Close modal on background click
+    document.getElementById('movieModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Add smooth scroll reveal for movie cards
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeIn 0.5s ease-in forwards';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all movie cards
+    document.querySelectorAll('.movie-card').forEach(card => {
+      card.style.opacity = '0';
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>
