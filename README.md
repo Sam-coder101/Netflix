@@ -74,6 +74,5 @@ Netflix/                     # Root folder of the project
 
 ## License
 
-No license is specified. Add a `LICENSE` file if you want to grant reuse permissions.
-
+This project is licensed under the [MIT License](./LICENCE) – see the **LICENCE** file for details.
 
