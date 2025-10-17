@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Netflix Clone - New & Popular Content" />
+  <title>New & Popular | Netflix Clone</title>
+  <link rel="stylesheet" href="news&popular.css">
+  <link rel="icon" href="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix logo" />
+      </a>
+      <nav class="primary-nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="series.html">Series</a></li>
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="new&popular.html" class="active">New & Popular</a></li>
+          <li><a href="#">My List</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <h1>New & Popular</h1>
+    <p>Stay up to date with the latest releases, trending titles, and upcoming content you won't want to miss.</p>
+  </section>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="worth-wait">Worth the Wait</button>
+    <button class="tab-btn" data-tab="coming-soon">Coming This Week</button>
+    <button class="tab-btn" data-tab="trending">Trending Now</button>
+    <button class="tab-btn" data-tab="top10">Top 10</button>
+  </nav>
+
+  <div id="tab-content">
+    <div class="tab-pane active" id="worth-wait">
+      <section class="content-section worth-wait">
+        <h2 class="section-title">Highly Anticipated Releases</h2>
+        <div class="wait-carousel">
+          <div class="wait-item" onclick="openModal('Rebel Moon')">
+            <img src="https://wallpaperaccess.com/full/11244007.jpg" alt="Coming Soon">
+            <div class="wait-content">
+              <h4>Rebel Moon: Part Two</h4>
+              <p class="wait-date">Coming April 19, 2024</p>
+              <p>The sequel to Zack Snyder's epic space saga continues the battle for freedom across the galaxy.</p>
+            </div>
+          </div>
+          <div class="wait-item" onclick="openModal('Atlas')">
+            <img src="https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQUPD_bOGlBmaPK2qAlplMTrFRT9b3zyQD9AOW4gVpwJybWsnMbERSBkoV62kcu3Gto-Xc2KEuLBvoiW7aGrAc7j0gtrO3K09ZisYu2HIZW6HKwqMJSHL6JzOcQ2sHYlHCOwKdgbIWlgOScw1EESV.jpg?r=80e" alt="Coming Soon">
+            <div class="wait-content">
+              <h4>Atlas</h4>
+              <p class="wait-date">Coming May 24, 2024</p>
+              <p>Jennifer Lopez stars in this sci-fi thriller about humanity's fight against a rogue AI soldier.</p>
+            </div>
+          </div>
+          <div class="wait-item" onclick="openModal('The Mother')">
+            <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2023/06/extraction-2-train-roof.jpg?q=50&fit=crop&w=825&dpr=1.5" alt="Coming Soon">
+            <div class="wait-content">
+              <h4>Extraction 3</h4>
+              <p class="wait-date">Coming June 16, 2024</p>
+              <p>Chris Hemsworth returns for another pulse-pounding mission in the action-packed sequel.</p>
+            </div>
+          </div>
+          <div class="wait-item" onclick="openModal('Damsel')">
+            <img src="https://imgs.search.brave.com/VmzXhgqawQHO4ij-MT3S5yqhQB7nWsvAjtxnNWYjBEI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5hc3NldHR5cGUu/Y29tL2ZpbG1jb21w/YW5pb24vMjAyNC0w/My8xNzI0Y2NlMi04/ZGRjLTQ1NTItYTU5/MS0yMzUyYTJiYjRl/ZmMvUmV2aWV3X2xl/YWRfRGFtc2VsLmpw/Zz93PTQ4MCZhdXRv/PWZvcm1hdCxjb21w/cmVzcyZmaXQ9bWF4" alt="Coming Soon">
+            <div class="wait-content">
+              <h4>Damsel 2</h4>
+              <p class="wait-date">Coming July 8, 2024</p>
+              <p>Millie Bobby Brown returns in this fantasy adventure sequel with even more dragons.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2 class="section-title">Coming Soon</h2>
+        <div class="coming-soon-list">
+          <div class="coming-item" onclick="openModal('The Killer')">
+            <div class="coming-date">
+              <div class="month">Dec</div>
+              <div class="day">15</div>
+            </div>
+            <div class="coming-content">
+              <img class="coming-poster" src="https://images.bauerhosting.com/empire/2023/10/the-killer-3.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=992&q=80" alt="Coming Soon">
+              <div class="coming-info">
+                <h3>The Killer</h3>
+                <div class="coming-meta">
+                  <span class="new-badge">New</span>
+                  <span>2023</span>
+                  <span>🔞 18+</span>
+                  <span>2h 12m</span>
+                </div>
+                <p>After a fateful near-miss, an assassin battles his employers and himself, on an international manhunt he insists isn't personal.</p>
+                <div class="coming-genres">
+                  <span class="genre-tag">Thriller</span>
+                  <span class="genre-tag">Crime</span>
+                  <span class="genre-tag">Action</span>
+                </div>
+                <button class="notify-btn">🔔 Remind Me</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="coming-item" onclick="openModal('Leave the World Behind')">
+            <div class="coming-date">
+              <div class="month">Dec</div>
+              <div class="day">22</div>
+            </div>
+            <div class="coming-content">
+              <img class="coming-poster" src="https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQT7Mu0uhwWYkmf6LACO47fWN37sEtuw5lGtIjxi60zQOR-Qp7kgvQu9bFjPDiMbatqbS-myR396MgWuNKZK7b7tpfeslcNGyXKrG_lPGBc0IivI7k0CLVf-a4jWW7JQHzZvSoXVdbZ_C20nUQdSS1W2U.jpg?r=1ad" alt="Coming Soon">
+              <div class="coming-info">
+                <h3>Leave the World Behind</h3>
+                <div class="coming-meta">
+                  <span class="new-badge">New</span>
+                  <span>2023</span>
+                  <span>🔞 16+</span>
+                  <span>2h 21m</span>
+                </div>
+                <p>A family's vacation is upended when two strangers arrive at night, seeking refuge from a cyberattack that grows more terrifying.</p>
+                <div class="coming-genres">
+                  <span class="genre-tag">Thriller</span>
+                  <span class="genre-tag">Mystery</span>
+                  <span class="genre-tag">Drama</span>
+                </div>
+                <button class="notify-btn">🔔 Remind Me</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="coming-item" onclick="openModal('Society of the Snow')">
+            <div class="coming-date">
+              <div class="month">Jan</div>
+              <div class="day">04</div>
+            </div>
+            <div class="coming-content">
+              <img class="coming-poster" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_avif,q_auto:eco,dpr_2/rockcms/2024-01/narrator-society-of-the-snow-zz-240112-53ee32.jpg" alt="Coming Soon">
+              <div class="coming-info">
+                <h3>Society of the Snow</h3>
+                <div class="coming-meta">
+                  <span class="new-badge">New</span>
+                  <span>2024</span>
+                  <span>🔞 13+</span>
+                  <span>2h 24m</span>
+                </div>
+                <p>The true story of the 1972 Andes plane crash and the incredible survival story of the passengers.</p>
+                <div class="coming-genres">
+                  <span class="genre-tag">Drama</span>
+                  <span class="genre-tag">Biography</span>
+                  <span class="genre-tag">Survival</span>
+                </div>
+                <button class="notify-btn">🔔 Remind Me</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="tab-pane" id="coming-soon" style="display:none;">
+      <section class="content-section">
+        <h2 class="section-title">New This Week</h2>
+        <div class="trending-grid">
+          <div class="trending-card" onclick="openModal('The Killer')">
+            <img src="https://imgs.search.brave.com/-Lvi6ffx7On3zYe2qlcrnYY-hDoJnOmrW66JPxuq9do/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAwLzk5Lzc5Lzg5/LzM2MF9GXzk5Nzk4/OTU5Xzc5aFRUc3pN/WTlyNjNRekI5bWRY/TXI2MFByRWNuNGds/LmpwZw" alt="Content">
+            <span class="trending-rank">NEW</span>
+            <div class="trending-info">
+              <h3>The Killer</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 95%</span>
+                <span>2023</span>
+                <span>2h 12m</span>
+              </div>
+              <p>An assassin battles his employers and himself on an international manhunt.</p>
+            </div>
+          </div>
+          <div class="trending-card" onclick="openModal('Pain Hustlers')">
+            <img src="https://snworksceo.imgix.net/bdh/0b27cadf-4221-41a2-b50c-b5dc47be6ea7.sized-1000x1000.jpg?w=1000" alt="Content">
+            <span class="trending-rank">NEW</span>
+            <div class="trending-info">
+              <h3>Pain Hustlers</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 88%</span>
+                <span>2023</span>
+                <span>2h 2m</span>
+              </div>
+              <p>A woman finds success and danger in the pharmaceutical sales industry.</p>
+            </div>
+          </div>
+          <div class="trending-card" onclick="openModal('Reptile')">
+            <img src="https://www.heavenofhorror.com/wp-content/uploads/2023/09/reptile-2023-netflix-thriller.jpg" alt="Content">
+            <span class="trending-rank">NEW</span>
+            <div class="trending-info">
+              <h3>Reptile</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 92%</span>
+                <span>2023</span>
+                <span>2h 16m</span>
+              </div>
+              <p>A detective uncovers disturbing secrets while investigating a murder.</p>
+            </div>
+          </div>
+          <div class="trending-card" onclick="openModal('Fair Play')">
+            <img src="https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQb68IPji1VyskQ-NndRfd04szlfLrpTQpFN7qkyoi29TBhvciPXPFXP2bq0gw7YkgKemC362TrPkSB252V7QZrIs1U5tH9CAw_P5HolY5iuuDTBsnqbYe0lT1HMTgpKHIvHI-3bRVuDE8Q36Oa4uRU7q.png?r=d86" alt="Content">
+            <span class="trending-rank">NEW</span>
+            <div class="trending-info">
+              <h3>Fair Play</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 89%</span>
+                <span>2023</span>
+                <span>1h 53m</span>
+              </div>
+              <p>A couple's relationship is tested by a promotion at their hedge fund.</p>
+            </div>
+          </div>
+          <div class="trending-card" onclick="openModal('The Conference')">
+            <img src="https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/10/netflix-the-conference-masked-killer.jpeg?q=50&fit=crop&w=825&dpr=1.5" alt="Content">
+            <span class="trending-rank">NEW</span>
+            <div class="trending-info">
+              <h3>The Conference</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 85%</span>
+                <span>2023</span>
+                <span>1h 40m</span>
+              </div>
+              <p>A team-building weekend turns into a fight for survival.</p>
+            </div>
+          </div>
+          <div class="trending-card" onclick="openModal('Nowhere')">
+            <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2023/09/nowhere-2023-3134610.jpg?tf=828x" alt="Content">
+            <span class="trending-rank">NEW</span>
+            <div class="trending-info">
+              <h3>Nowhere</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 91%</span>
+                <span>2023</span>
+                <span>1h 49m</span>
+              </div>
+              <p>A pregnant woman fights to survive adrift at sea in a container.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="tab-pane" id="trending" style="display:none;">
+      <section class="content-section">
+        <h2 class="section-title">What Everyone's Watching</h2>
+        <div class="trending-grid">
+          <div class="trending-card" onclick="openModal('Squid Game')">
+            <img src="https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQejscg7fcO6Zr36togOo46FE3R-1d2ldbB_-A1E_EVvoOtNKzduk6nmI_U20GBj-liPWSKhon4KWtkqflZi9h2y1i7xA5KguDnTiDWsikXUBUdbGZc4ZGX-eYu77IDgYmcy55Zpp0MM-pLoBSMX_jGWy.jpg?r=123" alt="Content">
+            <span class="trending-rank">1</span>
+            <div class="trending-info">
+              <h3>Squid Game</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 98%</span>
+                <span>Series</span>
+                <span>2 Seasons</span>
+              </div>
+              <p>Hundreds of cash-strapped players accept an invitation to compete in deadly children's games.</p>
+            </div>
+          </div>
+          <div class="trending-card" onclick="openModal('Wednesday')">
+            <img src="https://wallpapercave.com/wp/wp15696212.jpg" alt="Content">
+            <span class="trending-rank">2</span>
+            <div class="trending-info">
+              <h3>Wednesday</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 96%</span>
+                <span>Series</span>
+                <span>1 Season</span>
+              </div>
+              <p>Wednesday Addams attends Nevermore Academy and investigates murders.</p>
+            </div>
+          </div>
+          <div class="trending-card" onclick="openModal('Extraction 2')">
+            <img src="https://imgs.search.brave.com/cEMQghL7N_dRKXdA-Ybm_3NRrwOIMotsD8EMgi2Uru8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9kbm0u/bmZseGltZy5uZXQv/YXBpL3Y2LzJEdVFs/eDBmTTR3ZDFuenFt/NUJGQmk2SUxhOC9B/QUFBUVRNdXVSU1ZS/d3doUXFwWExZTDJW/NWJwci1lUHdqMjFM/YzRoR1hlc2V4T2dZ/S1pfZEVaeC1odFlY/T0JNYkJLcHc3dl94/b3JGZmxSRkxpSi1Z/cjV3SXU4NWRFMzBE/RFZWa25BY0RxNnVp/YzNJMmN5clBLSWk3/NUZFdEdtcUhCZ0pS/Vlh1RGtRb0xXV1dP/a1pOQkFmVmZPSUsu/anBnP3I9MzZm" alt="Content">
+            <span class="trending-rank">3</span>
+            <div class="trending-info">
+              <h3>Extraction 2</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 94%</span>
+                <span>Movie</span>
+                <span>2h 2m</span>
+              </div>
+              <p>Tyler Rake is back for another death-defying rescue mission.</p>
+            </div>
+          </div>
+          <div class="trending-card" onclick="openModal('The Night Agent')">
+            <img src="https://images.justwatch.com/backdrop/324479156/s1920/the-night-agent.avif" alt="Content">
+            <span class="trending-rank">4</span>
+            <div class="trending-info">
+              <h3>The Night Agent</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 93%</span>
+                <span>Series</span>
+                <span>1 Season</span>
+              </div>
+              <p>An FBI agent uncovers a conspiracy while working the night shift.</p>
+            </div>
+          </div>
+          <div class="trending-card" onclick="openModal('Ginny & Georgia')">
+            <img src="https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQfL_pLHWIAEj4ZtXTZhoQse2TyvzHN5e0qCiclvrc8Sy9k5MppMjQKa-_noMtGGp4VMTXQCjxdTAHoJVN6htYWglpf6-k1Yx359f-up0cQp63uwxo7Cea6fBsH3f7CR3YNDoa5nOMJRJmIbKW7HI.jpg?r=4f9" alt="Content">
+            <span class="trending-rank">5</span>
+            <div class="trending-info">
+              <h3>Ginny & Georgia</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 90%</span>
+                <span>Series</span>
+                <span>2 Seasons</span>
+              </div>
+              <p>A mother and daughter navigate life, love, and dark secrets.</p>
+            </div>
+          </div>
+          <div class="trending-card" onclick="openModal('The Diplomat')">
+            <img src="https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQaM2sN_qDTs6fmMDZAVskq2T8nX4cFjIrccS3U7F1LAu3PIFSKtQV0t9joJFo05rR46K7Q1DdMEXkTFDBBIlWQ2afwctNSCtp5wAPkQIQsgJBPNlKMP3gq791T1ZWvEDgZi1t2wttCxglIFOrL4o0mrprOw.jpg?r=ade" alt="Content">
+            <span class="trending-rank">6</span>
+            <div class="trending-info">
+              <h3>The Diplomat</h3>
+              <div class="trending-meta">
+                <span class="match-score">★ 92%</span>
+                <span>Series</span>
+                <span>1 Season</span>
+              </div>
+              <p>A US ambassador navigates international crises and marriage troubles.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="tab-pane" id="top10" style="display:none;">
+      <section class="content-section">
+        <h2 class="section-title">Top 10 in Your Country</h2>
+        <div class="coming-soon-list">
+          <div class="coming-item" onclick="openModal('Leo')">
+            <div class="coming-date">
+              <div class="month">TOP</div>
+              <div class="day">1</div>
+            </div>
+            <div class="coming-content">
+              <img class="coming-poster" src="https://upload.wikimedia.org/wikipedia/en/7/75/Leo_%282023_Indian_film%29.jpg" alt="Top Content">
+              <div class="coming-info">
+                <h3>Leo</h3>
+                <div class="coming-meta">
+                  <span class="match-score">★ 97%</span>
+                  <span>2023</span>
+                  <span>🔞 16+</span>
+                  <span>2h 44m</span>
+                </div>
+                <p>A mild-mannered man becomes a local hero through an unexpected series of events. An action-packed thriller with heart.</p>
+                <div class="coming-genres">
+                  <span class="genre-tag">Action</span>
+                  <span class="genre-tag">Thriller</span>
+                  <span class="genre-tag">Drama</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="coming-item" onclick="openModal('Jailer')">
+            <div class="coming-date">
+              <div class="month">TOP</div>
+              <div class="day">2</div>
+            </div>
+            <div class="coming-content">
+              <img class="coming-poster" src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/jailer-et00331686-1664432415.jpg" alt="Top Content">
+              <div class="coming-info">
+                <h3>Jailer</h3>
+                <div class="coming-meta">
+                  <span class="match-score">★ 95%</span>
+                  <span>2023</span>
+                  <span>🔞 16+</span>
+                  <span>2h 29m</span>
+                </div>
+                <p>A retired jailer is forced to confront his past when his son goes missing, leading to an explosive showdown.</p>
+                <div class="coming-genres">
+                  <span class="genre-tag">Action</span>
+                  <span class="genre-tag">Crime</span>
+                  <span class="genre-tag">Thriller</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="coming-item" onclick="openModal('Jawan')">
+            <div class="coming-date">
+              <div class="month">TOP</div>
+              <div class="day">3</div>
+            </div>
+            <div class="coming-content">
+              <img class="coming-poster" src="https://wallpapercave.com/wp/wp12803837.jpg" alt="Top Content">
+              <div class="coming-info">
+                <h3>Jawan</h3>
+                <div class="coming-meta">
+                  <span class="match-score">★ 96%</span>
+                  <span>2023</span>
+                  <span>🔞 13+</span>
+                  <span>2h 49m</span>
+                </div>
+                <p>A high-octane action thriller that tackles social issues through an engaging storyline and spectacular action sequences.</p>
+                <div class="coming-genres">
+                  <span class="genre-tag">Action</span>
+                  <span class="genre-tag">Thriller</span>
+                  <span class="genre-tag">Drama</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="coming-item" onclick="openModal('Heart of Stone')">
+            <div class="coming-date">
+              <div class="month">TOP</div>
+              <div class="day">4</div>
+            </div>
+            <div class="coming-content">
+              <img class="coming-poster" src="https://www.rogerebert.com/wp-content/uploads/2024/08/Heart-of-Stone-jpeg.webp" alt="Top Content">
+              <div class="coming-info">
+                <h3>Heart of Stone</h3>
+                <div class="coming-meta">
+                  <span class="match-score">★ 91%</span>
+                  <span>2023</span>
+                  <span>🔞 13+</span>
+                  <span>2h 2m</span>
+                </div>
+                <p>An intelligence operative must stop a hacker from stealing the agency's most valuable weapon.</p>
+                <div class="coming-genres">
+                  <span class="genre-tag">Action</span>
+                  <span class="genre-tag">Spy</span>
+                  <span class="genre-tag">Thriller</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="coming-item" onclick="openModal('The Mother')">
+            <div class="coming-date">
+              <div class="month">TOP</div>
+              <div class="day">5</div>
+            </div>
+            <div class="coming-content">
+              <img class="coming-poster" src="https://assets.gadgets360cdn.com/pricee/assets/product/202401/The-Mother_1704442265.jpg?downsize=220:308" alt="Top Content">
+              <div class="coming-info">
+                <h3>The Mother</h3>
+                <div class="coming-meta">
+                  <span class="match-score">★ 89%</span>
+                  <span>2023</span>
+                  <span>🔞 16+</span>
+                  <span>1h 55m</span>
+                </div>
+                <p>A deadly female assassin comes out of hiding to protect the daughter she gave up years before.</p>
+                <div class="coming-genres">
+                  <span class="genre-tag">Action</span>
+                  <span class="genre-tag">Thriller</span>
+                  <span class="genre-tag">Drama</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="content-modal" id="contentModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">×</button>
+      <div class="modal-hero">
+        <img id="modalHeroImg" src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="Content">
+        <div class="modal-hero-content">
+          <h1 class="modal-title" id="modalTitle">The Killer</h1>
+          <div class="modal-buttons">
+            <button class="btn primary">▶ Play</button>
+            <button class="btn secondary">+ My List</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info-grid">
+          <div class="modal-main-info">
+            <p class="modal-description" id="modalDescription">
+              After a fateful near-miss, an assassin battles his employers and himself, on an international manhunt he insists isn't personal. From visionary director David Fincher.
+            </p>
+            <div class="coming-genres">
+              <span class="genre-tag">Action</span>
+              <span class="genre-tag">Thriller</span>
+              <span class="genre-tag">Crime</span>
+            </div>
+          </div>
+          <div class="modal-meta-info">
+            <div class="meta-row">
+              <span class="meta-label">Cast:</span>
+              <span class="meta-value">Michael Fassbender, Tilda Swinton</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Director:</span>
+              <span class="meta-value">David Fincher</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Rating:</span>
+              <span class="meta-value">⭐ 95% Match</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Release Date:</span>
+              <span class="meta-value">December 15, 2023</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Duration:</span>
+              <span class="meta-value">2h 12m</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => {
+          p.classList.remove('active');
+          p.style.display = 'none';
+        });
+
+        this.classList.add('active');
+
+        const tabId = this.getAttribute('data-tab');
+        const targetPane = document.getElementById(tabId);
+        targetPane.classList.add('active');
+        targetPane.style.display = 'block';
+      });
+    });
+
+    function openModal(contentTitle) {
+      const modal = document.getElementById('contentModal');
+      const title = document.getElementById('modalTitle');
+      const description = document.getElementById('modalDescription');
+      
+      title.textContent = contentTitle || 'The Killer';
+      
+      const descriptions = {
+        'The Killer': 'After a fateful near-miss, an assassin battles his employers and himself, on an international manhunt he insists isn\'t personal. From visionary director David Fincher.',
+        'Rebel Moon': 'A peaceful colony on the edge of the galaxy is threatened by the armies of a tyrannical regent. Their only hope is a mysterious stranger.',
+        'Atlas': 'A brilliant data analyst with a deep distrust of artificial intelligence joins a mission to capture a renegade robot with whom she shares a mysterious past.',
+        'Extraction 3': 'Tyler Rake returns for his most dangerous mission yet, diving deep into enemy territory to rescue a high-value target.',
+        'Damsel': 'A dutiful damsel agrees to marry a handsome prince, only to discover the royal family has recruited her as a sacrifice to repay an ancient debt.',
+        'Leave the World Behind': 'A family\'s vacation is upended when two strangers arrive at night, seeking refuge from a cyberattack that grows more terrifying.',
+        'Society of the Snow': 'The true story of the 1972 Andes plane crash and the incredible survival story of the passengers stranded in brutal conditions.',
+        'Squid Game': 'Hundreds of cash-strapped players accept an invitation to compete in children\'s games for a tempting prize, but the stakes are deadly.',
+        'Wednesday': 'Wednesday Addams attends Nevermore Academy and investigates a murder mystery while mastering her psychic ability.',
+        'Leo': 'A mild-mannered man becomes a local hero through an unexpected series of events, leading to an action-packed journey.',
+        'Jailer': 'A retired jailer is forced to confront his past when his son goes missing, leading to an explosive showdown with dangerous criminals.',
+        'Jawan': 'A high-octane action thriller that tackles social issues through an engaging storyline and spectacular action sequences.'
+      };
+      
+      description.textContent = descriptions[contentTitle] || descriptions['The Killer'];
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('contentModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.notify-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
+        if (this.classList.contains('active')) {
+          this.innerHTML = '✓ Reminder Set';
+        } else {
+          this.innerHTML = '🔔 Remind Me';
+        }
+      });
+    });
+
+    document.getElementById('contentModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    const carousels = document.querySelectorAll('.wait-carousel');
+    carousels.forEach(carousel => {
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      carousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+      });
+
+      carousel.addEventListener('mouseleave', () => {
+        isDown = false;
+      });
+
+      carousel.addEventListener('mouseup', () => {
+        isDown = false;
+      });
+
+      carousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.scrollLeft = scrollLeft - walk;
+      });
+    });
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.coming-item, .trending-card, .wait-item').forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>
