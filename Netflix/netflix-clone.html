@@ -200,7 +200,7 @@
 
           <!-- movie tiles with data-title for search -->
           <div class="movie fade-in" data-title="The Dark Knight">
-            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/51K8ouYrHeL._AC_.jpg" alt="The Dark Knight poster">
+            <img loading="lazy" src="https://m.media-amazon.com/images/I/51K8ouYrHeL._AC_.jpg" alt="The Dark Knight poster">
             <div class="overlay">
               <div class="title">The Dark Knight</div>
               <div class="meta">2008 • Action • 2h 32m</div>
@@ -208,7 +208,7 @@
           </div>
 
           <div class="movie fade-in" data-title="Inception">
-            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/51s+6KxZ1jL._AC_.jpg" alt="Inception poster">
+            <img loading="lazy" src="https://m.media-amazon.com/images/I/51s+6KxZ1jL._AC_.jpg" alt="Inception poster">
             <div class="overlay">
               <div class="title">Inception</div>
               <div class="meta">2010 • Sci‑Fi • 2h 28m</div>
@@ -216,7 +216,7 @@
           </div>
 
           <div class="movie fade-in" data-title="Interstellar">
-            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/71n58ZxT6uL._AC_SL1024_.jpg" alt="Interstellar poster">
+            <img loading="lazy" src="https://m.media-amazon.com/images/I/71n58ZxT6uL._AC_SL1024_.jpg" alt="Interstellar poster">
             <div class="overlay">
               <div class="title">Interstellar</div>
               <div class="meta">2014 • Sci‑Fi • 2h 49m</div>
@@ -224,7 +224,7 @@
           </div>
 
           <div class="movie fade-in" data-title="Fast X">
-            <img loading="lazy" data-src="https://upload.wikimedia.org/wikipedia/en/f/f2/Fast_X_poster.jpg" alt="Fast X poster">
+            <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/f/f2/Fast_X_poster.jpg" alt="Fast X poster">
             <div class="overlay">
               <div class="title">Fast X</div>
               <div class="meta">2023 • Action • 2h 23m</div>
@@ -232,7 +232,7 @@
           </div>
 
           <div class="movie fade-in" data-title="Parasite">
-            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/91X6K6rQ2PL._AC_SL1500_.jpg" alt="Parasite poster">
+            <img loading="lazy" src="https://m.media-amazon.com/images/I/91X6K6rQ2PL._AC_SL1500_.jpg" alt="Parasite poster">
             <div class="overlay">
               <div class="title">Parasite</div>
               <div class="meta">2019 • Drama • 2h 12m</div>
@@ -240,7 +240,7 @@
           </div>
 
           <div class="movie fade-in" data-title="The Godfather">
-            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/41+eK8zBwQL._AC_.jpg" alt="The Godfather poster">
+            <img loading="lazy" src="https://m.media-amazon.com/images/I/41+eK8zBwQL._AC_.jpg" alt="The Godfather poster">
             <div class="overlay">
               <div class="title">The Godfather</div>
               <div class="meta">1972 • Crime • 2h 55m</div>
@@ -248,7 +248,7 @@
           </div>
 
           <div class="movie fade-in" data-title="Pulp Fiction">
-            <img loading="lazy" data-src="https://m.media-amazon.com/images/I/51c2bFau2lL._AC_.jpg" alt="Pulp Fiction poster">
+            <img loading="lazy" src="https://m.media-amazon.com/images/I/51c2bFau2lL._AC_.jpg" alt="Pulp Fiction poster">
             <div class="overlay">
               <div class="title">Pulp Fiction</div>
               <div class="meta">1994 • Crime • 2h 34m</div>
@@ -433,11 +433,11 @@
     /*********************
      * Lazy load & fade-in
      *********************/
-    const lazyImgs = qsa('img[data-src]');
+    const lazyImgs = qsa('img[src]');
     const io = new IntersectionObserver((entries,obs)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
-          const img = entry.target; img.src = img.dataset.src; img.removeAttribute('data-src');
+          const img = entry.target; img.src = img.dataset.src; img.removeAttribute('src');
           img.closest('.fade-in').classList.add('visible');
           obs.unobserve(img);
         }
