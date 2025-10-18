@@ -41,6 +41,19 @@ http-server -p 8000
 - Replace placeholder movie images with local assets for offline demos.
 - Add unit tests for JavaScript behavior if the project grows (use Jest/Playwright for UI tests).
 
+## Contributor
+
+A heartfelt thank you to all the contributors who have dedicated their time and effort to make this project a success.  
+Your contributions—whether it’s code, design, testing, or documentation—are truly appreciated! 🚀
+
+#### Thanks to all the wonderful contributors 💖
+
+<a href="https://github.com/Sam-coder101/Netflix/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Sam-coder101/Netflix" />
+</a>
+
+#### See full list of contribution from contributor [Contributor Graph](https://github.com/Sam-coder101/Netflix/graphs/contributors)
+
 ## License
 
 No license is specified. Add a `LICENSE` file if you want to grant reuse permissions.
