@@ -37,7 +37,13 @@
         <li><a href="#" data-key="nav_mylist">My List</a></li>
         <li><a href="#" data-key="nav_browse">Browse by Languages</a></li>
         <li><a href="#" data-key="nav_kids">Kids</a></li>
-        <li><button id="themeToggle" aria-label="Toggle light/dark mode">🌓</button></li>
+        <li><div class="theme-switch-wrapper">
+  <label class="theme-switch">
+    <input type="checkbox" id="themeToggle">
+    <span class="slider round"></span>
+  </label>
+</div>
+</li>
       </ul>
       </nav>
     </div>
@@ -299,23 +305,24 @@
   <!-- Theme Toggle Script -->
   <script>
     const toggle = document.getElementById('themeToggle');
-    const body = document.body;
+const body = document.body;
 
-    // Load saved theme
-    if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light-mode');
-    }
+// Load saved theme
+if (localStorage.getItem('theme') === 'light') {
+  body.classList.add('light-mode');
+  toggle.checked = true; // Sync slider position
+}
 
-    // Toggle theme
-    toggle.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
+// Toggle theme
+toggle.addEventListener('change', () => {
+  body.classList.toggle('light-mode');
+  if (body.classList.contains('light-mode')) {
+    localStorage.setItem('theme', 'light');
+  } else {
+    localStorage.setItem('theme', 'dark');
+  }
+});
 
-      if (body.classList.contains('light-mode')) {
-        localStorage.setItem('theme', 'light');
-      } else {
-        localStorage.setItem('theme', 'dark');
-      }
-    });
   </script>
 </body>
 </html>
