@@ -18,18 +18,19 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a class="logo" href="#" aria-label="Home">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix logo" />
-      </a>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <!-- 🔹 Logo -->
+    <a class="logo" href="#" aria-label="Home">
+      <img
+        src="logo.jpg"
+        alt="Netflix logo"
+      />
+    </a>
 
-      <nav class="primary-nav" role="navigation" aria-label="Main navigation">
-        <div class="profile-menu">
-  <button id="profileBtn" class="btn small">👤 Profile</button>
-</div>
-
-        <ul class="nav-links">
+    <!-- 🔹 Navigation -->
+    <nav class="primary-nav" role="navigation" aria-label="Main navigation">
+      <ul class="nav-links">
         <li><a href="index.html" data-key="nav_home">Home</a></li>
         <li><a href="series.html" data-key="nav_series">Series</a></li>
         <li><a href="movies.html" data-key="nav_movies">Movies</a></li>
@@ -37,17 +38,23 @@
         <li><a href="#" data-key="nav_mylist">My List</a></li>
         <li><a href="#" data-key="nav_browse">Browse by Languages</a></li>
         <li><a href="#" data-key="nav_kids">Kids</a></li>
-        <li><div class="theme-switch-wrapper">
-  <label class="theme-switch">
-    <input type="checkbox" id="themeToggle">
-    <span class="slider round"></span>
-  </label>
-</div>
-</li>
       </ul>
-      </nav>
+    </nav>
+
+    <!-- 🔹 Right-side icons -->
+    <div class="header-right">
+      <label class="theme-switch">
+        <input type="checkbox" id="themeToggle" />
+        <span class="slider round"></span>
+      </label>
+
+      <button id="profileBtn" class="profile-icon" aria-label="Profile">
+        👤
+      </button>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- Main -->
   <main id="main" role="main">
