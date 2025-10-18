@@ -23,8 +23,10 @@
       backdrop-filter: blur(6px);
     }
     .header-inner{
-      max-width:1200px; margin:0 auto; padding:12px 20px;
+      max-width:1400px; margin:0 auto; padding:12px 20px;
       display:flex; align-items:center; justify-content:space-between;
+      flex-wrap: wrap;
+      gap: 16px;
     }
     .logo {
       background: #fff;
@@ -34,8 +36,13 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
     .logo img { height: 36px; display: block; }
-    
-    .primary-nav ul{ list-style:none; display:flex; gap:22px; align-items: center; }
+    .primary-nav ul{ 
+      list-style:none; 
+      display:flex; 
+      gap:22px; 
+      align-items: center;
+      flex-wrap: wrap;
+    }
     .primary-nav a{
       text-decoration:none; color:#fff; font-weight:600; opacity:0.95;
       transition: color .18s, transform .18s;

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Netflix Clone - My List" />
+  <title>My List | Netflix Clone</title>
+  <link rel="stylesheet" href="mylist.css">
+  <link rel="icon" href="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456"/>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix logo" />
+      </a>
+      <nav class="primary-nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="series.html">Series</a></li>
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="new&popular.html">New & Popular</a></li>
+          <li><a href="mylist.html" class="active">My List</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="header-content">
+      <h1>My List</h1>
+      <p>Your personal collection of favorites and watchlist items</p>
+      <div class="list-stats">
+        <div class="stat-item">
+          <span class="stat-number" id="totalItems">12</span>
+          <span class="stat-label">Total Items</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="moviesCount">7</span>
+          <span class="stat-label">Movies</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="seriesCount">5</span>
+          <span class="stat-label">Series</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="filter-bar">
+    <div class="filter-content">
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="movie">Movies</button>
+        <button class="filter-btn" data-filter="series">Series</button>
+        <button class="filter-btn" data-filter="action">Action</button>
+        <button class="filter-btn" data-filter="drama">Drama</button>
+        <button class="filter-btn" data-filter="scifi">Sci-Fi</button>
+      </div>
+      <div class="sort-dropdown">
+        <label for="sortSelect">Sort by:</label>
+        <select id="sortSelect">
+          <option value="recent">Recently Added</option>
+          <option value="title">Title A-Z</option>
+          <option value="year">Year</option>
+          <option value="rating">Rating</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="view-toggle">
+      <button class="view-btn active" data-view="grid">⊞ Grid View</button>
+      <button class="view-btn" data-view="list">☰ List View</button>
+    </div>
+
+    <div class="list-grid" id="listContainer">
+      <div class="list-item" data-type="movie" data-genre="action scifi" data-title="Inception" data-year="2010" data-rating="97">
+        <span class="added-date">Added 2 days ago</span>
+        <img src="https://imgs.search.brave.com/vXLdOsj6Gr9Umvkk23uX9Seop103N8kAAm32dFYv3UI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJhY2Nlc3Mu/Y29tL2Z1bGwvMTI2/NDY4NS5qcGc" alt="Inception">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>Inception</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 97%</span>
+              <span>2010</span>
+              <span>2h 28m</span>
+            </div>
+            <div class="item-genres">Action, Sci-Fi, Thriller</div>
+            <p class="item-description">A thief who steals corporate secrets through dream-sharing technology.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('Inception')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="series" data-genre="drama crime" data-title="Breaking Bad" data-year="2008" data-rating="98">
+        <span class="added-date">Added 5 days ago</span>
+        <img src="https://imgs.search.brave.com/RWKQU_1TsXEkxyY6Qn550npkfQRpb1tYfcrXV9ThO_Y/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93MC5w/ZWFrcHguY29tL3dh/bGxwYXBlci85OTcv/NTYwL0hELXdhbGxw/YXBlci1icmVha2lu/Zy1iYWQtYnJlYWtp/bmctYmFkLWplc3Nl/LXBpbmttYW4td2Fs/dGVyLXdoaXRlLXRo/dW1ibmFpbC5qcGc" alt="Breaking Bad">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>Breaking Bad</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 98%</span>
+              <span>5 Seasons</span>
+            </div>
+            <div class="item-genres">Drama, Crime, Thriller</div>
+            <p class="item-description">A chemistry teacher turned meth producer partners with a former student.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('Breaking Bad')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="movie" data-genre="scifi thriller" data-title="Interstellar" data-year="2014" data-rating="96">
+        <span class="added-date">Added 1 week ago</span>
+        <img src="https://assets-in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/interstellar-et00019066-19-02-2021-02-25-12.jpg" alt="Interstellar">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>Interstellar</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 96%</span>
+              <span>2014</span>
+              <span>2h 49m</span>
+            </div>
+            <div class="item-genres">Sci-Fi, Drama, Adventure</div>
+            <p class="item-description">A team of explorers travel through a wormhole in space.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('Interstellar')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="series" data-genre="scifi thriller" data-title="Stranger Things" data-year="2016" data-rating="95">
+        <span class="added-date">Added 1 week ago</span>
+        <img src="https://m.media-amazon.com/images/I/71X90jO6WkL._AC_SX679_.jpg" alt="Stranger Things">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>Stranger Things</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 95%</span>
+              <span>4 Seasons</span>
+            </div>
+            <div class="item-genres">Sci-Fi, Horror, Mystery</div>
+            <p class="item-description">A young boy vanishes, uncovering supernatural forces and government experiments.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('Stranger Things')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="movie" data-genre="action thriller" data-title="Extraction" data-year="2020" data-rating="94">
+        <span class="added-date">Added 2 weeks ago</span>
+        <img src="https://imgs.search.brave.com/aOAh9lFJIlLXmB8MFnCc7ssKpkshOJ78QMXi68sXOds/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS50aGVtb3ZpZWRi/Lm9yZy90L3AvdzIy/MF9hbmRfaDMzMF9m/YWNlL255Z09VY0JL/UEhGVGJ4c1lSRlpW/ZVBxZ1BLNi5qcGc" alt="Extraction">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>Extraction</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 94%</span>
+              <span>2020</span>
+              <span>1h 56m</span>
+            </div>
+            <div class="item-genres">Action, Thriller</div>
+            <p class="item-description">A black market mercenary embarks on a deadly extraction mission.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('Extraction')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="movie" data-genre="drama thriller" data-title="The Irishman" data-year="2019" data-rating="96">
+        <span class="added-date">Added 2 weeks ago</span>
+        <img src="https://imgs.search.brave.com/zGuGsu1quGoCG4QJDliehpN9CunBuJ9M5CaWOZhSyBU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS50aGVtb3ZpZWRi/Lm9yZy90L3AvdzIy/MF9hbmRfaDMzMF9m/YWNlL3BYUVh3a0lk/cTRrSUVOQnlwQnky/aHQ3OEJxcS5qcGc" alt="The Irishman">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>The Irishman</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 96%</span>
+              <span>2019</span>
+              <span>3h 29m</span>
+            </div>
+            <div class="item-genres">Crime, Drama</div>
+            <p class="item-description">An aging hitman recalls his time with the mob.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('The Irishman')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="series" data-genre="drama crime" data-title="Ozark" data-year="2017" data-rating="93">
+        <span class="added-date">Added 3 weeks ago</span>
+        <img src="https://imgs.search.brave.com/b4-YRVeGUmbfQWh35-t8-YnIT3SMiYm7c7NCM-vVzhU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMwLnNyY2RuLmNv/bS93b3JkcHJlc3Mv/d3AtY29udGVudC91/cGxvYWRzL3RyYWls/ZXJzL2VwaXNvZGVf/cG9zdGVyLzE4MDQ4/OV9TZWFzb24lMjA0/LmpwZz9xPTUwJmZp/dD1jcm9wJnc9NDgw/JmRwcj0xLjU" alt="Ozark">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>Ozark</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 93%</span>
+              <span>4 Seasons</span>
+            </div>
+            <div class="item-genres">Drama, Crime, Thriller</div>
+            <p class="item-description">A financial planner relocates his family to the Ozarks for a money laundering scheme.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('Ozark')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="movie" data-genre="action scifi" data-title="The Matrix" data-year="1999" data-rating="97">
+        <span class="added-date">Added 1 month ago</span>
+        <img src="https://imgs.search.brave.com/EXqM5wmqm61XWGa8PATiq76f4HpKsHpEezk_nEUsz1U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvZW4vdGh1bWIv/Ny83Yi9UaGUtbWF0/cml4LXJldm9sdXRp/b25zX294bGF0aTZ0/LnBuZy8yNTBweC1U/aGUtbWF0cml4LXJl/dm9sdXRpb25zX294/bGF0aTZ0LnBuZw" alt="The Matrix">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>The Matrix</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 97%</span>
+              <span>1999</span>
+              <span>2h 16m</span>
+            </div>
+            <div class="item-genres">Action, Sci-Fi</div>
+            <p class="item-description">A hacker discovers the reality he lives in is a simulated world.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('The Matrix')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="series" data-genre="drama thriller" data-title="The Crown" data-year="2016" data-rating="94">
+        <span class="added-date">Added 1 month ago</span>
+        <img src="https://imgs.search.brave.com/7W46n6xWHan2OVg2NS5RocMaEszna0HdJPCdL4tujk4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL1Mv/cHYtdGFyZ2V0LWlt/YWdlcy80ZDNkYTY3/ZTZhZWU0NjNmY2Fh/ZjhjOGJkYTUzYWM1/ZDJiMDk4OTYyY2Rk/MTcxNmU5ZmNjYWJl/NjY5NWMxODUyLmpw/Zw" alt="The Crown">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>The Crown</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 94%</span>
+              <span>6 Seasons</span>
+            </div>
+            <div class="item-genres">Drama, Biography, History</div>
+            <p class="item-description">Chronicles the life of Queen Elizabeth II from the 1940s to modern times.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('The Crown')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="movie" data-genre="action thriller" data-title="The Dark Knight" data-year="2008" data-rating="98">
+        <span class="added-date">Added 1 month ago</span>
+        <img src="https://imgs.search.brave.com/wcpIDVwrWkMdDI2zY5y3cu3gkoPKQNf3rlUifU4CbEE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzFlLzE5/LzUzLzFlMTk1MzFh/N2Y2ZDMzODk5M2Vk/ZTk2NzdlMDFkMWM5/LmpwZw" alt="The Dark Knight">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>The Dark Knight</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 98%</span>
+              <span>2008</span>
+              <span>2h 32m</span>
+            </div>
+            <div class="item-genres">Action, Crime, Drama</div>
+            <p class="item-description">Batman faces his greatest challenge yet against the Joker.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('The Dark Knight')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="movie" data-genre="drama thriller" data-title="Shutter Island" data-year="2010" data-rating="92">
+        <span class="added-date">Added 2 months ago</span>
+        <img src="https://imgs.search.brave.com/RAJT718aa9E61vlePubhWvgOQRWZUw7cs0Jd9o5kEig/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zMy5h/bWF6b25hd3MuY29t/L25pZ2h0amFycHJv/ZC9jb250ZW50L3Vw/bG9hZHMvc2l0ZXMv/MjAyLzIwMjQvMDQv/MDIyMDAxMTAvc2h1/dHRlcl9pc2xhbmRf/eHhsZy1zY2FsZWQu/anBlZw" alt="Shutter Island">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>Shutter Island</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 92%</span>
+              <span>2010</span>
+              <span>2h 18m</span>
+            </div>
+            <div class="item-genres">Mystery, Thriller</div>
+            <p class="item-description">A U.S. Marshal investigates the disappearance of a murderer.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('Shutter Island')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+
+      <div class="list-item" data-type="series" data-genre="drama scifi" data-title="Dark" data-year="2017" data-rating="95">
+        <span class="added-date">Added 2 months ago</span>
+        <img src="https://imgs.search.brave.com/G0FudZqH65A__tPNZurqPo9z8FAELfVsSO0iNYX8Sa4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvZGFy/ay1uZXRmbGl4LThw/MWJlOWZjb3Nnbmx5/czUuanBn" alt="Dark">
+        <div class="item-overlay">
+          <div class="item-info">
+            <h3>Dark</h3>
+            <div class="item-meta">
+              <span class="match-score">★ 95%</span>
+              <span>3 Seasons</span>
+            </div>
+            <div class="item-genres">Sci-Fi, Mystery, Drama</div>
+            <p class="item-description">A family saga with a supernatural twist set in a German town.</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button class="action-btn play" onclick="playContent('Dark')" title="Play">▶</button>
+          <button class="action-btn remove" onclick="removeFromList(event, this)" title="Remove from List">✕</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="content-modal" id="contentModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">×</button>
+      <div class="modal-hero">
+        <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="Content">
+        <div class="modal-hero-content">
+          <h1 class="modal-title" id="modalTitle">Inception</h1>
+          <div class="modal-buttons">
+            <button class="btn primary">▶ Play</button>
+            <button class="btn secondary" onclick="removeFromListModal()">✕ Remove from List</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info-grid">
+          <div class="modal-main-info">
+            <p class="modal-description" id="modalDescription">
+              A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.
+            </p>
+            <div class="modal-genres">
+              <span class="genre-tag">Action</span>
+              <span class="genre-tag">Sci-Fi</span>
+              <span class="genre-tag">Thriller</span>
+            </div>
+          </div>
+          <div class="modal-meta-info">
+            <div class="meta-row">
+              <span class="meta-label">Cast:</span>
+              <span class="meta-value">Leonardo DiCaprio, Tom Hardy</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Director:</span>
+              <span class="meta-value">Christopher Nolan</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Rating:</span>
+              <span class="meta-value">⭐ 97% Match</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Added:</span>
+              <span class="meta-value">2 days ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let currentView = 'grid';
+
+    const viewButtons = document.querySelectorAll('.view-btn');
+    const listContainer = document.getElementById('listContainer');
+
+    viewButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        viewButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const view = this.getAttribute('data-view');
+        currentView = view;
+        
+        if (view === 'list') {
+          listContainer.classList.remove('list-grid');
+          listContainer.classList.add('list-detailed');
+        } else {
+          listContainer.classList.remove('list-detailed');
+          listContainer.classList.add('list-grid');
+        }
+      });
+    });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const listItems = document.querySelectorAll('.list-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        
+        listItems.forEach(item => {
+          if (filter === 'all') {
+            item.style.display = 'block';
+          } else if (filter === 'movie' || filter === 'series') {
+            item.style.display = item.getAttribute('data-type') === filter ? 'block' : 'none';
+          } else {
+            const genres = item.getAttribute('data-genre');
+            item.style.display = genres.includes(filter) ? 'block' : 'none';
+          }
+        });
+        
+        updateStats();
+      });
+    });
+
+    const sortSelect = document.getElementById('sortSelect');
+    
+    sortSelect.addEventListener('change', function() {
+      const sortBy = this.value;
+      const itemsArray = Array.from(listItems);
+      
+      itemsArray.sort((a, b) => {
+        if (sortBy === 'title') {
+          return a.getAttribute('data-title').localeCompare(b.getAttribute('data-title'));
+        } else if (sortBy === 'year') {
+          return parseInt(b.getAttribute('data-year')) - parseInt(a.getAttribute('data-year'));
+        } else if (sortBy === 'rating') {
+          return parseInt(b.getAttribute('data-rating')) - parseInt(a.getAttribute('data-rating'));
+        }
+        return 0;
+      });
+      
+      itemsArray.forEach(item => listContainer.appendChild(item));
+    });
+
+    function removeFromList(event, button) {
+      event.stopPropagation();
+      const item = button.closest('.list-item');
+      const title = item.getAttribute('data-title');
+      
+      item.style.animation = 'fadeOut 0.3s ease';
+      
+      setTimeout(() => {
+        item.remove();
+        showToast(`"${title}" removed from your list`);
+        updateStats();
+      }, 300);
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeOut {
+        to { opacity: 0; transform: scale(0.8); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    function playContent(title) {
+      showToast(`Playing "${title}"...`);
+    }
+
+    function updateStats() {
+      const visibleItems = Array.from(listItems).filter(item => item.style.display !== 'none');
+      const movies = visibleItems.filter(item => item.getAttribute('data-type') === 'movie').length;
+      const series = visibleItems.filter(item => item.getAttribute('data-type') === 'series').length;
+      
+      document.getElementById('totalItems').textContent = visibleItems.length;
+      document.getElementById('moviesCount').textContent = movies;
+      document.getElementById('seriesCount').textContent = series;
+    }
+
+    function openModal(title) {
+      const modal = document.getElementById('contentModal');
+      document.getElementById('modalTitle').textContent = title;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('contentModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function removeFromListModal() {
+      const title = document.getElementById('modalTitle').textContent;
+      const item = Array.from(listItems).find(i => i.getAttribute('data-title') === title);
+      
+      if (item) {
+        item.style.animation = 'fadeOut 0.3s ease';
+        setTimeout(() => {
+          item.remove();
+          closeModal();
+          showToast(`"${title}" removed from your list`);
+          updateStats();
+        }, 300);
+      }
+    }
+
+    listItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        if (!e.target.closest('.action-btn')) {
+          const title = this.getAttribute('data-title');
+          openModal(title);
+        }
+      });
+    });
+
+    document.getElementById('contentModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    listItems.forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(item);
+    });
+
+    updateStats();
+  </script>
+</body>
+</html>
