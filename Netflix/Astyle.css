@@ -77,7 +77,8 @@ body.light-mode .toggle-circle {
 /* Header */
 .site-header{
   position:fixed; top:0; left:0; right:0;
-  background: rgba(0,0,0,0.45);
+ background-image:url(images.jpg);
+  background-size:cover; background-position:center;
   border-bottom: 1px solid rgba(255,255,255,0.03);
   z-index:1000;
 }
@@ -115,7 +116,8 @@ body.light-mode .toggle-circle {
   margin-top:72px; /* header height */
   height:72vh; min-height:420px;
   display:flex; align-items:center; justify-content:center;
-  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f562aaf4-5dbb-4603-a32b-6ef6c2230136/dh0w8qv-9d8ee6b2-b41a-4681-ab9b-8a227560dc75.jpg');
+  /* background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f562aaf4-5dbb-4603-a32b-6ef6c2230136/dh0w8qv-9d8ee6b2-b41a-4681-ab9b-8a227560dc75.jpg'); */
+ background-image:url(netflix-library-photo-scaled-1.jpg);
   background-size:cover; background-position:center;
   position:relative; padding:40px 20px;
   overflow:hidden;
@@ -132,7 +134,7 @@ body.light-mode .toggle-circle {
   }
 }
 .banner-inner{ position:relative; z-index:2; text-align:center; max-width:900px; padding:30px; }
-.banner h1{ font-size:clamp(1.6rem, 4vw, 3rem); margin-bottom:12px; font-weight:800; letter-spacing: -0.5px; }
+.banner h1{ font-size:clamp(1.6rem, 4vw, 3rem); margin-bottom:12px; font-weight:800; letter-spacing: -0.5px; color:white}
 .banner .sub{ color:var(--muted); margin-bottom:18px; font-size:1rem; }
 
 /* Buttons */
@@ -577,10 +579,11 @@ body.light-mode .faq-answer {
 
 /* Stronger headline rim glow */
 .banner h1{
-  text-shadow:
+  /* text-shadow:
     0 6px 30px rgba(229,9,20,0.08),
-    0 2px 8px rgba(0,0,0,0.6);
-}
+    0 2px 8px rgba(0,0,0,0.6);*/
+
+} 
 
 /* CTA button pulse */
 .btn.primary{
