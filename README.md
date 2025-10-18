@@ -30,6 +30,29 @@ http-server -p 8000
 - "Trending Now" movie strip with left/right scroll control button.
 - Informational feature boxes and FAQ section.
 
+## 📁 Project Structure
+
+Below is the complete file structure of the **Netflix Clone** project:
+
+```plaintext
+Netflix/                     # Root folder of the project
+├── .github/                  # GitHub configuration files
+│   └── workflows/            # CI/CD workflow files
+├── vercel-deploy.yml         # Vercel deployment configuration
+├── Netflix/                  # Main project folder (optional naming)
+├── Astyle.css                # Global styling for the project
+├── index.html                # Home page of the project
+├── movies.css                # Styling specifically for movies page
+├── movies.html               # Movies page
+├── netflix-clone.html        # Main Netflix clone page
+├── script.js                 # JavaScript functionality for the project
+├── series.css                # Styling specifically for series page
+├── series.html               # Series page
+├── CONTRIBUTING.md           # Guidelines for contributing to the project
+├── LICENCE                   # License file (MIT, Apache, etc.)
+└── README.md                 # Project documentation (this file)
+```
+
 ## Notes and assets
 
 - The page uses externally-hosted images for movie posters and the Netflix logo. If you plan to use this offline, replace those URLs with local images inside an `img/` folder and update `netflix.html` accordingly.
