@@ -459,7 +459,14 @@ a.faq-question {
   transition: background .12s ease, transform .12s ease, box-shadow .18s ease, border-color .12s ease;
   text-decoration: none; /* for anchors */
 }
-
+body.light-mode .faq-question,
+body.light-mode button.faq-question,
+body.light-mode a.faq-question
+body.light-mode .faq-answer{
+  background: #f0f0f0; /* light solid background */
+  color: #111;         /* black text */
+  border: 1px solid #ddd;
+}
 /* Ensure inner text/icons don't bring their own background */
 .faq-question * { background: transparent; }
 
@@ -483,6 +490,11 @@ a.faq-question {
 /* FAQ answer visibility */
 .faq-answer { margin-top:8px; padding:0 6px 10px 6px; color:var(--muted); line-height:1.45; font-weight:400; }
 .faq-answer[hidden] { display:none; }
+
+/* Light mode FAQ answer */
+body.light-mode .faq-answer {
+  color: #333; /* dark text for light background */
+}
 
  /* Center FAQ and footer content */
 .faq-section {
@@ -990,6 +1002,67 @@ a.faq-question {
     padding: 8px 24px;
   }
 }
+
+.theme-switch-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 26px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #c13109; /* Blue when active */
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Optional: dark/light body colors */
+body {
+  background-color: #111;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+body.light-mode {
+  background-color: #fff;
+  color: #111;
+}
+
+
 /* 🔹 Back to Top Button */
 .back-to-top {
   position: fixed;
@@ -1016,3 +1089,4 @@ a.faq-question {
   pointer-events: auto; /* allow clicks */
   transform: translateY(0);
 }
+
