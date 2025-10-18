@@ -150,26 +150,18 @@ try {
 }
 
 
-// -- Scroll to top button
-try {
-  const scrollTopBtn = $('#scrollTopBtn');
-  if (!scrollTopBtn) throw new Error('#scrollTopBtn not found');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) scrollTopBtn.classList.add('show');
-    else scrollTopBtn.classList.remove('show');
-  });
-  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-} catch (err) {
-  console.warn('Scroll to top button setup error:', err.message);
-}
-
 // -- Accessibility: trap focus briefly on movie container when keyboard navigating
-if (moviesContainer){
-  moviesContainer.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') { moviesContainer.scrollBy({ left: 220, behavior: 'smooth' }); e.preventDefault(); }
-    if (e.key === 'ArrowLeft')  { moviesContainer.scrollBy({ left: -220, behavior: 'smooth' }); e.preventDefault(); }
-  });
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const moviesContainer = document.getElementById("movies");
+  if (moviesContainer) {
+    // Your carousel code, keydown, auto-scroll, etc.
+    moviesContainer.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') moviesContainer.scrollBy({ left: 220, behavior: 'smooth' });
+      if (e.key === 'ArrowLeft') moviesContainer.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+  }
+});
+
 
 // script.js
 const translations = {
@@ -545,8 +537,20 @@ try {
 } catch (err) {
   console.warn('Modal setup error:', err.message);
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add("show");
+    } else {
+      scrollTopBtn.classList.remove("show");
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
 
-
-
-// End of script
+});
