@@ -18,30 +18,43 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a class="logo" href="#" aria-label="Home">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix logo" />
-      </a>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <!-- 🔹 Logo -->
+    <a class="logo" href="#" aria-label="Home">
+      <img
+        src="logo.jpg"
+        alt="Netflix logo"
+      />
+    </a>
 
-      <nav class="primary-nav" role="navigation" aria-label="Main navigation">
-        <div class="profile-menu">
-  <button id="profileBtn" class="btn small">👤 Profile</button>
-</div>
-
-        <ul class="nav-links">
+    <!-- 🔹 Navigation -->
+    <nav class="primary-nav" role="navigation" aria-label="Main navigation">
+      <ul class="nav-links">
         <li><a href="index.html" data-key="nav_home">Home</a></li>
         <li><a href="series.html" data-key="nav_series">Series</a></li>
         <li><a href="movies.html" data-key="nav_movies">Movies</a></li>
         <li><a href="new&popular.html" data-key="nav_new">New & Popular</a></li>
-        <li><a href="#" data-key="nav_mylist">My List</a></li>
+        <li><a href="mylist.html" data-key="nav_mylist">My List</a></li>
         <li><a href="#" data-key="nav_browse">Browse by Languages</a></li>
         <li><a href="#" data-key="nav_kids">Kids</a></li>
-        <li><button id="themeToggle" aria-label="Toggle light/dark mode">🌓</button></li>
       </ul>
-      </nav>
+    </nav>
+
+    <!-- 🔹 Right-side icons -->
+    <div class="header-right">
+      <label class="theme-switch">
+        <input type="checkbox" id="themeToggle" />
+        <span class="slider round"></span>
+      </label>
+
+      <button id="profileBtn" class="profile-icon" aria-label="Profile">
+        👤
+      </button>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- Main -->
   <main id="main" role="main">
@@ -299,23 +312,24 @@
   <!-- Theme Toggle Script -->
   <script>
     const toggle = document.getElementById('themeToggle');
-    const body = document.body;
+const body = document.body;
 
-    // Load saved theme
-    if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light-mode');
-    }
+// Load saved theme
+if (localStorage.getItem('theme') === 'light') {
+  body.classList.add('light-mode');
+  toggle.checked = true; // Sync slider position
+}
 
-    // Toggle theme
-    toggle.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
+// Toggle theme
+toggle.addEventListener('change', () => {
+  body.classList.toggle('light-mode');
+  if (body.classList.contains('light-mode')) {
+    localStorage.setItem('theme', 'light');
+  } else {
+    localStorage.setItem('theme', 'dark');
+  }
+});
 
-      if (body.classList.contains('light-mode')) {
-        localStorage.setItem('theme', 'light');
-      } else {
-        localStorage.setItem('theme', 'dark');
-      }
-    });
   </script>
 </body>
 </html>
