@@ -94,7 +94,7 @@ body.light-mode .toggle-circle {
 }
 /* Logo */
 .logo {
-  background: #fff;
+ 
   border-radius: 8px;
   padding: 4px 12px;
   display: inline-block;
@@ -108,9 +108,15 @@ body.light-mode .toggle-circle {
 .primary-nav a{
   text-decoration:none; color:#fff; font-weight:600; opacity:0.95;
   transition: color .18s, transform .18s;
+  font-size: 20px
 }
 .primary-nav a:hover{ color:var(--accent); transform:translateY(-2px); }
-
+.profile-icon{
+  font-size: 20px;
+}
+.header-right button{
+  gap:20px;
+}
 /* Banner */
 .banner{
   margin-top:72px; /* header height */
