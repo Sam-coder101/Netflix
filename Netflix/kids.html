@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Netflix Clone - Kids Content" />
+  <title>Kids | Netflix Clone</title>
+  <link rel="stylesheet" href="kids.css">
+  <link rel="icon" href="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix logo" />
+      </a>
+      <nav class="primary-nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="series.html">Series</a></li>
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="new&popular.html">New & Popular</a></li>
+          <li><a href="mylist.html">My List</a></li>
+          <li><a href="kids.html" class="active">Kids</a></li>
+          <li><div class="theme-switch-wrapper">
+  <label class="theme-switch">
+    <input type="checkbox" id="themeToggle">
+    <span class="slider round"></span>
+  </label>
+</div>
+</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="kids-hero">
+    <div class="hero-content">
+      <h1>Kids & Family</h1>
+      <div class="hero-meta">
+        <span class="badge">Safe for Kids</span>
+        <span>Educational & Fun</span>
+        <span>All Ages</span>
+      </div>
+      <p class="hero-description">
+        Explore a world of entertaining and educational content designed specifically for children. From animated adventures to learning shows, there's something for every young viewer.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn primary">▶ Start Watching</button>
+        <button class="btn secondary">ⓘ Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">Popular Kids Shows</h2>
+      <div class="filter-group">
+        <button class="filter-btn active" data-age="all">All Ages</button>
+        <button class="filter-btn" data-age="preschool">Preschool</button>
+        <button class="filter-btn" data-age="kids">Ages 5-7</button>
+        <button class="filter-btn" data-age="tweens">Ages 8-12</button>
+      </div>
+    </div>
+    <div class="kids-grid">
+      <div class="kids-card" data-age="all" onclick="openModal('Paw Patrol')">
+        <img src="https://imgs.search.brave.com/u-4isQogHds8TrTEVRMSXR1SjuPn4yJA4qNb2L9WFEg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudHZtYXplLmNv/bS91cGxvYWRzL2lt/YWdlcy9tZWRpdW1f/cG9ydHJhaXQvNDQ4/LzExMjExOTQuanBn" alt="Show">
+        <div class="card-overlay">
+          <h3>Paw Patrol</h3>
+          <div class="card-meta">
+            <span class="age-rating">All Ages</span>
+            <span>Adventure</span>
+          </div>
+        </div>
+      </div>
+      <div class="kids-card" data-age="preschool" onclick="openModal('Super Monsters')">
+        <img src="https://imgs.search.brave.com/yPZ_fCSyOq5DKzAGL6ACBDlr37N612qRPV8to7mvmCk/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS50aGVtb3ZpZWRi/Lm9yZy90L3Avdzk0/X2FuZF9oMTQxX2Jl/c3R2Mi8zRHY2ZW1o/WUN6NkpWd1VKWlU1/ajhDNEpkaTcuanBn" alt="Show">
+        <div class="card-overlay">
+          <h3>Super Monsters</h3>
+          <div class="card-meta">
+            <span class="age-rating">Preschool</span>
+            <span>Fantasy</span>
+          </div>
+        </div>
+      </div>
+      <div class="kids-card" data-age="tweens" onclick="openModal('Jurassic World Camp')">
+        <img src="https://imgs.search.brave.com/XCEY6MrRXEtJj8CeyvmWLJ0VQziU4SheAW8Jj--Yl88/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9hbWJs/aW4uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE5LzA2L2Nh/bXBfY3JldGFjZW91/c18yMDIwX3Bvc3Rl/ci5qcGc" alt="Show">
+        <div class="card-overlay">
+          <h3>Jurassic World Camp</h3>
+          <div class="card-meta">
+            <span class="age-rating">Ages 8-12</span>
+            <span>Adventure</span>
+          </div>
+        </div>
+      </div>
+      <div class="kids-card" data-age="preschool" onclick="openModal('Gabby\'s Dollhouse')">
+        <img src="https://images.justwatch.com/poster/330760194/s166/gabbys-dollhouse-the-movie.avif" alt="Show">
+        <div class="card-overlay">
+          <h3>Gabby's Dollhouse</h3>
+          <div class="card-meta">
+            <span class="age-rating">Preschool</span>
+            <span>Educational</span>
+          </div>
+        </div>
+      </div>
+      <div class="kids-card" data-age="kids" onclick="openModal('Spirit Riding Free')">
+        <img src="https://imgs.search.brave.com/cb6AcActfFQH-xzhKMosod448ugFovx8igXA3iIeM6U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJhY2Nlc3Mu/Y29tL2Z1bGwvMjM3/Nzk3Ni5qcGc" alt="Show">
+        <div class="card-overlay">
+          <h3>Spirit Riding Free</h3>
+          <div class="card-meta">
+            <span class="age-rating">Ages 5-7</span>
+            <span>Adventure</span>
+          </div>
+        </div>
+      </div>
+      <div class="kids-card" data-age="all" onclick="openModal('The Boss Baby')">
+        <img src="https://imgs.search.brave.com/GXFMkN5kFszYhuwCRkEF0T02MuvL1sM2EA5V8U-h7UU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzdkLzgw/L2M1LzdkODBjNTM0/ZDkwYjljNmNlYzhl/OTZmMTU1Mzg2ZTAw/LmpwZw" alt="Show">
+        <div class="card-overlay">
+          <h3>The Boss Baby</h3>
+          <div class="card-meta">
+            <span class="age-rating">All Ages</span>
+            <span>Comedy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- animated section  -->
+  <section class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">Animated Movies</h2>
+    </div>
+    <div class="carousel-container">
+      <button class="scroll-btn left" onclick="scrollCarousel('movies', -1)">‹</button>
+      <div class="carousel" id="movies">
+        <div class="carousel-item" onclick="openModal('Trolls')">
+          <img src="https://imgs.search.brave.com/1qKCEFJYYuSjAiGPb3JnZZfkYHDRLFBNU6jMjiEnsZ8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvdHJv/bGxzLXdvcmxkLXRv/dXItMnl4eWxraGw1/bmMxcXU5Zy5qcGc" alt="Movie">
+          <div class="carousel-info">
+            <h4>Trolls World Tour</h4>
+            <p>Animation • Musical</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Moana')">
+          <img src="https://imgs.search.brave.com/vZ4mo1TIIOV1OdgK2MtxJiH2pV6d6RNushxBnpLQ61Q/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuanVzdHdhdGNo/LmNvbS9iYWNrZHJv/cC8yMDc0MDQwNDAv/czY0MC9tb2FuYQ" alt="Movie">
+          <div class="carousel-info">
+            <h4>Moana</h4>
+            <p>Adventure • Fantasy</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Encanto')">
+          <img src="https://imgs.search.brave.com/NqDzWZZAbMJkosNInWhzDM4OWHe0yLxH8GyywgTXOQY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9sdW1p/ZXJlLWEuYWthbWFp/aGQubmV0L3YxL2lt/YWdlcy9pbWFnZV9h/MmViOGY2YS5qcGVn/P3JlZ2lvbj0wLDAs/MTI4MCw3MjA" alt="Movie">
+          <div class="carousel-info">
+            <h4>Encanto</h4>
+            <p>Animation • Musical</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('The Mitchells')">
+          <img src="https://imgs.search.brave.com/KvNMDaFmVYHxnLvObWoHd_dN7ktclx7Ljf6PvctKm6Q/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/am9ibG8uY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIxLzAz/L01pdGNoZWxscy12/cy1tYWNoaW5lcy1O/ZXRmbHgtYXByaWwt/ZmIuanBn" alt="Movie">
+          <div class="carousel-info">
+            <h4>The Mitchells vs. Machines</h4>
+            <p>Comedy • Adventure</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Turning Red')">
+          <img src="https://imgs.search.brave.com/75LsVa-a_7gc3OUsRYR-RqAsHXsuOnZjTL3Z3dDCSWo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvdHVy/bmluZy1yZWQtcGlj/dHVyZXMteHBndjdo/N3RvYnVjMXRpMS5q/cGc" alt="Movie">
+          <div class="carousel-info">
+            <h4>Turning Red</h4>
+            <p>Animation • Comedy</p>
+          </div>
+        </div>
+      </div>
+      <button class="scroll-btn right" onclick="scrollCarousel('movies', 1)">›</button>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="info-banner">
+      <h3>Educational & Learning</h3>
+      <p>Discover shows that make learning fun! From science and math to creativity and problem-solving, these shows help kids learn while they watch.</p>
+    </div>
+  </section>
+  <!-- L&A -->
+  <section class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">Learning Adventures</h2>
+    </div>
+    <div class="kids-grid">
+      <div class="kids-card" onclick="openModal('StoryBots')">
+        <img src="https://imgs.search.brave.com/VnezGuRmaVtv-5sVfYQykDU8iVUpuC7vULVOPqKjQj4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS50aGVtb3ZpZWRi/Lm9yZy90L3AvdzIy/MF9hbmRfaDMzMF9m/YWNlLzZJWThibUpj/VUdtZ2NCOUVSbng4/aEx3N1F6NS5qcGc" alt="Show">
+        <div class="card-overlay">
+          <h3>Ask the StoryBots</h3>
+          <div class="card-meta">
+            <span class="age-rating">Educational</span>
+            <span>Science</span>
+          </div>
+        </div>
+      </div>
+      <div class="kids-card" onclick="openModal('Magic School Bus')">
+        <img src="https://imgs.search.brave.com/PKeBJOhDRr1mhTq01ojA1GTgun_9LBqXGRp6PrZlTlA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuanVzdHdhdGNo/LmNvbS9wb3N0ZXIv/MjY1ODk3MTEvczMz/Mi9zZWFzb24tMg" alt="Show">
+        <div class="card-overlay">
+          <h3>The Magic School Bus</h3>
+          <div class="card-meta">
+            <span class="age-rating">Educational</span>
+            <span>Science</span>
+          </div>
+        </div>
+      </div>
+      <div class="kids-card" onclick="openModal('Word Party')">
+        <img src="https://imgs.search.brave.com/GrlDBIOW_43pBV-2Z644ZsusOJ91VQUefIYxN-VYW8U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/Y29taW5nc29vbi5u/ZXQvd3AtY29udGVu/dC91cGxvYWRzL3Np/dGVzLzMvMjAyMy8w/Mi9Xb3JkX1BhcnR5/X0tleV9BcnQuanBn/P3c9NzY4" alt="Show">
+        <div class="card-overlay">
+          <h3>Word Party</h3>
+          <div class="card-meta">
+            <span class="age-rating">Preschool</span>
+            <span>Language</span>
+          </div>
+        </div>
+      </div>
+      <div class="kids-card" onclick="openModal('Octonauts')">
+        <img src="https://imgs.search.brave.com/NolV_-ZgX4CUSBKcTsEAre6JUHtdSolBZzJEDkVQcZE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9vY2Mt/MC0yMTIwLTIxMTku/MS5uZmx4c28ubmV0/L2RubS9hcGkvdjYv/bUFjQXI5VHhaSVZi/SU5lODh4YjNUZWc1/X09BL0FBQUFCZjc3/UXlpandtSVliSk1t/clQtbVVqNGVtMzVD/MlhRanNqaGhIaVdr/SEpuZ1FJSllYYnhx/NWlOUjZFOWl5V1FT/TG5uT1VaWEhiY1Vt/OGFDVGdPWDNpUERo/eXhGQ1RVMEM0bWdO/LmpwZz9yPTQyZA" alt="Show">
+        <div class="card-overlay">
+          <h3>Octonauts</h3>
+          <div class="card-meta">
+            <span class="age-rating">Ages 5-7</span>
+            <span>Adventure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A&A -->
+  <section class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">Action & Adventure</h2>
+    </div>
+    <div class="carousel-container">
+      <button class="scroll-btn left" onclick="scrollCarousel('adventure', -1)">‹</button>
+      <div class="carousel" id="adventure">
+        <div class="carousel-item" onclick="openModal('Avatar')">
+          <img src="https://imgs.search.brave.com/-GvpGWOeR4DP5a5CUj1qfHbagDmT2CZm_GXSOJEajUA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMwLnNyY2RuLmNv/bS93b3JkcHJlc3Mv/d3AtY29udGVudC91/cGxvYWRzLzIwMjEv/MDEvYXZhdGFyLXRo/ZS1sYXN0LWFpcmJl/bmRlci10aGUtZmly/ZWJlbmRpbmctbWFz/dGVycy1Dcm9wcGVk/LmpwZz9xPTUwJmZp/dD1jcm9wJnc9NDgw/JmRwcj0xLjU" alt="Show">
+          <div class="carousel-info">
+            <h4>Avatar: The Last Airbender</h4>
+            <p>Action • Adventure</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Dragons')">
+          <img src="https://imgs.search.brave.com/Pe3jL_vviVhpTmwbHe7Oc9OZcbMXGeoCMrgfogIZRmg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzBiL2Zj/L2RhLzBiZmNkYTM2/YTM4NjFmMDQ1ZjUx/YmZhODFmNDQ5YWU1/LmpwZw" alt="Show">
+          <div class="carousel-info">
+            <h4>Dragons: Race to the Edge</h4>
+            <p>Fantasy • Adventure</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Ninjago')">
+          <img src="https://imgs.search.brave.com/pZMC1FHYku6-X9vtGpQKTuxWp2-r6v_C14481MlK1eo/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zLm1v/dmllaW5zaWRlci5j/b20vaW1hZ2VzL3Av/MTUwLzQxNTY0Nl9t/MTQ4NjU3MzAxOS5q/cGc" alt="Show">
+          <div class="carousel-info">
+            <h4>Ninjago</h4>
+            <p>Action • Fantasy</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Trollhunters')">
+          <img src="https://imgs.search.brave.com/WpxXHkEO-QloPt5SQDAXI8JH1z08YGHQa1EbTt46nLg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvdHJv/bGxodW50ZXJzLXRh/bGVzLW9mLWFyY2Fk/aWEtbWFnaWMtbnE1/Z2NyN2dqYnNtbGRr/ei5qcGc" alt="Show">
+          <div class="carousel-info">
+            <h4>Trollhunters</h4>
+            <p>Fantasy • Adventure</p>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openModal('Carmen Sandiego')">
+          <img src="https://imgs.search.brave.com/ZA1qYiwwzZTG0_59RbZzFXhSPWnTQZ10fXjxs0b30_E/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMubmludGVuZG8u/Y29tL2ltYWdlL3Vw/bG9hZC9mX2F1dG8v/cV9hdXRvL2Rwcl8x/LjUvc3RvcmUvc29m/dHdhcmUvc3dpdGNo/LzcwMDEwMDAwMDc0/ODI5LzhiMDVlOGNh/YTE4NzE5OGY5Y2Uy/ZTZlNTc5YjZmMjY5/ZWI4Njc0NmZkZTAw/MWFkMzk1ODgyMjNi/NTM1YmM2N2M" alt="Show">
+          <div class="carousel-info">
+            <h4>Carmen Sandiego</h4>
+            <p>Mystery • Adventure</p>
+          </div>
+        </div>
+      </div>
+      <button class="scroll-btn right" onclick="scrollCarousel('adventure', 1)">›</button>
+    </div>
+  </section>
+
+  <div class="kids-modal" id="kidsModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">×</button>
+      <div class="modal-hero">
+        <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="Show">
+        <div class="modal-hero-content">
+          <h1 class="modal-title" id="modalTitle">Paw Patrol</h1>
+          <div class="modal-buttons">
+            <button class="btn primary">▶ Play</button>
+            <button class="btn secondary">+ My List</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info-grid">
+          <div class="modal-main-info">
+            <p class="modal-description" id="modalDescription">
+              Join Ryder and the PAW Patrol pups on their exciting rescue missions! No job is too big, no pup is too small. Learn about teamwork, problem-solving, and helping others in this fun-filled adventure series.
+            </p>
+            <div class="modal-genres">
+              <span class="genre-tag">Adventure</span>
+              <span class="genre-tag">Animals</span>
+              <span class="genre-tag">Educational</span>
+            </div>
+          </div>
+          <div class="modal-meta-info">
+            <div class="meta-row">
+              <span class="meta-label">Age Rating:</span>
+              <span class="meta-value">All Ages</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Type:</span>
+              <span class="meta-value">Series</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Seasons:</span>
+              <span class="meta-value">8 Seasons</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Category:</span>
+              <span class="meta-value">Kids & Family</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+  <script>
+    function scrollCarousel(id, direction) {
+      const carousel = document.getElementById(id);
+      const scrollAmount = 340;
+      carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const kidsCards = document.querySelectorAll('.kids-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const age = this.getAttribute('data-age');
+        
+        kidsCards.forEach(card => {
+          const cardAge = card.getAttribute('data-age');
+          
+          if (age === 'all' || cardAge === age) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeIn 0.4s ease-in';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    function openModal(showTitle) {
+      const modal = document.getElementById('kidsModal');
+      const title = document.getElementById('modalTitle');
+      const description = document.getElementById('modalDescription');
+      
+      title.textContent = showTitle;
+      
+      const descriptions = {
+        'Paw Patrol': 'Join Ryder and the PAW Patrol pups on their exciting rescue missions! No job is too big, no pup is too small. Learn about teamwork, problem-solving, and helping others in this fun-filled adventure series.',
+        'Super Monsters': 'Follow the adventures of adorable preschool monsters as they learn to master their special powers at Pitchfork Pines Preschool. A heartwarming show about friendship and growing up!',
+        'Jurassic World Camp': 'Six teens attend an adventure camp on the opposite side of Isla Nublar and must band together to survive when dinosaurs wreak havoc across the island. Perfect for dinosaur lovers!',
+        'Gabby\'s Dollhouse': 'Cute cats, quirky crafts and colorful magic! Join kitty enthusiast Gabby and her sidekick Pandy Paws as they team up for a series of animated adventures in her magical dollhouse!',
+        'Spirit Riding Free': 'Lucky Prescott moves to a small frontier town and befriends a wild mustang named Spirit. Together they embark on thrilling adventures and discover the true meaning of freedom!',
+        'The Boss Baby': 'A suit-wearing, briefcase-carrying baby pairs up with his 7-year old brother to stop the dastardly plot of the CEO of Puppy Co. Hilarious adventures await!',
+        'StoryBots': 'The Emmy Award-winning StoryBots are curious little creatures who live in the world beneath our screens. They help answer kids\' biggest questions about science, technology, and more!',
+        'Magic School Bus': 'Ms. Frizzle and her class along with an old high-tech bus go on wild, strange field trips that teach science lessons. Buckle up for learning adventures!',
+        'Word Party': 'Four adorable baby animals learn new words and concepts through songs, dances, and games. Perfect for building vocabulary and language skills!',
+        'Octonauts': 'A team of underwater explorers embark on aquatic adventures to rescue amazing sea creatures, explore incredible new underwater worlds, and protect the ocean!',
+        'Trolls': 'Poppy and Branch discover there are six different Troll tribes scattered over six different lands devoted to different kinds of music. A colorful musical adventure!',
+        'Moana': 'An adventurous teenager sails out on a daring mission to save her people. During her journey, she teams up with the legendary demigod Maui.',
+        'Encanto': 'The tale of an extraordinary family who live hidden in the mountains of Colombia in a magical house. A celebration of family, magic, and music!',
+        'Avatar': 'In a war-torn world of elemental magic, a young boy reawakens to undertake a dangerous mystic quest to fulfill his destiny as the Avatar.',
+        'Dragons': 'Hiccup and Toothless lead the Dragon Riders on thrilling adventures as they encounter new dragons and battle fierce enemies.',
+        'Carmen Sandiego': 'A master thief who uses her skills for good, Carmen travels the world foiling V.I.L.E.\'s evil plans in this thrilling mystery series.'
+      };
+      
+      description.textContent = descriptions[showTitle] || 'An amazing kids show full of fun, adventure, and learning! Watch now and enjoy!';
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('kidsModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('kidsModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.kids-card, .carousel-item').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(card);
+    });
+  </script>
