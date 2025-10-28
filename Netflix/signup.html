@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Netflix Clone - Sign Up" />
+  <title>Netflix - Sign Up</title>
+  <link rel="icon" href="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456"/>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: url('https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg') center center / cover no-repeat fixed;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.signup-header {
+  padding: 20px 50px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.logo img {
+  height: 45px;
+  width: auto;
+}
+
+.signin-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.signin-link:hover {
+  color: #e50914;
+}
+
+.signup-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.signup-container {
+  max-width: 440px;
+  width: 100%;
+  background: transparent;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 60px 68px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.step-indicator {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.signup-container h1 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.signup-container p {
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  height: 56px;
+  padding: 10px 20px;
+  background: #fff;
+  border: 1px solid #8c8c8c;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #0071eb;
+  border-width: 2px;
+  padding: 9px 19px;
+}
+
+.form-input.error {
+  border-color: #e87c03;
+  border-width: 2px;
+  padding: 9px 19px;
+}
+
+.form-input::placeholder {
+  color: #180303;
+}
+
+.error-message {
+  color: #ffffff;
+  font-size: 13px;
+  margin-top: 6px;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.password-toggle:hover {
+  text-decoration: underline;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #e50914;
+  flex-shrink: 0;
+}
+
+.checkbox-group label {
+  font-size: 13px;
+  color: #ffffff;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.signup-button {
+  width: 100%;
+  height: 64px;
+  background: #e50914;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: background 0.2s;
+}
+
+.signup-button:hover {
+  background: #f40612;
+}
+
+.signup-button:active {
+  background: #c11119;
+}
+
+.signup-button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.signup-button.loading::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  margin-left: -12px;
+  margin-top: -12px;
+  border: 3px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.terms-text {
+  font-size: 13px;
+  color: #bababa;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.terms-text a {
+  color: #0071eb;
+  text-decoration: none;
+}
+
+.terms-text a:hover {
+  text-decoration: underline;
+}
+
+.signup-footer {
+  padding: 30px 50px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.footer-content a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.password-strength {
+  margin-top: 8px;
+  display: none;
+}
+
+.password-strength.show {
+  display: block;
+}
+
+.strength-bar {
+  height: 4px;
+  background: #e6e6e6;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.strength-fill {
+  height: 100%;
+  transition: width 0.3s, background 0.3s;
+  width: 0%;
+}
+
+.strength-fill.weak {
+  background: #e87c03;
+  width: 33.33%;
+}
+
+.strength-fill.medium {
+  background: #ffa00a;
+  width: 66.66%;
+}
+
+.strength-fill.strong {
+  background: #46d369;
+  width: 100%;
+}
+
+.strength-text {
+  font-size: 12px;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .signup-header {
+    padding: 20px 5%;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+
+  .signin-link {
+    font-size: 16px;
+  }
+
+  .signup-container {
+    padding: 40px 30px;
+  }
+
+  .signup-container h1 {
+    font-size: 26px;
+  }
+
+  .signup-container p {
+    font-size: 16px;
+  }
+
+  .signup-button {
+    height: 56px;
+    font-size: 20px;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .signup-footer {
+    padding: 30px 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-body {
+    padding: 40px 20px;
+  }
+
+  .signup-container {
+    padding: 30px 20px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+  <header class="signup-header">
+    <a href="#" class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" />
+    </a>
+    <a href="login.html" class="signin-link">Sign In</a>
+  </header>
+
+  <div class="signup-body">
+    <div class="signup-container">
+      <h1>Create a password to start your membership</h1>
+      <p>Just a few more steps and you're done!<br>We hate paperwork, too.</p>
+
+      <form class="signup-form" id="signupForm" onsubmit="handleSignup(event)">
+        <div class="form-group">
+          <input 
+            type="email" 
+            class="form-input" 
+            id="email" 
+            placeholder="Email address" 
+            required 
+          />
+          <div class="error-message" id="emailError">Please enter a valid email address.</div>
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="password" 
+            class="form-input" 
+            id="password" 
+            placeholder="Add a password" 
+            required
+            oninput="checkPasswordStrength()"
+          />
+          <button type="button" class="password-toggle" onclick="togglePassword()">SHOW</button>
+          <div class="error-message" id="passwordError">Password must be between 6 and 60 characters.</div>
+          <div class="password-strength" id="passwordStrength">
+            <div class="strength-bar">
+              <div class="strength-fill" id="strengthFill"></div>
+            </div>
+            <div class="strength-text" id="strengthText"></div>
+          </div>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="marketing" />
+          <label for="marketing">Please do not email me Netflix special offers.</label>
+        </div>
+
+        <button type="submit" class="signup-button" id="signupBtn">Next</button>
+
+        <div class="terms-text">
+          By clicking "Next", you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Statement</a>, and that you are over 18. Netflix will automatically continue your membership and charge the membership fee to your payment method until you cancel. You may cancel at any time to avoid future charges.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="signup-footer">
+    <div class="footer-content">
+      <p>Questions? Call 000-800-919-1694</p>
+      <div class="footer-links">
+        <a href="#">FAQ</a>
+        <a href="#">Help Centre</a>
+        <a href="#">Netflix Shop</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy</a>
+        <a href="#">Cookie Preferences</a>
+        <a href="#">Corporate Information</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let currentStep = 1;
+
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const toggleBtn = event.target;
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleBtn.textContent = 'HIDE';
+      } else {
+        passwordInput.type = 'password';
+        toggleBtn.textContent = 'SHOW';
+      }
+    }
+
+    function checkPasswordStrength() {
+      const password = document.getElementById('password').value;
+      const strengthIndicator = document.getElementById('passwordStrength');
+      const strengthFill = document.getElementById('strengthFill');
+      const strengthText = document.getElementById('strengthText');
+      
+      if (password.length === 0) {
+        strengthIndicator.classList.remove('show');
+        return;
+      }
+      
+      strengthIndicator.classList.add('show');
+      
+      strengthFill.className = 'strength-fill';
+      
+      let strength = 0;
+      if (password.length >= 6) strength++;
+      if (password.length >= 10) strength++;
+      if (/[A-Z]/.test(password)) strength++;
+      if (/[0-9]/.test(password)) strength++;
+      if (/[^A-Za-z0-9]/.test(password)) strength++;
+      
+      if (strength <= 2) {
+        strengthFill.classList.add('weak');
+        strengthText.textContent = 'Weak password';
+      } else if (strength <= 3) {
+        strengthFill.classList.add('medium');
+        strengthText.textContent = 'Medium password';
+      } else {
+        strengthFill.classList.add('strong');
+        strengthText.textContent = 'Strong password';
+      }
+    }
+
+    function updateProgress() {
+      const progressFill = document.getElementById('progressFill');
+      const percentage = (currentStep / 3) * 100;
+      progressFill.style.width = percentage + '%';
+    }
+
+    function handleSignup(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const signupBtn = document.getElementById('signupBtn');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      
+      emailError.classList.remove('show');
+      passwordError.classList.remove('show');
+      emailInput.classList.remove('error');
+      passwordInput.classList.remove('error');
+      
+      let isValid = true;
+      
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        emailError.classList.add('show');
+        emailInput.classList.add('error');
+        isValid = false;
+      }
+      
+      if (password.length < 6 || password.length > 60) {
+        passwordError.classList.add('show');
+        passwordInput.classList.add('error');
+        isValid = false;
+      }
+      
+      if (!isValid) {
+        return;
+      }
+      
+      signupBtn.classList.add('loading');
+      signupBtn.disabled = true;
+      
+      setTimeout(() => {
+        sessionStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('userEmail', email);
+        sessionStorage.setItem('signupComplete', 'true');
+        
+        currentStep++;
+        
+        if (currentStep > 3) {
+          const referrer = document.referrer;
+          if (referrer && referrer.includes(window.location.hostname)) {
+            window.location.href = referrer;
+          } else {
+            window.location.href = 'index.html';
+          }
+        } else {
+          updateProgress();
+          signupBtn.classList.remove('loading');
+          signupBtn.disabled = false;
+          
+          sessionStorage.setItem('isLoggedIn', 'true');
+          window.location.href = 'index.html';
+        }
+      }, 2000);
+    }
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('isLoggedIn') === 'true') {
+        window.location.href = 'index.html';
+      }
+      updateProgress();
+    });
+    
+    console.log('Demo: Enter any valid email and password (6-60 chars) to sign up');
+  </script>
+</body>
+</html>

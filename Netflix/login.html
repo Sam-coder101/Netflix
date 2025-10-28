@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Netflix Clone - Sign In" />
+  <title>Netflix - Sign In</title>
+  <link rel="icon" href="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-wrapper {
+      min-height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg') center/cover;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-header {
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 45px;
+      width: auto;
+    }
+
+    .login-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .login-form-container {
+      background: rgba(0, 0, 0, 0.75);
+      border-radius: 4px;
+      padding: 60px 68px 40px;
+      max-width: 450px;
+      width: 100%;
+    }
+
+    .login-form-container h1 {
+      color: #fff;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 50px;
+      padding: 16px 20px;
+      background: #333;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      background: #454545;
+    }
+
+    .form-input::placeholder {
+      color: #8c8c8c;
+    }
+
+    .error-message {
+      color: #e87c03;
+      font-size: 13px;
+      margin-top: -8px;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .login-button {
+      width: 100%;
+      height: 50px;
+      background: #e50914;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 24px;
+      transition: background 0.2s;
+    }
+
+    .login-button:hover {
+      background: #f40612;
+    }
+
+    .login-button:active {
+      background: #c11119;
+    }
+
+    .form-help {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #b3b3b3;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .remember-me input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: #e50914;
+    }
+
+    .help-link {
+      color: #b3b3b3;
+      text-decoration: none;
+    }
+
+    .help-link:hover {
+      text-decoration: underline;
+    }
+
+    .signup-link {
+      margin-top: 16px;
+      color: #737373;
+      font-size: 16px;
+    }
+
+    .signup-link a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    .recaptcha-info {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #8c8c8c;
+      line-height: 1.5;
+    }
+
+    .recaptcha-info a {
+      color: #0071eb;
+      text-decoration: none;
+    }
+
+    .recaptcha-info a:hover {
+      text-decoration: underline;
+    }
+
+    .login-footer {
+      padding: 30px 50px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #737373;
+      font-size: 13px;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer-content p {
+      margin-bottom: 30px;
+    }
+
+    .footer-content a {
+      color: #737373;
+      text-decoration: none;
+    }
+
+    .footer-content a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .login-button.loading {
+      position: relative;
+      color: transparent;
+    }
+
+    .login-button.loading::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      border: 2px solid #fff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      .login-header {
+        padding: 20px 5%;
+      }
+
+      .logo img {
+        height: 30px;
+      }
+
+      .login-form-container {
+        padding: 40px 28px 30px;
+        background: rgba(0, 0, 0, 0.85);
+      }
+
+      .login-form-container h1 {
+        font-size: 26px;
+      }
+
+      .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .login-footer {
+        padding: 30px 5%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-form-container {
+        padding: 30px 20px;
+      }
+
+      .form-help {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .footer-links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrapper">
+    <header class="login-header">
+      <a href="#" class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" />
+      </a>
+    </header>
+
+    <div class="login-body">
+      <div class="login-form-container">
+        <h1>Sign In</h1>
+        <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+          <input 
+            type="email" 
+            class="form-input" 
+            id="email" 
+            placeholder="Email or phone number" 
+            required 
+          />
+          <div class="error-message" id="emailError">Please enter a valid email address or phone number.</div>
+          
+          <input 
+            type="password" 
+            class="form-input" 
+            id="password" 
+            placeholder="Password" 
+            required 
+          />
+          <div class="error-message" id="passwordError">Your password must contain between 4 and 60 characters.</div>
+
+          <button type="submit" class="login-button" id="loginBtn">Sign In</button>
+
+          <div class="form-help">
+            <label class="remember-me">
+              <input type="checkbox" id="rememberMe" />
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="help-link">Need help?</a>
+          </div>
+        </form>
+
+        <div class="signup-link">
+          New to Netflix? <a href="signup.html">Sign up now</a>.
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="login-footer">
+      <div class="footer-content">
+        <p>Questions? Call 000-800-919-1694</p>
+        <div class="footer-links">
+          <a href="#">FAQ</a>
+          <a href="#">Help Centre</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy</a>
+          <a href="#">Cookie Preferences</a>
+          <a href="#">Corporate Information</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const loginBtn = document.getElementById('loginBtn');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+      
+      emailError.classList.remove('show');
+      passwordError.classList.remove('show');
+      
+      let isValid = true;
+      
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^\d{10,}$/;
+      
+      if (!emailRegex.test(email) && !phoneRegex.test(email)) {
+        emailError.classList.add('show');
+        isValid = false;
+      }
+      
+      if (password.length < 4 || password.length > 60) {
+        passwordError.classList.add('show');
+        isValid = false;
+      }
+      
+      if (!isValid) {
+        return;
+      }
+      
+      loginBtn.classList.add('loading');
+      loginBtn.disabled = true;
+      setTimeout(() => {
+        sessionStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('userEmail', email);
+        
+        const referrer = document.referrer;
+        
+        if (referrer && referrer.includes(window.location.hostname)) {
+          window.location.href = referrer;
+        } else {
+          window.location.href = 'index.html';
+        }
+      }, 1500);
+    }
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('isLoggedIn') === 'true') {
+        const referrer = document.referrer;
+        if (referrer && referrer.includes(window.location.hostname)) {
+          window.location.href = referrer;
+        } else {
+          window.location.href = 'index.html';
+        }
+      }
+    });
+    
+    console.log('Demo: Enter any email and password (4-60 chars) to login');
+  </script>
+</body>
+</html>
