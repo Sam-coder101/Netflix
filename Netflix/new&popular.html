@@ -528,6 +528,154 @@
   </div>
 
   <script>
+    // Step 1: Centralized content data (replaces the old 'descriptions' object)
+const contentData = [
+  {
+    title: "The Killer",
+    description:
+      "After a fateful near-miss, an assassin battles his employers and himself, on an international manhunt he insists isn't personal. From visionary director David Fincher.",
+    img: "https://images.bauerhosting.com/empire/2023/10/the-killer-3.jpg",
+    genres: ["Action", "Thriller", "Crime"],
+    cast: "Michael Fassbender, Tilda Swinton",
+    director: "David Fincher",
+    rating: "⭐ 95% Match",
+    releaseDate: "December 15, 2023",
+    duration: "2h 12m"
+  },
+  {
+    title: "Rebel Moon",
+    description:
+      "A peaceful colony on the edge of the galaxy is threatened by the armies of a tyrannical regent. Their only hope is a mysterious stranger.",
+    img: "https://wallpaperaccess.com/full/11244007.jpg",
+    genres: ["Sci-Fi", "Action", "Adventure"],
+    cast: "Sofia Boutella, Charlie Hunnam",
+    director: "Zack Snyder",
+    rating: "⭐ 93% Match",
+    releaseDate: "April 19, 2024",
+    duration: "2h 18m"
+  },
+  {
+    title: "Atlas",
+    description:
+      "A brilliant data analyst with a deep distrust of artificial intelligence joins a mission to capture a renegade robot with whom she shares a mysterious past.",
+    img: "https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQUPD_bOGlBmaPK2qAlplMTrFRT9b3zyQD9AOW4gVpwJybWsnMbERSBkoV62kcu3Gto-Xc2KEuLBvoiW7aGrAc7j0gtrO3K09ZisYu2HIZW6HKwqMJSHL6JzOcQ2sHYlHCOwKdgbIWlgOScw1EESV.jpg?r=80e",
+    genres: ["Sci-Fi", "Thriller"],
+    cast: "Jennifer Lopez, Sterling K. Brown",
+    director: "Brad Peyton",
+    rating: "⭐ 92% Match",
+    releaseDate: "May 24, 2024",
+    duration: "2h 10m"
+  },
+  {
+    title: "Extraction 3",
+    description:
+      "Tyler Rake returns for his most dangerous mission yet, diving deep into enemy territory to rescue a high-value target.",
+    img: "https://static0.srcdn.com/wordpress/wp-content/uploads/2023/06/extraction-2-train-roof.jpg?q=50&fit=crop&w=825&dpr=1.5",
+    genres: ["Action", "Thriller"],
+    cast: "Chris Hemsworth",
+    director: "Sam Hargrave",
+    rating: "⭐ 94% Match",
+    releaseDate: "June 16, 2024",
+    duration: "2h 15m"
+  },
+  {
+    title: "Damsel",
+    description:
+      "A dutiful damsel agrees to marry a handsome prince, only to discover the royal family has recruited her as a sacrifice to repay an ancient debt.",
+    img: "https://imgs.search.brave.com/VmzXhgqawQHO4ij-MT3S5yqhQB7nWsvAjtxnNWYjBEI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5hc3NldHR5cGUu/Y29tL2ZpbG1jb21w/YW5pb24vMjAyNC0w/My8xNzI0Y2NlMi04/ZGRjLTQ1NTItYTU5/MS0yMzUyYTJiYjRl/ZmMvUmV2aWV3X2xl/YWRfRGFtc2VsLmpw/Zz93PTQ4MCZhdXRv/PWZvcm1hdCxjb21w/cmVzcyZmaXQ9bWF4",
+    genres: ["Adventure", "Fantasy", "Action"],
+    cast: "Millie Bobby Brown, Angela Bassett",
+    director: "Juan Carlos Fresnadillo",
+    rating: "⭐ 91% Match",
+    releaseDate: "July 8, 2024",
+    duration: "2h 3m"
+  },
+  {
+    title: "Leave the World Behind",
+    description:
+      "A family's vacation is upended when two strangers arrive at night, seeking refuge from a cyberattack that grows more terrifying.",
+    img: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQT7Mu0uhwWYkmf6LACO47fWN37sEtuw5lGtIjxi60zQOR-Qp7kgvQu9bFjPDiMbatqbS-myR396MgWuNKZK7b7tpfeslcNGyXKrG_lPGBc0IivI7k0CLVf-a4jWW7JQHzZvSoXVdbZ_C20nUQdSS1W2U.jpg?r=1ad",
+    genres: ["Drama", "Mystery", "Thriller"],
+    cast: "Julia Roberts, Mahershala Ali",
+    director: "Sam Esmail",
+    rating: "⭐ 90% Match",
+    releaseDate: "December 22, 2023",
+    duration: "2h 21m"
+  },
+  {
+    title: "Society of the Snow",
+    description:
+      "The true story of the 1972 Andes plane crash and the incredible survival story of the passengers stranded in brutal conditions.",
+    img: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_avif,q_auto:eco,dpr_2/rockcms/2024-01/narrator-society-of-the-snow-zz-240112-53ee32.jpg",
+    genres: ["Drama", "Survival", "Biography"],
+    cast: "Enzo Vogrincic, Matías Recalt",
+    director: "J.A. Bayona",
+    rating: "⭐ 93% Match",
+    releaseDate: "January 4, 2024",
+    duration: "2h 24m"
+  },
+  {
+    title: "Squid Game",
+    description:
+      "Hundreds of cash-strapped players accept an invitation to compete in children's games for a tempting prize, but the stakes are deadly.",
+    img: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQejscg7fcO6Zr36togOo46FE3R-1d2ldbB_-A1E_EVvoOtNKzduk6nmI_U20GBj-liPWSKhon4KWtkqflZi9h2y1i7xA5KguDnTiDWsikXUBUdbGZc4ZGX-eYu77IDgYmcy55Zpp0MM-pLoBSMX_jGWy.jpg?r=123",
+    genres: ["Thriller", "Drama", "Game"],
+    cast: "Lee Jung-jae, Park Hae-soo",
+    director: "Hwang Dong-hyuk",
+    rating: "⭐ 98% Match",
+    releaseDate: "2021",
+    duration: "2 Seasons"
+  },
+  {
+    title: "Wednesday",
+    description:
+      "Wednesday Addams attends Nevermore Academy and investigates a murder mystery while mastering her psychic ability.",
+    img: "https://wallpapercave.com/wp/wp15696212.jpg",
+    genres: ["Comedy", "Horror", "Mystery"],
+    cast: "Jenna Ortega, Catherine Zeta-Jones",
+    director: "Tim Burton",
+    rating: "⭐ 96% Match",
+    releaseDate: "2023",
+    duration: "1 Season"
+  },
+  {
+    title: "Leo",
+    description:
+      "A mild-mannered man becomes a local hero through an unexpected series of events, leading to an action-packed journey.",
+    img: "https://upload.wikimedia.org/wikipedia/en/7/75/Leo_%282023_Indian_film%29.jpg",
+    genres: ["Action", "Thriller", "Drama"],
+    cast: "Vijay, Trisha Krishnan",
+    director: "Lokesh Kanagaraj",
+    rating: "⭐ 97% Match",
+    releaseDate: "October 19, 2023",
+    duration: "2h 44m"
+  },
+  {
+    title: "Jailer",
+    description:
+      "A retired jailer is forced to confront his past when his son goes missing, leading to an explosive showdown with dangerous criminals.",
+    img: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/jailer-et00331686-1664432415.jpg",
+    genres: ["Action", "Crime", "Thriller"],
+    cast: "Rajinikanth, Mohanlal",
+    director: "Nelson Dilipkumar",
+    rating: "⭐ 95% Match",
+    releaseDate: "August 10, 2023",
+    duration: "2h 29m"
+  },
+  {
+    title: "Jawan",
+    description:
+      "A high-octane action thriller that tackles social issues through an engaging storyline and spectacular action sequences.",
+    img: "https://wallpapercave.com/wp/wp12803837.jpg",
+    genres: ["Action", "Thriller", "Drama"],
+    cast: "Shah Rukh Khan, Nayanthara",
+    director: "Atlee Kumar",
+    rating: "⭐ 96% Match",
+    releaseDate: "September 7, 2023",
+    duration: "2h 49m"
+  }
+];
+
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabPanes = document.querySelectorAll('.tab-pane');
 
@@ -549,33 +697,42 @@
       });
     });
 
-    function openModal(contentTitle) {
-      const modal = document.getElementById('contentModal');
-      const title = document.getElementById('modalTitle');
-      const description = document.getElementById('modalDescription');
-      
-      title.textContent = contentTitle || 'The Killer';
-      
-      const descriptions = {
-        'The Killer': 'After a fateful near-miss, an assassin battles his employers and himself, on an international manhunt he insists isn\'t personal. From visionary director David Fincher.',
-        'Rebel Moon': 'A peaceful colony on the edge of the galaxy is threatened by the armies of a tyrannical regent. Their only hope is a mysterious stranger.',
-        'Atlas': 'A brilliant data analyst with a deep distrust of artificial intelligence joins a mission to capture a renegade robot with whom she shares a mysterious past.',
-        'Extraction 3': 'Tyler Rake returns for his most dangerous mission yet, diving deep into enemy territory to rescue a high-value target.',
-        'Damsel': 'A dutiful damsel agrees to marry a handsome prince, only to discover the royal family has recruited her as a sacrifice to repay an ancient debt.',
-        'Leave the World Behind': 'A family\'s vacation is upended when two strangers arrive at night, seeking refuge from a cyberattack that grows more terrifying.',
-        'Society of the Snow': 'The true story of the 1972 Andes plane crash and the incredible survival story of the passengers stranded in brutal conditions.',
-        'Squid Game': 'Hundreds of cash-strapped players accept an invitation to compete in children\'s games for a tempting prize, but the stakes are deadly.',
-        'Wednesday': 'Wednesday Addams attends Nevermore Academy and investigates a murder mystery while mastering her psychic ability.',
-        'Leo': 'A mild-mannered man becomes a local hero through an unexpected series of events, leading to an action-packed journey.',
-        'Jailer': 'A retired jailer is forced to confront his past when his son goes missing, leading to an explosive showdown with dangerous criminals.',
-        'Jawan': 'A high-octane action thriller that tackles social issues through an engaging storyline and spectacular action sequences.'
-      };
-      
-      description.textContent = descriptions[contentTitle] || descriptions['The Killer'];
-      
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+    function openModal(title) {
+  const modal = document.getElementById('contentModal');
+  const content = contentData.find(item => item.title === title);
+
+  if (!content) {
+    console.warn(`No data found for ${title}`);
+    return;
+  }
+
+  // populate modal
+  document.getElementById('modalTitle').textContent = content.title;
+  document.getElementById('modalDescription').textContent = content.description;
+  document.getElementById('modalHeroImg').src = content.img;
+
+  // genres
+  const genresContainer = document.querySelector('.coming-genres');
+  genresContainer.innerHTML = "";
+  content.genres.forEach(genre => {
+    const span = document.createElement('span');
+    span.className = 'genre-tag';
+    span.textContent = genre;
+    genresContainer.appendChild(span);
+  });
+
+  // meta info
+  const metaValues = document.querySelectorAll('.meta-value');
+  metaValues[0].textContent = content.cast;
+  metaValues[1].textContent = content.director;
+  metaValues[2].textContent = content.rating;
+  metaValues[3].textContent = content.releaseDate;
+  metaValues[4].textContent = content.duration;
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
 
     function closeModal() {
       const modal = document.getElementById('contentModal');
