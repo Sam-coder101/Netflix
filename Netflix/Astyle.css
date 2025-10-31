@@ -34,7 +34,32 @@ body{
 /* Light mode styles */
 body.light-mode {
   background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 60%);
-  color: #000;
+  color: #333;
+  --bg: #ffffff;
+  --muted: #666666;
+  --card: #f0f0f0;
+  --glass: rgba(0,0,0,0.04);
+}
+
+/* Global transition for theme switching */
+body {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode nav links */
+body.light-mode .primary-nav a {
+  color: #333;
+}
+
+body.light-mode .primary-nav a:hover {
+  color: var(--accent);
+}
+
+/* Light mode cards */
+body.light-mode .card {
+  background: linear-gradient(180deg, #fff, #f5f5f5);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
 
@@ -478,10 +503,6 @@ body.light-mode .faq-answer{
   border: 1px solid #ddd;
 }
 
-  background: #f0f0f0; /* light solid background */
-  color: #111;         /* black text */
-  border: 1px solid #ddd;
-}
 
 /* Ensure inner text/icons don't bring their own background */
 .faq-question * { background: transparent; }
@@ -698,6 +719,88 @@ body.light-mode .faq-answer {
   .click-overlay .ripple{ display:none; animation:none !important; }
 }
 
+  /* ---------- Watchlist button (overlay on movie cards) ---------- */
+  .movie { position: relative; }
+  .watchlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 50;
+    transition: background .18s, transform .12s;
+  }
+  .watchlist-btn:hover { background: rgba(0,0,0,0.8); transform: translateY(-2px); }
+  .watchlist-btn.in-list { background: var(--accent); color: #fff; }
+  .watchlist-btn .icon { font-size: 14px; }
+
+
+  /* Search suggestions and highlights */
+  .search-container { position: relative; }
+  .search-suggestions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 8px);
+    background: var(--bg);
+    color: var(--muted);
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    list-style: none;
+    padding: 8px 6px;
+    margin: 0;
+    z-index: 2000;
+    max-height: 260px;
+    overflow: auto;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  /* Light mode suggestions */
+  body.light-mode .search-suggestions {
+    background: #fff;
+    color: #333;
+  }
+  
+  .search-suggestions li { 
+    padding: 8px 12px; 
+    cursor: pointer; 
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+  
+  .search-suggestions li:hover, 
+  .search-suggestions li.active { 
+    background: var(--glass);
+  }
+  
+  .search-suggestions .subtitle { 
+    display: block; 
+    font-size: 0.85rem; 
+    color: var(--muted);
+    margin-top: 4px; 
+  }
+  
+  .search-highlight mark { 
+    background: var(--accent); 
+    color: #fff; 
+    padding: 0 2px; 
+    border-radius: 2px;
+  }
+  
+  .movie.search-match { 
+    box-shadow: 0 18px 38px rgba(229,9,20,0.12); 
+    transform: translateY(-6px); 
+  }
+
+
 /* */
 /* Movie Modal */
 .movie-modal {
@@ -738,6 +841,32 @@ body.light-mode .faq-answer {
   animation: slideUp 0.4s ease-out;
   box-shadow: 0 3px 10px rgba(0,0,0,0.5);
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+body.light-mode .modal-content {
+  background: #fff;
+  color: #333;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.2);
+}
+
+body.light-mode .modal-hero::after {
+  background: linear-gradient(to top, #fff 0%, rgba(255,255,255,0.8) 20%, transparent 100%);
+}
+
+body.light-mode .modal-title {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+body.light-mode .modal-btn.icon-only {
+  background: rgba(200,200,200,0.6);
+  border: 2px solid rgba(0,0,0,0.2);
+  color: #333;
+}
+
+body.light-mode .modal-btn.icon-only:hover {
+  border-color: #333;
+  background: rgba(200,200,200,0.8);
 }
 
 /* Close button */
@@ -1042,21 +1171,31 @@ body.light-mode .faq-answer {
   position: absolute;
   cursor: pointer;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
+  background-color: #2f3140;
+  transition: all 0.4s ease;
   border-radius: 26px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: "🌙";
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 20px;
   width: 20px;
   left: 3px;
   bottom: 3px;
   background-color: white;
-  transition: 0.4s;
+  transition: all 0.4s ease;
   border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+body.light-mode .slider:before {
+  content: "☀️";
+  background-color: #ffeb3b;
 }
 
 input:checked + .slider {
