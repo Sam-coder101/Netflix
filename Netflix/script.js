@@ -270,6 +270,97 @@ try {
   console.warn('Search setup error:', err.message);
 }
 
+/* -----------------------
+   Watchlist (My List) - client-side persistence using localStorage
+   - Adds an overlay button to `.movie` cards to add/remove items
+   - Persists minimal movie info: id, title, poster
+   - Renders and syncs with `mylist.html` which reads from the same key
+   ----------------------- */
+(function(){
+  const KEY = 'watchlist';
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ return []; }
+  }
+  function save(list) {
+    try { localStorage.setItem(KEY, JSON.stringify(list)); } catch(e) { /* ignore */ }
+  }
+  function findIndex(list, id) { return list.findIndex(i => i.id === id); }
+
+  function slugify(text){
+    return String(text).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  }
+
+  function getMovieDataFromEl(el){
+    const img = el.querySelector('img');
+    const title = el.dataset.title || (img && img.alt) || 'Untitled';
+    const poster = img ? img.src : '';
+    const id = el.dataset.id || slugify(title + (poster || ''));
+    return { id, title, poster };
+  }
+
+  function inList(id){ return findIndex(load(), id) !== -1; }
+
+  function updateButton(btn, id){
+    if(inList(id)){
+      btn.classList.add('in-list');
+      btn.innerHTML = '<span class="icon">✓</span><span class="label">In List</span>';
+      btn.setAttribute('aria-pressed','true');
+    } else {
+      btn.classList.remove('in-list');
+      btn.innerHTML = '<span class="icon">＋</span><span class="label">My List</span>';
+      btn.setAttribute('aria-pressed','false');
+    }
+  }
+
+  function addToList(item){
+    const list = load();
+    if(findIndex(list, item.id) === -1){ list.push(item); save(list); }
+  }
+  function removeFromList(id){
+    const list = load();
+    const idx = findIndex(list, id);
+    if(idx !== -1){ list.splice(idx,1); save(list); }
+  }
+
+  // Create and attach buttons to all `.movie` elements
+  document.addEventListener('DOMContentLoaded', () => {
+    const movieEls = Array.from(document.querySelectorAll('.movie'));
+    movieEls.forEach(el => {
+      // ensure dataset attributes exist
+      const data = getMovieDataFromEl(el);
+      el.dataset.id = data.id;
+      el.dataset.title = data.title;
+
+      // skip if button already exists
+      if(el.querySelector('.watchlist-btn')) return;
+
+      const btn = document.createElement('button');
+      btn.className = 'watchlist-btn';
+      btn.type = 'button';
+      btn.title = 'Add to My List';
+      updateButton(btn, data.id);
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if(inList(data.id)){
+          removeFromList(data.id);
+          updateButton(btn, data.id);
+          showToast(`Removed "${data.title}" from My List`);
+        } else {
+          addToList(data);
+          updateButton(btn, data.id);
+          showToast(`Added "${data.title}" to My List`);
+        }
+        // dispatch event so other parts (mylist page) can listen
+        window.dispatchEvent(new CustomEvent('watchlist:updated', { detail: { id: data.id } }));
+      });
+
+      el.appendChild(btn);
+    });
+  });
+})();
+
 (
   function() {
   const THEME_KEY = 'theme';
