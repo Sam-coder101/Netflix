@@ -152,25 +152,6 @@
 
   <!-- JS -->
   <script src="script.js"></script>
-
-  <!-- Theme Toggle Script -->
-  <script>
-    const toggle = document.getElementById('themeToggle');
-    const body = document.body;
-
-    if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light-mode');
-      toggle.checked = true;
-    }
-
-    toggle.addEventListener('change', () => {
-      body.classList.toggle('light-mode');
-      if (body.classList.contains('light-mode')) {
-        localStorage.setItem('theme', 'light');
-      } else {
-        localStorage.setItem('theme', 'dark');
-      }
-    });
-  </script>
+  <!-- Theme handling is moved into script.js so it works across all pages -->
 </body>
 </html>
