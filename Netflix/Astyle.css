@@ -1107,3 +1107,75 @@ body.light-mode {
   transform: translateY(0);
 }
 
+/* ===== Search bar visibility fix (dark + light mode) ===== */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;            /* don't grow to fill entire row */
+  margin-left: 12px;
+}
+
+/* Desktop input */
+#movieSearch {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 15px;
+  width: 200px;
+  transition: width .22s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  box-shadow: none;
+}
+
+/* placeholder contrast */
+#movieSearch::placeholder {
+  color: rgba(255,255,255,0.65);
+}
+
+/* focus boost so it's easy to spot */
+#movieSearch:focus {
+  outline: none;
+  border-color: #e50914;
+  background: rgba(255,255,255,0.12);
+  width: 260px;
+  box-shadow: 0 6px 18px rgba(229,9,20,0.07);
+}
+
+/* ----- Light mode adjustments ----- */
+body.light-mode #movieSearch {
+  background: rgba(0,0,0,0.06);       /* subtle dark tint on white background */
+  color: #111;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+body.light-mode #movieSearch::placeholder {
+  color: rgba(0,0,0,0.45);
+}
+body.light-mode #movieSearch:focus {
+  background: rgba(0,0,0,0.08);
+  border-color: #c13109; /* matches theme-switch active color */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* Responsive: stack below title on small screens */
+@media (max-width: 768px) {
+  .content-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .search-container {
+    justify-content: flex-start;
+    width: 100%;
+    margin-left: 0;
+  }
+  #movieSearch {
+    width: 100%;
+    max-width: 360px;
+  }
+  #movieSearch:focus {
+    width: 100%;
+    max-width: 420px;
+  }
+}
