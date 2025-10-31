@@ -158,17 +158,126 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Translations
-const translations = { /* ... your translations object ... */ };
+// Translations (simple i18n)
+const translations = {
+  en: {
+    page_title: 'Netflix Clone | Watch Movies & TV Shows',
+    hero_title: 'Unlimited movies, TV shows and more',
+    hero_subtitle: 'Starts at ₹149. Cancel anytime.',
+    hero_cta: 'Ready to watch? Enter your email to create or restart your membership.',
+    email_placeholder: 'Enter your email',
+    email_label: 'Email address',
+    get_started_btn: 'Get Started',
+    watch_now_btn: 'Watch Now',
+    trending_now: 'Trending Now',
+    region_india: 'India',
+    region_usa: 'USA',
+    region_uk: 'UK',
+    region_canada: 'Canada',
+    region_australia: 'Australia',
+    region_global: 'Global',
+    type_tv: 'TV Shows',
+    type_web: 'Web Series',
+    type_movies: 'Movies'
+  },
+  hi: {
+    page_title: 'नेटफ्लिक्स क्लोन | मूवी और टीवी शो देखें',
+    hero_title: 'अनलिमिटेड मूवी, टीवी शो और बहुत कुछ',
+    hero_subtitle: '₹149 से शुरू. कभी भी रद्द करें।',
+    hero_cta: 'देखना शुरू करें? सदस्यता बनाने या दोबारा शुरू करने के लिए अपना ईमेल दर्ज करें।',
+    email_placeholder: 'अपना ईमेल दर्ज करें',
+    email_label: 'ईमेल पता',
+    get_started_btn: 'शुरू करें',
+    watch_now_btn: 'अभी देखें',
+    trending_now: 'अभी ट्रेंड में',
+    region_india: 'भारत',
+    region_usa: 'यूएसए',
+    region_uk: 'यूके',
+    region_canada: 'कनाडा',
+    region_australia: 'ऑस्ट्रेलिया',
+    region_global: 'ग्लोबल',
+    type_tv: 'टीवी शो',
+    type_web: 'वेब सीरीज़',
+    type_movies: 'फिल्में'
+  },
+  es: {
+    page_title: 'Netflix Clon | Ver Películas y Series',
+    hero_title: 'Películas, series y más',
+    hero_subtitle: 'Desde ₹149. Cancela en cualquier momento.',
+    hero_cta: 'Listo para ver? Ingresa tu correo para crear o reiniciar tu membresía.',
+    email_placeholder: 'Introduce tu correo electrónico',
+    email_label: 'Dirección de correo',
+    get_started_btn: 'Comenzar',
+    watch_now_btn: 'Ver ahora',
+    trending_now: 'Tendencias',
+    region_india: 'India',
+    region_usa: 'EE. UU.',
+    region_uk: 'Reino Unido',
+    region_canada: 'Canadá',
+    region_australia: 'Australia',
+    region_global: 'Global',
+    type_tv: 'Programas de TV',
+    type_web: 'Series web',
+    type_movies: 'Películas'
+  }
+};
+
 const langSelect = document.getElementById("lang");
-function applyTranslations(lang) { /* ... your translation function ... */ }
+
+function applyTranslations(lang) {
+  const dict = translations[lang] || translations['en'];
+
+  // Update elements with data-key
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (!key) return;
+    const value = dict[key];
+    if (typeof value === 'undefined') return;
+
+    // Special-case title element
+    if (el.tagName.toLowerCase() === 'title') {
+      document.title = value;
+      return;
+    }
+
+    // For inputs or text-holding elements
+    if (el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'textarea') {
+      el.value = value;
+    } else {
+      el.textContent = value;
+    }
+  });
+
+  // Update placeholders (data-key-placeholder)
+  document.querySelectorAll('[data-key-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-key-placeholder');
+    if (!key) return;
+    const value = dict[key];
+    if (typeof value === 'undefined') return;
+    el.placeholder = value;
+  });
+
+  // Update option labels that use data-key
+  document.querySelectorAll('option[data-key]').forEach(opt => {
+    const key = opt.getAttribute('data-key');
+    if (!key) return;
+    const value = dict[key];
+    if (typeof value === 'undefined') return;
+    opt.textContent = value;
+  });
+
+  // Ensure document title if not set via <title>
+  if (dict.page_title) document.title = dict.page_title;
+}
+
 if (langSelect) {
   langSelect.addEventListener("change", (e) => {
     const selectedLang = e.target.value;
     applyTranslations(selectedLang);
-    localStorage.setItem("lang", selectedLang);
+    try { localStorage.setItem("lang", selectedLang); } catch (e) { /* ignore */ }
   });
 }
+
 window.addEventListener("load", () => {
   const savedLang = localStorage.getItem("lang") || "en";
   if (langSelect) langSelect.value = savedLang;
