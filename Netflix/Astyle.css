@@ -478,10 +478,6 @@ body.light-mode .faq-answer{
   border: 1px solid #ddd;
 }
 
-  background: #f0f0f0; /* light solid background */
-  color: #111;         /* black text */
-  border: 1px solid #ddd;
-}
 
 /* Ensure inner text/icons don't bring their own background */
 .faq-question * { background: transparent; }
@@ -697,6 +693,55 @@ body.light-mode .faq-answer {
 @media (prefers-reduced-motion: reduce){
   .click-overlay .ripple{ display:none; animation:none !important; }
 }
+
+  /* ---------- Watchlist button (overlay on movie cards) ---------- */
+  .movie { position: relative; }
+  .watchlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 50;
+    transition: background .18s, transform .12s;
+  }
+  .watchlist-btn:hover { background: rgba(0,0,0,0.8); transform: translateY(-2px); }
+  .watchlist-btn.in-list { background: var(--accent); color: #fff; }
+  .watchlist-btn .icon { font-size: 14px; }
+
+
+  /* Search suggestions and highlights */
+  .search-container { position: relative; }
+  .search-suggestions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 8px);
+    background: rgba(17,17,17,0.98);
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    list-style: none;
+    padding: 8px 6px;
+    margin: 0;
+    z-index: 2000;
+    max-height: 260px;
+    overflow: auto;
+  }
+  .search-suggestions li{ padding:8px 12px; cursor:pointer; border-radius:6px; }
+  .search-suggestions li:hover, .search-suggestions li.active{ background: rgba(255,255,255,0.04); }
+  .search-suggestions .subtitle { display:block; font-size:0.85rem; color:rgba(255,255,255,0.6); margin-top:4px; }
+  .search-highlight mark{ background: #ffea8a; color: #111; padding:0 2px; border-radius:2px; }
+  .movie.search-match{ box-shadow: 0 18px 38px rgba(229,9,20,0.12); transform: translateY(-6px); }
+
 
 /* */
 /* Movie Modal */
