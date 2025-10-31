@@ -269,3 +269,57 @@ try {
 } catch (err) {
   console.warn('Search setup error:', err.message);
 }
+
+(
+  function() {
+  const THEME_KEY = 'theme';
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
+  function applyTheme(theme) {
+    if (theme === 'light') document.body.classList.add('light-mode');
+    else document.body.classList.remove('light-mode');
+
+    // keep any toggles in sync
+    document.querySelectorAll('input[type="checkbox"]#themeToggle, input[type="checkbox"].theme-toggle-checkbox').forEach(cb => {
+      try { cb.checked = (theme === 'light'); } catch (e) { /* ignore */ }
+    });
+  }
+
+  function setTheme(theme) {
+    try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* storage may be unavailable */ }
+    applyTheme(theme);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Determine saved or preferred theme
+    let saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* ignore */ }
+    if (!saved) saved = prefersLight ? 'light' : 'dark';
+    applyTheme(saved);
+
+    // Wire up existing toggles (some pages have <input id="themeToggle">)
+    const toggles = Array.from(document.querySelectorAll('input[type="checkbox"]#themeToggle, input[type="checkbox"].theme-toggle-checkbox'));
+    toggles.forEach(cb => {
+      // normalize: ensure a consistent class
+      cb.classList.add('theme-toggle-checkbox');
+      cb.addEventListener('change', () => {
+        setTheme(cb.checked ? 'light' : 'dark');
+      });
+    });
+
+    // If no toggle exists, inject a floating one so theme is accessible on every page
+    if (toggles.length === 0) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'theme-toggle';
+      wrapper.setAttribute('aria-hidden', 'false');
+      wrapper.innerHTML = '<label class="theme-switch" title="Toggle theme"><input type="checkbox" class="theme-toggle-checkbox" aria-label="Toggle theme"><span class="slider round"></span></label>';
+      // append as last child so CSS positioning works
+      document.body.appendChild(wrapper);
+      const injected = wrapper.querySelector('input.theme-toggle-checkbox');
+      injected.checked = (saved === 'light');
+      injected.addEventListener('change', () => setTheme(injected.checked ? 'light' : 'dark'));
+    }
+  });
+
+}
+)();
