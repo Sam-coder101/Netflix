@@ -10,7 +10,8 @@
   <title data-key="page_title">Netflix Clone | Watch Movies & TV Shows</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="Astyle.css" />
-</head>
+    <link rel="stylesheet" href="account-styles.css" />
+  </head>
 <body>
   <!-- Header -->
 <header class="site-header" role="banner">
@@ -52,6 +53,9 @@
       <button id="profileBtn" class="profile-icon" aria-label="Profile">
         👤
       </button>
+
+      <!-- Static Sign In button so home page always shows it -->
+      <button class="btn outline sign-in-btn" type="button" aria-label="Sign in">Sign In</button>
     </div>
   </div>
 </header>
@@ -150,8 +154,63 @@
     <!-- Footer content unchanged -->
   </footer>
 
+  <!-- Inline Account Modal (fallback to avoid fetch failures) -->
+  <!-- Account Modal Template - inlined so Sign In works when opened via file:// or without server -->
+  <div id="accountModal" class="account-modal">
+    <div class="account-modal-content">
+      <!-- Sign In View -->
+      <div class="modal-view" id="signInView">
+        <h2>Sign In</h2>
+        <form id="signInForm" class="account-form">
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit" class="btn primary">Sign In</button>
+        </form>
+        <p class="demo-note">Demo: any email/password will work</p>
+      </div>
+
+      <!-- Profile Selection View -->
+      <div class="modal-view" id="profileView" style="display: none;">
+        <h2>Who's Watching?</h2>
+        <div class="profiles-grid">
+          <div class="profile-item" data-theme="dark" data-lang="en">
+            <img src="https://i.pravatar.cc/150?img=1" alt="Profile 1">
+            <span>User 1</span>
+          </div>
+          <div class="profile-item" data-theme="light" data-lang="es">
+            <img src="https://i.pravatar.cc/150?img=2" alt="Profile 2">
+            <span>User 2</span>
+          </div>
+          <div class="profile-item add-profile">
+            <div class="add-icon">+</div>
+            <span>Add Profile</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Profile View -->
+      <div class="modal-view" id="addProfileView" style="display: none;">
+        <h2>Add Profile</h2>
+        <form id="addProfileForm" class="account-form">
+          <input type="text" placeholder="Name" required>
+          <select name="theme">
+            <option value="dark">Dark Theme</option>
+            <option value="light">Light Theme</option>
+          </select>
+          <select name="language">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+          </select>
+          <button type="submit" class="btn primary">Create Profile</button>
+          <button type="button" class="btn outline" onclick="showView('profileView')">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- JS -->
   <script src="script.js"></script>
-  <!-- Theme handling is moved into script.js so it works across all pages -->
+  <script src="account.js"></script>
 </body>
 </html>
