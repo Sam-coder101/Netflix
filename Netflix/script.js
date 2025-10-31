@@ -158,17 +158,126 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Translations
-const translations = { /* ... your translations object ... */ };
+// Translations (simple i18n)
+const translations = {
+  en: {
+    page_title: 'Netflix Clone | Watch Movies & TV Shows',
+    hero_title: 'Unlimited movies, TV shows and more',
+    hero_subtitle: 'Starts at ₹149. Cancel anytime.',
+    hero_cta: 'Ready to watch? Enter your email to create or restart your membership.',
+    email_placeholder: 'Enter your email',
+    email_label: 'Email address',
+    get_started_btn: 'Get Started',
+    watch_now_btn: 'Watch Now',
+    trending_now: 'Trending Now',
+    region_india: 'India',
+    region_usa: 'USA',
+    region_uk: 'UK',
+    region_canada: 'Canada',
+    region_australia: 'Australia',
+    region_global: 'Global',
+    type_tv: 'TV Shows',
+    type_web: 'Web Series',
+    type_movies: 'Movies'
+  },
+  hi: {
+    page_title: 'नेटफ्लिक्स क्लोन | मूवी और टीवी शो देखें',
+    hero_title: 'अनलिमिटेड मूवी, टीवी शो और बहुत कुछ',
+    hero_subtitle: '₹149 से शुरू. कभी भी रद्द करें।',
+    hero_cta: 'देखना शुरू करें? सदस्यता बनाने या दोबारा शुरू करने के लिए अपना ईमेल दर्ज करें।',
+    email_placeholder: 'अपना ईमेल दर्ज करें',
+    email_label: 'ईमेल पता',
+    get_started_btn: 'शुरू करें',
+    watch_now_btn: 'अभी देखें',
+    trending_now: 'अभी ट्रेंड में',
+    region_india: 'भारत',
+    region_usa: 'यूएसए',
+    region_uk: 'यूके',
+    region_canada: 'कनाडा',
+    region_australia: 'ऑस्ट्रेलिया',
+    region_global: 'ग्लोबल',
+    type_tv: 'टीवी शो',
+    type_web: 'वेब सीरीज़',
+    type_movies: 'फिल्में'
+  },
+  es: {
+    page_title: 'Netflix Clon | Ver Películas y Series',
+    hero_title: 'Películas, series y más',
+    hero_subtitle: 'Desde ₹149. Cancela en cualquier momento.',
+    hero_cta: 'Listo para ver? Ingresa tu correo para crear o reiniciar tu membresía.',
+    email_placeholder: 'Introduce tu correo electrónico',
+    email_label: 'Dirección de correo',
+    get_started_btn: 'Comenzar',
+    watch_now_btn: 'Ver ahora',
+    trending_now: 'Tendencias',
+    region_india: 'India',
+    region_usa: 'EE. UU.',
+    region_uk: 'Reino Unido',
+    region_canada: 'Canadá',
+    region_australia: 'Australia',
+    region_global: 'Global',
+    type_tv: 'Programas de TV',
+    type_web: 'Series web',
+    type_movies: 'Películas'
+  }
+};
+
 const langSelect = document.getElementById("lang");
-function applyTranslations(lang) { /* ... your translation function ... */ }
+
+function applyTranslations(lang) {
+  const dict = translations[lang] || translations['en'];
+
+  // Update elements with data-key
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (!key) return;
+    const value = dict[key];
+    if (typeof value === 'undefined') return;
+
+    // Special-case title element
+    if (el.tagName.toLowerCase() === 'title') {
+      document.title = value;
+      return;
+    }
+
+    // For inputs or text-holding elements
+    if (el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'textarea') {
+      el.value = value;
+    } else {
+      el.textContent = value;
+    }
+  });
+
+  // Update placeholders (data-key-placeholder)
+  document.querySelectorAll('[data-key-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-key-placeholder');
+    if (!key) return;
+    const value = dict[key];
+    if (typeof value === 'undefined') return;
+    el.placeholder = value;
+  });
+
+  // Update option labels that use data-key
+  document.querySelectorAll('option[data-key]').forEach(opt => {
+    const key = opt.getAttribute('data-key');
+    if (!key) return;
+    const value = dict[key];
+    if (typeof value === 'undefined') return;
+    opt.textContent = value;
+  });
+
+  // Ensure document title if not set via <title>
+  if (dict.page_title) document.title = dict.page_title;
+}
+
 if (langSelect) {
   langSelect.addEventListener("change", (e) => {
     const selectedLang = e.target.value;
     applyTranslations(selectedLang);
-    localStorage.setItem("lang", selectedLang);
+    try { localStorage.setItem("lang", selectedLang); } catch (e) { /* ignore */ }
   });
 }
+
 window.addEventListener("load", () => {
   const savedLang = localStorage.getItem("lang") || "en";
   if (langSelect) langSelect.value = savedLang;
@@ -269,6 +378,97 @@ try {
 } catch (err) {
   console.warn('Search setup error:', err.message);
 }
+
+/* -----------------------
+   Watchlist (My List) - client-side persistence using localStorage
+   - Adds an overlay button to `.movie` cards to add/remove items
+   - Persists minimal movie info: id, title, poster
+   - Renders and syncs with `mylist.html` which reads from the same key
+   ----------------------- */
+(function(){
+  const KEY = 'watchlist';
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ return []; }
+  }
+  function save(list) {
+    try { localStorage.setItem(KEY, JSON.stringify(list)); } catch(e) { /* ignore */ }
+  }
+  function findIndex(list, id) { return list.findIndex(i => i.id === id); }
+
+  function slugify(text){
+    return String(text).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  }
+
+  function getMovieDataFromEl(el){
+    const img = el.querySelector('img');
+    const title = el.dataset.title || (img && img.alt) || 'Untitled';
+    const poster = img ? img.src : '';
+    const id = el.dataset.id || slugify(title + (poster || ''));
+    return { id, title, poster };
+  }
+
+  function inList(id){ return findIndex(load(), id) !== -1; }
+
+  function updateButton(btn, id){
+    if(inList(id)){
+      btn.classList.add('in-list');
+      btn.innerHTML = '<span class="icon">✓</span><span class="label">In List</span>';
+      btn.setAttribute('aria-pressed','true');
+    } else {
+      btn.classList.remove('in-list');
+      btn.innerHTML = '<span class="icon">＋</span><span class="label">My List</span>';
+      btn.setAttribute('aria-pressed','false');
+    }
+  }
+
+  function addToList(item){
+    const list = load();
+    if(findIndex(list, item.id) === -1){ list.push(item); save(list); }
+  }
+  function removeFromList(id){
+    const list = load();
+    const idx = findIndex(list, id);
+    if(idx !== -1){ list.splice(idx,1); save(list); }
+  }
+
+  // Create and attach buttons to all `.movie` elements
+  document.addEventListener('DOMContentLoaded', () => {
+    const movieEls = Array.from(document.querySelectorAll('.movie'));
+    movieEls.forEach(el => {
+      // ensure dataset attributes exist
+      const data = getMovieDataFromEl(el);
+      el.dataset.id = data.id;
+      el.dataset.title = data.title;
+
+      // skip if button already exists
+      if(el.querySelector('.watchlist-btn')) return;
+
+      const btn = document.createElement('button');
+      btn.className = 'watchlist-btn';
+      btn.type = 'button';
+      btn.title = 'Add to My List';
+      updateButton(btn, data.id);
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if(inList(data.id)){
+          removeFromList(data.id);
+          updateButton(btn, data.id);
+          showToast(`Removed "${data.title}" from My List`);
+        } else {
+          addToList(data);
+          updateButton(btn, data.id);
+          showToast(`Added "${data.title}" to My List`);
+        }
+        // dispatch event so other parts (mylist page) can listen
+        window.dispatchEvent(new CustomEvent('watchlist:updated', { detail: { id: data.id } }));
+      });
+
+      el.appendChild(btn);
+    });
+  });
+})();
 
 (
   function() {
